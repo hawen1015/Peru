@@ -186,37 +186,31 @@
        width: 100%;
        justify-content: center;
    }
-        /* 大地圖容器 */
-.map-container {
-   background: #FFF;
-   margin: 20px;
+        /* 交通地圖專用卡片樣式 */
+.map-card {
+   background: var(--card-bg);
+   border-radius: 18px;
    padding: 20px;
-   border-radius: 20px;
-   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-   text-align: center;
-   position: relative;
-   overflow: hidden;
+   margin-bottom: 20px;
+   box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+   border: 1px solid rgba(0,0,0,0.02);
 }
 .map-svg {
    width: 100%;
    height: auto;
-   filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.1));
+   /* 增加一點手繪感的濾鏡 */
+   filter: sepia(0.1) drop-shadow(1px 1px 2px rgba(0,0,0,0.05));
 }
 .map-legend {
    display: flex;
    justify-content: center;
-   gap: 15px;
+   flex-wrap: wrap;
+   gap: 10px;
    font-size: 11px;
    color: var(--text-sub);
-   margin-top: 10px;
-}
-.legend-item::before {
-   content: '';
-   display: inline-block;
-   width: 20px;
-   border-bottom: 2px dashed var(--accent-color);
-   margin-right: 5px;
-   vertical-align: middle;
+   margin-top: 15px;
+   border-top: 1px solid #F0F0F0;
+   padding-top: 15px;
 }
     
     </style>
@@ -224,40 +218,6 @@
 <body>
 
 <header>
-    <div class="map-container">
-<h3 style="font-size: 14px; margin-bottom: 15px; letter-spacing: 2px;">ROUTE OVERVIEW</h3>
-<svg class="map-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-<path d="M150 50 L250 50 L300 250 L250 450 L100 450 Z" fill="none" stroke="#EEE" stroke-width="2" />
-<g fill="var(--accent-color)">
-<circle cx="80" cy="150" r="5" /> <text x="45" y="145" font-size="12">利馬</text>
-<circle cx="100" cy="220" r="4" /> <text x="60" y="240" font-size="10">納茲卡</text>
-<circle cx="180" cy="200" r="5" /> <text x="170" y="190" font-size="12">聖谷/馬丘</text>
-<circle cx="220" cy="280" r="5" /> <text x="230" y="285" font-size="12">普諾(湖)</text>
-<circle cx="280" cy="320" r="5" /> <text x="290" y="325" font-size="12">拉巴斯</text>
-<circle cx="260" cy="420" r="5" /> <text x="270" y="435" font-size="12">烏尤尼</text>
-<circle cx="250" cy="100" r="5" /> <text x="260" y="105" font-size="12">亞馬遜</text>
-</g>
-<g fill="none" stroke="#8C7B68" stroke-width="1.5" stroke-dasharray="5,3">
-<path d="M80 150 Q70 185 100 220" />
-<text x="40" y="190" fill="#999" font-size="9" font-style="italic" stroke="none">🚗 7h</text>
-<path d="M85 150 Q130 150 180 200" stroke="#7A6A53" />
-<text x="120" y="165" fill="#999" font-size="9" font-style="italic" stroke="none">✈️ 1.5h</text>
-<path d="M185 205 L215 275" />
-<text x="205" y="240" fill="#999" font-size="9" font-style="italic" stroke="none">🚂 10h</text>
-<path d="M225 285 L275 315" />
-<text x="240" y="315" fill="#999" font-size="9" font-style="italic" stroke="none">🚌 6h</text>
-<path d="M280 325 L265 415" />
-<text x="275" y="375" fill="#999" font-size="9" font-style="italic" stroke="none">✈️ 1h</text>
-<path d="M280 315 Q290 200 255 105" />
-<text x="285" y="200" fill="#999" font-size="9" font-style="italic" stroke="none">✈️ 1h</text>
-</g>
-</svg>
-<div class="map-legend">
-<span class="legend-item">🚗/🚌 車程</span>
-<span class="legend-item" style="--accent-color: #7A6A53;">✈️ 班機</span>
-<span class="legend-item">🚂 火車</span>
-</div>
-</div>
     <div class="user-greet">OCTOBER 2026 | </div>
     <h1 class="trip-title">祕魯 & 玻利維亞<br>圓夢之旅</h1>
 </header>
@@ -268,25 +228,51 @@
 </div>
 
 <div id="flights" class="tab-content">
-    <div style="padding-top: 10px;">
-        <h2>航班與移動資訊</h2>
-        <div class="info-section">
-            <h3>核心航段</h3>
-            <div class="card">
-                <div class="info-row"><span class="info-label">10/08 抵達</span><span>LA2479 22:05</span></div>
-                <div class="info-row"><span class="info-label">10/12 內陸</span><span>LA2609 LIM-CUZ</span></div>
-                <div class="info-row"><span class="info-label">10/19 跨國</span><span>OB304 LPB-UYU</span></div>
-                <div class="info-row"><span class="info-label">10/21 返回</span><span>OB305 UYU-LPB</span></div>
-                <div class="info-row"><span class="info-label">10/22 亞馬遜</span><span>LA2260 LPB-PEM</span></div>
-            </div>
-            <h3>景觀火車</h3>
-            <div class="card">
-                <div class="info-row"><span class="info-label">10/13 去程</span><span>Vistadome 景觀火車</span></div>
-                <div class="info-row"><span class="info-label">10/14 回程</span><span>Hiram Bingham 奢華號</span></div>
-                <div class="info-row"><span class="info-label">10/16 跨城</span><span>Titicaca Train 觀光火車</span></div>
-            </div>
-        </div>
-    </div>
+<div style="padding-top: 10px;">
+<h2>路線導覽與交通資訊</h2>
+<div class="map-card">
+<div class="card-type">Route Overview / 行程總覽</div>
+<svg class="map-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
+<g fill="var(--accent-color)" font-family="Noto Sans TC">
+<circle cx="80" cy="150" r="5" /> <text x="40" y="145" font-size="12">利馬</text>
+<circle cx="95" cy="225" r="4" /> <text x="55" y="240" font-size="10">納茲卡</text>
+<circle cx="185" cy="205" r="5" /> <text x="175" y="195" font-size="12">聖谷/馬丘</text>
+<circle cx="225" cy="285" r="5" /> <text x="235" y="290" font-size="12">普諾(湖)</text>
+<circle cx="280" cy="320" r="5" /> <text x="290" y="325" font-size="12">拉巴斯</text>
+<circle cx="265" cy="420" r="5" /> <text x="275" y="435" font-size="12">烏尤尼</text>
+<circle cx="250" cy="95" r="5" /> <text x="260" y="100" font-size="12">亞馬遜</text>
+</g>
+<g fill="none" stroke="#8C7B68" stroke-width="1.5" stroke-dasharray="5,3">
+<path d="M80 150 Q75 190 95 225" />
+<text x="45" y="195" fill="#999" font-size="10" font-style="italic" stroke="none">🚗 7h</text>
+<path d="M85 150 Q130 155 180 200" stroke-dasharray="none" stroke="#7A6A53" stroke-width="1" />
+<text x="115" y="165" fill="#7A6A53" font-size="10" font-style="italic" stroke="none">✈️ 1.5h</text>
+<path d="M190 210 L220 280" />
+<text x="210" y="245" fill="#999" font-size="10" font-style="italic" stroke="none">🚂 10h</text>
+<path d="M230 290 L275 315" />
+<text x="245" y="315" fill="#999" font-size="10" font-style="italic" stroke="none">🚌 6h</text>
+<path d="M280 325 L270 415" stroke-dasharray="none" stroke="#7A6A53" stroke-width="1" />
+<text x="278" y="375" fill="#7A6A53" font-size="10" font-style="italic" stroke="none">✈️ 1h</text>
+<path d="M280 315 Q295 200 255 100" stroke-dasharray="none" stroke="#7A6A53" stroke-width="1" />
+<text x="290" y="210" fill="#7A6A53" font-size="10" font-style="italic" stroke="none">✈️ 1h</text>
+</g>
+</svg>
+<div class="map-legend">
+<span>🚗/🚌 車程</span>
+<span style="color: #7A6A53;">✈️ 班機 (直航)</span>
+<span>🚂 火車</span>
+</div>
+</div>
+<div class="info-section">
+<h3>核心航段明細</h3>
+<div class="card">
+<div class="info-row"><span class="info-label">10/08 抵達</span><span>LA2479 22:05</span></div>
+<div class="info-row"><span class="info-label">10/12 內陸</span><span>LA2609 LIM-CUZ</span></div>
+<div class="info-row"><span class="info-label">10/19 跨國</span><span>OB304 LPB-UYU</span></div>
+<div class="info-row"><span class="info-label">10/22 亞馬遜</span><span>LA2260 LPB-PEM</span></div>
+</div>
+</div>
+</div>
 </div>
 
 <div id="packing" class="tab-content">
