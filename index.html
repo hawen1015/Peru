@@ -140,6 +140,53 @@
         .info-section h3 { font-size: 16px; margin: 25px 0 15px; color: var(--accent-color); }
         .info-row { display: flex; justify-content: space-between; border-bottom: 1px solid #EEE; padding: 14px 0; font-size: 14px; }
         .info-label { color: var(--text-sub); }
+    /* 景點圖片樣式 */
+   .card-img {
+       width: calc(100% + 44px); /* 讓圖片左右貼邊，抵銷 card 的 padding */
+       margin-left: -22px;
+       margin-top: -22px;
+       height: 200px;
+       object-fit: cover;
+       border-radius: 18px 18px 0 0; /* 只有上方圓角 */
+       margin-bottom: 15px;
+       display: block;
+   }
+   /* 展開介紹的容器：預設高度為 0 (隱藏) */
+   .details-content {
+       max-height: 0;
+       overflow: hidden;
+       transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+       font-size: 14px;
+       color: #555;
+       background: #F9F8F3; /* 稍微深一點的底色區隔 */
+       border-radius: 12px;
+       margin-top: 0;
+   }
+   /* 當加上 .show 類別時，內容展開 */
+   .details-content.show {
+       max-height: 800px; /* 給一個足夠大的值 */
+       margin-top: 15px;
+       padding: 15px;
+       border-left: 3px solid var(--accent-color);
+   }
+   /* 導遊按鈕樣式 */
+   .expand-btn {
+       background: rgba(122, 106, 83, 0.1);
+       border: none;
+       color: var(--accent-color);
+       font-size: 13px;
+       font-weight: 500;
+       padding: 8px 15px;
+       border-radius: 8px;
+       margin-top: 15px;
+       cursor: pointer;
+       display: inline-flex;
+       align-items: center;
+       gap: 5px;
+       width: 100%;
+       justify-content: center;
+   }
+    
     </style>
 </head>
 <body>
@@ -223,12 +270,26 @@
               { type: "美食", title: "Casa Tambo 午餐", desc: "品嚐道地秘魯 Causa 與 Lomo Saltado。", tags: [{text: "必吃美食", color: "var(--tag-food)"}] },
               { type: "住宿", title: "Pullman Miraflores (5★)", desc: "利馬市區連住。" }
           ]},
-        { day: 3, date: "10/10", title: "沙漠與綠洲", weather: "24°C 晴", location: "Huacachina",
-          items: [
-              { type: "景點", title: "Paracas 自然保護區", desc: "觀賞壯麗的海蝕景觀與紅色沙灘。" },
-              { type: "攻略", title: "沙漠越野車與滑沙", desc: "在 Huacachina 體驗刺激的沙漠衝沙。", tags: [{text: "必玩體驗", color: "var(--tag-buy)"}] },
-              { type: "住宿", title: "The Legend Paracas (5★)", desc: "享受飯店泳池設施。" }
-          ]},
+        {
+ day: 3,
+ date: "10/10",
+ title: "沙漠與綠洲",
+ weather: "24°C 晴",
+ location: "Huacachina",
+ items: [
+     {
+       type: "景點",
+       title: "Paracas 自然保護區",
+       // 建議找一張 16:9 的照片網址，或使用 placeholder
+       img: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=800&q=80",
+       desc: "欣賞壯麗的海蝕景觀與紅色沙灘。",
+       // 導遊職責：詳細攻略內容
+       longDesc: "各位貴賓請看！這裡就是被譽為『秘魯加拉巴哥』的帕拉卡斯。這片保護區最迷人的地方在於**黃金沙漠與湛藍海洋的直接碰撞**。我們會帶大家去看著名的『紅沙灘 (Playa Roja)』，那裡的沙子因為火山岩成分呈現粉紅色，拍照非常美！請大家留意海面上，這裡生態極其豐富，運氣好的話可以看到海獅和成群的紅鶴。這不僅是視覺享受，更是一場大地的洗禮，請準備好您的相機！",
+       tags: [{text: "景點故事", color: "var(--tag-story)"}]
+     },
+     // ... 其他項目
+ ]
+},
         { day: 4, date: "10/11", title: "納茲卡線飛行", weather: "23°C 晴", location: "Nazca Lines",
           items: [
               { type: "景點", title: "小飛機看納茲卡線", desc: "從空中俯瞰世界遺產的神祕巨型地畫。" },
@@ -333,16 +394,48 @@
                     <div class="card-type">${item.type}</div>
                     <div class="card-title">${item.title}</div>
                     <div class="card-desc">${item.desc}</div>
-                    ${tagsHtml}
-                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.title + ' ' + day.location)}" class="map-link" target="_blank">Google Map 位置 →</a>
-                </div>
-            `;
-        });
-        document.getElementById('dayContent').innerHTML = html;
-       
-        document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`[onclick="renderDay(${dayIndex})"]`).classList.add('active');
-    }
+          function renderDay(dayIndex) {
+   const day = itineraryData.find(d => d.day === dayIndex);
+   if(!day) return;
+   let html = `<div class="weather-info"><span>📍 ${day.location}</span><span>🌡️ ${day.weather}</span></div>`;
+   day.items.forEach((item, idx) => {
+       let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
+       // 1. 圖片判斷
+       let imgHtml = item.img ? `<img src="${item.img}" class="card-img">` : '';
+       // 2. 展開內容判斷 (導遊語氣)
+       let expandHtml = item.longDesc ? `
+<button class="expand-btn" onclick="toggleDetails(${dayIndex}, ${idx})">
+<span>🎧 導遊碎碎念</span> <small>▼</small>
+</button>
+<div id="details-${dayIndex}-${idx}" class="details-content">
+               ${item.longDesc}
+</div>
+       ` : '';
+       html += `
+<div class="card">
+               ${imgHtml}
+<div class="card-type">${item.type}</div>
+<div class="card-title">${item.title}</div>
+<div class="card-desc">${item.desc}</div>
+               ${tagsHtml}
+               ${expandHtml}
+<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.title + ' ' + day.location)}" class="map-link" target="_blank">Google Map 位置 →</a>
+</div>
+       `;
+   });
+   document.getElementById('dayContent').innerHTML = html;
+   // 更新按鈕高亮
+   document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+   const activeBtn = document.querySelector(`[onclick="renderDay(${dayIndex})"]`);
+   if(activeBtn) activeBtn.classList.add('active');
+}
+// 這是控制展開的開關
+function toggleDetails(dayId, itemIdx) {
+   const detailDiv = document.getElementById(`details-${dayId}-${itemIdx}`);
+   detailDiv.classList.toggle('show');
+   const btnSpan = detailDiv.previousElementSibling.querySelector('small');
+   btnSpan.innerText = detailDiv.classList.contains('show') ? '▲' : '▼';
+}
 
     // Init Day Buttons
     const btnContainer = document.getElementById('dayButtons');
