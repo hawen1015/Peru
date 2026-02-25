@@ -381,19 +381,7 @@
         window.scrollTo(0,0);
     }
 
-    function renderDay(dayIndex) {
-        const day = itineraryData.find(d => d.day === dayIndex);
-        if(!day) return;
 
-        let html = `<div class="weather-info"><span>📍 ${day.location}</span><span>🌡️ ${day.weather}</span></div>`;
-       
-        day.items.forEach(item => {
-            let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
-            html += `
-                <div class="card">
-                    <div class="card-type">${item.type}</div>
-                    <div class="card-title">${item.title}</div>
-                    <div class="card-desc">${item.desc}</div>
           function renderDay(dayIndex) {
    const day = itineraryData.find(d => d.day === dayIndex);
    if(!day) return;
