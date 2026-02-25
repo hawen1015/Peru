@@ -1,235 +1,357 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Peru & Bolivia Travel Companion</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@600&display=swap" rel="stylesheet">
-<style>
-       :root {
-           --bg-color: #F8F7F2;
-           --accent-color: #8C7B68;
-           --text-main: #333333;
-           --text-sub: #777777;
-           --card-bg: #FFFFFF;
-           --tag-food: #E8D5D5;
-           --tag-story: #D5E0E8;
-           --tag-buy: #D5E8D9;
-       }
-       * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-       body {
-           font-family: 'Noto Sans TC', sans-serif;
-           background-color: var(--bg-color);
-           color: var(--text-main);
-           line-height: 1.6;
-           padding-bottom: 80px;
-       }
-       h1, h2, h3 { font-family: 'Noto Serif TC', serif; }
-       /* Header */
-       header {
-           padding: 40px 25px 20px;
-           background: var(--bg-color);
-       }
-       .user-greet { font-size: 14px; color: var(--text-sub); letter-spacing: 2px; text-transform: uppercase; }
-       .trip-title { font-size: 28px; margin-top: 5px; color: var(--text-main); }
-       /* Tabs */
-       .tab-content { display: none; padding: 0 20px; }
-       .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
-       @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-       /* Day Selector */
-       .day-scroller {
-           display: flex;
-           overflow-x: auto;
-           padding: 10px 20px 25px;
-           gap: 15px;
-           scrollbar-width: none;
-       }
-       .day-scroller::-webkit-scrollbar { display: none; }
-       .day-btn {
-           min-width: 65px;
-           height: 65px;
-           background: var(--card-bg);
-           border-radius: 50%;
-           display: flex;
-           flex-direction: column;
-           align-items: center;
-           justify-content: center;
-           box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-           border: 1px solid transparent;
-       }
-       .day-btn.active { border-color: var(--accent-color); background: var(--accent-color); color: white; }
-       .day-btn span:first-child { font-size: 12px; }
-       .day-btn span:last-child { font-size: 18px; font-weight: 500; }
-       /* Cards */
-       .weather-info {
-           background: rgba(140, 123, 104, 0.05);
-           padding: 10px 15px;
-           border-radius: 12px;
-           font-size: 13px;
-           margin-bottom: 20px;
-           display: flex;
-           justify-content: space-between;
-       }
-       .card {
-           background: var(--card-bg);
-           border-radius: 16px;
-           padding: 20px;
-           margin-bottom: 20px;
-           box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-       }
-       .card-type { font-size: 11px; color: var(--accent-color); letter-spacing: 1px; margin-bottom: 8px; font-weight: 500; }
-       .card-title { font-size: 18px; margin-bottom: 10px; }
-       .card-desc { font-size: 14px; color: var(--text-sub); }
-       .tag {
-           display: inline-block;
-           padding: 4px 12px;
-           border-radius: 20px;
-           font-size: 12px;
-           margin-right: 8px;
-           margin-top: 10px;
-           font-weight: 500;
-       }
-       .map-link {
-           display: inline-block;
-           margin-top: 15px;
-           font-size: 13px;
-           color: var(--accent-color);
-           text-decoration: none;
-           border-bottom: 1px solid var(--accent-color);
-       }
-       /* Bottom Nav */
-       nav {
-           position: fixed;
-           bottom: 20px;
-           left: 20px;
-           right: 20px;
-           background: rgba(255, 255, 255, 0.9);
-           backdrop-filter: blur(10px);
-           height: 65px;
-           border-radius: 35px;
-           display: flex;
-           justify-content: space-around;
-           align-items: center;
-           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-           z-index: 1000;
-       }
-       .nav-item { border: none; background: none; color: var(--text-sub); font-size: 12px; display: flex; flex-direction: column; align-items: center; }
-       .nav-item.active { color: var(--accent-color); font-weight: 600; }
-       /* Info Section */
-       .info-row { display: flex; justify-content: space-between; border-bottom: 1px solid #EEE; padding: 15px 0; font-size: 14px; }
-       .info-label { color: var(--text-sub); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Peru & Bolivia Travel 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F9F8F3;
+            --accent-color: #7A6A53;
+            --text-main: #2C2C2C;
+            --text-sub: #888888;
+            --card-bg: #FFFFFF;
+            --tag-food: #F2E9E9;
+            --tag-story: #E9F1F2;
+            --tag-buy: #E9F2EA;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 90px;
+        }
+
+        h1, h2 { font-family: 'Noto Serif TC', serif; font-weight: 600; }
+
+        /* Header */
+        header { padding: 45px 25px 15px; background: var(--bg-color); position: sticky; top: 0; z-index: 100; }
+        .user-greet { font-size: 11px; color: var(--text-sub); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
+        .trip-title { font-size: 26px; line-height: 1.3; }
+
+        /* Tab System */
+        .tab-content { display: none; padding: 0 20px; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Day Scroller */
+        .day-scroller {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 20px 25px;
+            gap: 12px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .day-scroller::-webkit-scrollbar { display: none; }
+        .day-btn {
+            min-width: 58px;
+            height: 58px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #EEE;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .day-btn.active { background: var(--accent-color); color: white; border-color: var(--accent-color); transform: scale(1.05); }
+        .day-btn span:first-child { font-size: 10px; opacity: 0.8; }
+        .day-btn span:last-child { font-size: 16px; font-weight: 500; }
+
+        /* Content Cards */
+        .weather-info {
+            background: #EFECE6;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--accent-color);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        .card-type { font-size: 10px; color: var(--accent-color); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+        .card-title { font-size: 18px; margin-bottom: 8px; color: #1a1a1a; }
+        .card-desc { font-size: 14px; color: #555; font-weight: 300; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            margin-right: 6px;
+            margin-top: 12px;
+            color: #444;
+        }
+        .map-link {
+            display: block;
+            margin-top: 18px;
+            font-size: 12px;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-top: 1px solid #F0F0F0;
+            padding-top: 12px;
+            text-align: right;
+        }
+
+        /* Bottom Navigation */
+        nav {
+            position: fixed;
+            bottom: 25px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(15px);
+            height: 68px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .nav-item { border: none; background: none; color: #999; font-size: 12px; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+        .nav-item.active { color: var(--accent-color); font-weight: 600; }
+        .nav-icon { font-size: 20px; margin-bottom: 2px; }
+
+        /* Utilities Section */
+        .info-section h3 { font-size: 16px; margin: 25px 0 15px; color: var(--accent-color); }
+        .info-row { display: flex; justify-content: space-between; border-bottom: 1px solid #EEE; padding: 14px 0; font-size: 14px; }
+        .info-label { color: var(--text-sub); }
+    </style>
 </head>
 <body>
+
 <header>
-<div class="user-greet">HOLA, ELLIE (8 PAX)</div>
-<h1 class="trip-title">祕魯玻利維亞：<br>安地斯山脈之旅</h1>
+    <div class="user-greet">OCTOBER 2025 | 8 PAX</div>
+    <h1 class="trip-title">祕魯 & 玻利維亞<br>安地斯巔峰之旅</h1>
 </header>
+
 <div id="itinerary" class="tab-content active">
-<div class="day-scroller" id="dayButtons">
+    <div class="day-scroller" id="dayButtons"></div>
+    <div id="dayContent"></div>
 </div>
-<div id="dayContent">
-</div>
-</div>
+
 <div id="flights" class="tab-content">
-<div style="padding: 20px;">
-<h2 style="margin-bottom: 20px;">航班與交通資訊</h2>
-<div class="card">
-<div class="card-type">國際/內陸段航班</div>
-<div class="info-row"><span class="info-label">10/08 接機</span><span>KE7287 / LA2479</span></div>
-<div class="info-row"><span class="info-label">10/12 利馬-庫斯科</span><span>LA2609 (11:30)</span></div>
-<div class="info-row"><span class="info-label">10/19 拉巴斯-烏尤尼</span><span>OB304 (07:40)</span></div>
-<div class="info-row"><span class="info-label">10/22 亞馬遜雨林</span><span>LA2260 (10:20)</span></div>
+    <div style="padding-top: 10px;">
+        <h2>航班與移動資訊</h2>
+        <div class="info-section">
+            <h3>核心航段</h3>
+            <div class="card">
+                <div class="info-row"><span class="info-label">10/08 抵達</span><span>LA2479 22:05</span></div>
+                <div class="info-row"><span class="info-label">10/12 內陸</span><span>LA2609 LIM-CUZ</span></div>
+                <div class="info-row"><span class="info-label">10/19 跨國</span><span>OB304 LPB-UYU</span></div>
+                <div class="info-row"><span class="info-label">10/21 返回</span><span>OB305 UYU-LPB</span></div>
+                <div class="info-row"><span class="info-label">10/22 亞馬遜</span><span>LA2260 LPB-PEM</span></div>
+            </div>
+            <h3>景觀火車</h3>
+            <div class="card">
+                <div class="info-row"><span class="info-label">10/13 去程</span><span>Vistadome 景觀火車</span></div>
+                <div class="info-row"><span class="info-label">10/14 回程</span><span>Hiram Bingham 奢華號</span></div>
+                <div class="info-row"><span class="info-label">10/16 跨城</span><span>Titicaca Train 觀光火車</span></div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="card">
-<div class="card-type">特色火車</div>
-<div class="info-row"><span class="info-label">10/13 馬丘比丘</span><span>Vistadome + Belmond</span></div>
-<div class="info-row"><span class="info-label">10/16 庫斯科-普諾</span><span>Titicaca Train</span></div>
-</div>
-</div>
-</div>
+
 <div id="packing" class="tab-content">
-<div style="padding: 20px;">
-<h2 style="margin-bottom: 20px;">行李打包建議</h2>
-<div class="card">
-<div class="card-type">必備藥品</div>
-<ul style="font-size: 14px; padding-left: 20px;">
-               [span_0](start_span)<li>乙醯唑胺 (Diamox) 高山症預防[span_0](end_span)</li>
-               [span_1](start_span)<li>腸胃藥、止痛藥 (Ibuprofen)[span_1](end_span)</li>
-               [span_2](start_span)<li><b>黃熱病疫苗證書 (亞馬遜必備)</b>[span_2](end_span)</li>
-</ul>
+    <div style="padding-top: 10px;">
+        <h2>行李與行前準備</h2>
+        <div class="card">
+            <div class="card-type">健康守則</div>
+            <div class="card-desc">
+                - <b>高山症用藥</b>：Diamox 建議前一天開始服用。<br>
+                - <b>疫苗</b>：前往亞馬遜務必攜帶<b>黃皮書 (黃熱病證明)</b>。<br>
+                - <b>補水</b>：高海拔地區多喝 Mate de Coca 可緩解不適。
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-type">打包清單</div>
+            <div class="card-desc">
+                - <b>衣物</b>：洋蔥式穿法（-5°C ~ 25°C）。<br>
+                - <b>防曬</b>：高海拔紫外線極強，墨鏡與高係數防曬必備。<br>
+                - <b>電源</b>：多為兩孔圓頭或平頭，建議帶萬用轉接頭。
+            </div>
+        </div>
+    </div>
 </div>
-<div class="card">
-<div class="card-type">衣物準備</div>
-<p class="card-desc">採洋蔥式穿法。高海拔地區 (5,200m) 極寒，亞馬遜雨林則需防蚊與長袖透氣衣物。</p>
-</div>
-</div>
-</div>
+
 <nav>
-<button class="nav-item active" onclick="showTab('itinerary', this)">行程</button>
-<button class="nav-item" onclick="showTab('flights', this)">交通</button>
-<button class="nav-item" onclick="showTab('packing', this)">準備</button>
+    <button class="nav-item active" onclick="showTab('itinerary', this)">
+        <span class="nav-icon">🗓️</span>行程
+    </button>
+    <button class="nav-item" onclick="showTab('flights', this)">
+        <span class="nav-icon">✈️</span>交通
+    </button>
+    <button class="nav-item" onclick="showTab('packing', this)">
+        <span class="nav-icon">🧳</span>準備
+    </button>
 </nav>
+
 <script>
-   const itineraryData = [
-       { day: 1, date: "10/08", title: "利馬抵達", weather: "18°C 陰天", location: "Lima",
-         items: [
-             { type: "交通", title: "接機服務 (KE7287/LA2479)", desc: "22:05 抵達利馬，私人專車接送。" },
-             { type: "住宿", title: "Pullman Miraflores (5★)", desc: "入住飯店休息適應時差。" }
-         ]},
-       { day: 2, date: "10/09", title: "利馬城市遊", weather: "19°C 多雲", location: "Lima Cathedral",
-         items: [
-             [span_3](start_span){ type: "景點", title: "舊城區與人骨教堂", desc: "探訪總統府、聖馬丁廣場與神祕的地下人骨教堂[span_3](end_span)。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
-             { type: "餐廳", title: "Casa Tambo 午餐", desc: "享用精緻秘魯菜餚。", tags: [{text: "必吃美食", color: "var(--tag-food)"}] }
-         ]},
-       { day: 6, date: "10/13", title: "馬丘比丘", weather: "22°C 晴時多雲", location: "Machu Picchu",
-         items: [
-             [span_4](start_span){ type: "景點", title: "天空之城 馬丘比丘", desc: "世界新七大奇蹟。搭乘 Vistadome 景觀火車上山，Belmond 火車回程享用晚餐[span_4](end_span)。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
-             { type: "必買", title: "印加手工藝品", desc: "熱水鎮市集有許多獨特的羊駝毛織品。", tags: [{text: "必買伴手禮", color: "var(--tag-buy)"}] }
-         ]},
-       { day: 12, date: "10/19", title: "天空之鏡 烏尤尼", weather: "-2~15°C 晴", location: "Salar de Uyuni",
-         items: [
-             [span_5](start_span){ type: "景點", title: "烏尤尼鹽湖一日遊", desc: "火車墳場、鹽雕博物館。傍晚享受鹽湖夕陽紅酒[span_5](end_span)。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
-             { type: "美食", title: "鹽湖野餐午餐", desc: "在無邊際的白色世界中享用私人午餐。", tags: [{text: "必點菜單", color: "var(--tag-food)"}] }
-         ]}
-   ];
-   function showTab(tabId, el) {
-       document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-       document.getElementById(tabId).classList.add('active');
-       document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-       el.classList.add('active');
-   }
-   function renderDay(dayIndex) {
-       const day = itineraryData.find(d => d.day === dayIndex) || itineraryData[0];
-       let html = `<div class="weather-info"><span>📍 ${day.location}</span><span>🌡️ ${day.weather}</span></div>`;
-       day.items.forEach(item => {
-           let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
-           html += `
-<div class="card">
-<div class="card-type">${item.type}</div>
-<div class="card-title">${item.title}</div>
-<div class="card-desc">${item.desc}</div>
-                   ${tagsHtml}
-<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.title + " " + day.location)}" class="map-link" target="_blank">Google Map 位置 →</a>
-</div>
-           `;
-       });
-       document.getElementById('dayContent').innerHTML = html;
-       // Update active button
-       document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
-       document.querySelector(`[onclick="renderDay(${dayIndex})"]`).classList.add('active');
-   }
-   // Initialize Day Buttons
-   const btnContainer = document.getElementById('dayButtons');
-   itineraryData.forEach(d => {
-       btnContainer.innerHTML += `
-<button class="day-btn" onclick="renderDay(${d.day})">
-<span>Day</span>
-<span>${d.day}</span>
-</button>
-       `;
-   });
-   renderDay(1); // Default to Day 1
+    const itineraryData = [
+        { day: 1, date: "10/08", title: "利馬抵達", weather: "18°C 陰", location: "Lima",
+          items: [
+              { type: "交通", title: "機場私人接機", desc: "專車接往 Miraflores 區飯店休息。" },
+              { type: "住宿", title: "Pullman Miraflores (5★)", desc: "首晚入住利馬最精華地段。" }
+          ]},
+        { day: 2, date: "10/09", title: "利馬：美食與歷史", weather: "19°C 多雲", location: "Lima Old Town",
+          items: [
+              { type: "景點", title: "利馬舊城區", desc: "總統府、聖馬丁廣場、地下人骨教堂聖方濟各聖殿。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
+              { type: "美食", title: "Casa Tambo 午餐", desc: "品嚐道地秘魯 Causa 與 Lomo Saltado。", tags: [{text: "必吃美食", color: "var(--tag-food)"}] },
+              { type: "住宿", title: "Pullman Miraflores (5★)", desc: "利馬市區連住。" }
+          ]},
+        { day: 3, date: "10/10", title: "沙漠與綠洲", weather: "24°C 晴", location: "Huacachina",
+          items: [
+              { type: "景點", title: "Paracas 自然保護區", desc: "觀賞壯麗的海蝕景觀與紅色沙灘。" },
+              { type: "攻略", title: "沙漠越野車與滑沙", desc: "在 Huacachina 體驗刺激的沙漠衝沙。", tags: [{text: "必玩體驗", color: "var(--tag-buy)"}] },
+              { type: "住宿", title: "The Legend Paracas (5★)", desc: "享受飯店泳池設施。" }
+          ]},
+        { day: 4, date: "10/11", title: "納茲卡線飛行", weather: "23°C 晴", location: "Nazca Lines",
+          items: [
+              { type: "景點", title: "小飛機看納茲卡線", desc: "從空中俯瞰世界遺產的神祕巨型地畫。" },
+              { type: "住宿", title: "Pullman Miraflores (5★)", desc: "返回利馬。" }
+          ]},
+        { day: 5, date: "10/12", title: "前往聖谷", weather: "21°C 晴", location: "Sacred Valley",
+          items: [
+              { type: "交通", title: "飛往庫斯科 (LA2609)", desc: "11:30 出發，抵達後前往低海拔聖谷。" },
+              { type: "景點", title: "Maras 鹽田與 Moray 梯田", desc: "造訪印加人的圓形農業實驗室。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
+              { type: "住宿", title: "Sierra Sacred Valley (4★)", desc: "海拔較低有利於初期適應。" }
+          ]},
+        { day: 6, date: "10/13", title: "印加聖地", weather: "22°C 晴", location: "Machu Picchu",
+          items: [
+              { type: "交通", title: "Vistadome 景觀火車", desc: "從 Ollantaytambo 出發前往熱水鎮。" },
+              { type: "景點", title: "馬丘比丘門票與導覽", desc: "印加失落之城，世界新七大奇蹟。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
+              { type: "住宿", title: "Sumaq Machu Picchu (5★)", desc: "熱水鎮頂級飯店。" }
+          ]},
+        { day: 7, date: "10/14", title: "奢華火車之旅", weather: "20°C 晴", location: "Cusco",
+          items: [
+              { type: "交通", title: "Hiram Bingham 火車", desc: "享受火車上的精緻晚餐與現場樂隊表演。", tags: [{text: "必點菜單", color: "var(--tag-food)"}] },
+              { type: "住宿", title: "Monasterio, A Belmond Hotel", desc: "古老修道院改建，體驗極致奢華。" }
+          ]},
+        { day: 8, date: "10/15", title: "古都庫斯科", weather: "19°C 晴", location: "Cusco City",
+          items: [
+              { type: "景點", title: "Sacsayhuaman 巨石陣", desc: "感嘆印加建築師驚人的巨石拼接技術。" },
+              { type: "必買", title: "羊駝毛精品", desc: "推薦在庫斯科市區選購 Sol Alpaca 或 Kuna 等級織品。", tags: [{text: "必買伴手禮", color: "var(--tag-buy)"}] },
+              { type: "住宿", title: "Monasterio, A Belmond Hotel", desc: "連住在庫斯科心臟地帶。" }
+          ]},
+        { day: 9, date: "10/16", title: "高原火車跨越", weather: "15°C 晴", location: "Puno",
+          items: [
+              { type: "交通", title: "Belmond Titicaca Train", desc: "全天行程，跨越高原抵達普諾，景色絕美。" },
+              { type: "住宿", title: "GHL Lago Titicaca (5★)", desc: "位於湖畔，開窗即是湖景。" }
+          ]},
+        { day: 10, date: "10/17", title: "最高淡水湖", weather: "14°C 晴", location: "Lake Titicaca",
+          items: [
+              { type: "景點", title: "蘆葦浮島 Uros", desc: "探訪全由蘆葦編織而成的人工島嶼。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
+              { type: "住宿", title: "GHL Lago Titicaca (5★)", desc: "普諾連住。" }
+          ]},
+        { day: 11, date: "10/18", title: "進入玻利維亞", weather: "13°C 晴", location: "La Paz",
+          items: [
+              { type: "交通", title: "跨國巴士與船行", desc: "從 Puno 經由 Copacabana 進入玻利維亞。" },
+              { type: "住宿", title: "Casa Grande Hotel (5★)", desc: "位於 La Paz 高端區域。" }
+          ]},
+        { day: 12, date: "10/19", title: "天空之鏡：啟程", weather: "-2°C~15°C 晴", location: "Uyuni",
+          items: [
+              { type: "交通", title: "內陸航班 (OB304)", desc: "07:40 飛往烏尤尼。" },
+              { type: "景點", title: "火車墳場與鹽雕", desc: "拍攝工業廢墟風格照片。" },
+              { type: "住宿", title: "Palacio de Sal (5★)", desc: "全由「鹽」建造的特色飯店。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] }
+          ]},
+        { day: 13, date: "10/20", title: "天空之鏡：深入", weather: "12°C 晴", location: "Salar de Uyuni",
+          items: [
+              { type: "景點", title: "仙人掌島與鹽湖夕陽", desc: "在無邊際的鹽湖中尋找倒影，享受夕陽紅酒。", tags: [{text: "必玩體驗", color: "var(--tag-buy)"}] },
+              { type: "美食", title: "鹽湖私人午餐", desc: "由團隊準備的極地野餐。", tags: [{text: "必點菜單", color: "var(--tag-food)"}] },
+              { type: "住宿", title: "Palacio de Sal (5★)", desc: "鹽湖區連住。" }
+          ]},
+        { day: 14, date: "10/21", title: "魔幻拉巴斯", weather: "16°C 多雲", location: "La Paz",
+          items: [
+              { type: "交通", title: "飛往拉巴斯 (OB305)", desc: "返回首都進行市區遊覽。" },
+              { type: "攻略", title: "女巫市場與纜車", desc: "搭乘全球最高的高空纜車俯瞰山城。", tags: [{text: "景點介紹", color: "var(--tag-story)"}] },
+              { type: "住宿", title: "Casa Grande Hotel (5★)", desc: "拉巴斯飯店。" }
+          ]},
+        { day: 15, date: "10/22", title: "前進亞馬遜", weather: "31°C 雨林", location: "Puerto Maldonado",
+          items: [
+              { type: "交通", title: "跨國飛往亞馬遜 (LA2260)", desc: "進入祕魯東部雨林區。" },
+              { type: "住宿", title: "Inkaterra Reserva Amazonica", desc: "奢華生態旅館，聽著叢林聲入睡。" }
+          ]},
+        { day: 16, date: "10/23", title: "叢林探險", weather: "30°C 濕熱", location: "Amazon Jungle",
+          items: [
+              { type: "景點", title: "樹冠步道 Canopy Walk", desc: "在離地 30 公尺的吊橋觀察生態。" },
+              { type: "住宿", title: "Inkaterra Reserva Amazonica", desc: "雨林區連住。" }
+          ]},
+        { day: 17, date: "10/24", title: "重返文明", weather: "19°C 陰", location: "Lima",
+          items: [
+              { type: "交通", title: "飛往利馬 (LA2261)", desc: "整理行裝，準備回家。" },
+              { type: "住宿", title: "Pullman Miraflores (5★)", desc: "最後一晚在祕魯。" }
+          ]},
+        { day: 18, date: "10/25", title: "珍重再見", weather: "20°C 陰", location: "Lima Airport",
+          items: [
+              { type: "景點", title: "利馬自由活動", desc: "前往 Larcomar 購物或品嚐最後的秘魯海鮮餐。" },
+              { type: "交通", title: "機場送機", desc: "搭乘 20:10 航班 (KL744) 啟程回國。" }
+          ]}
+    ];
+
+    function showTab(tabId, el) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+        el.classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function renderDay(dayIndex) {
+        const day = itineraryData.find(d => d.day === dayIndex);
+        if(!day) return;
+
+        let html = `<div class="weather-info"><span>📍 ${day.location}</span><span>🌡️ ${day.weather}</span></div>`;
+       
+        day.items.forEach(item => {
+            let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
+            html += `
+                <div class="card">
+                    <div class="card-type">${item.type}</div>
+                    <div class="card-title">${item.title}</div>
+                    <div class="card-desc">${item.desc}</div>
+                    ${tagsHtml}
+                    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.title + ' ' + day.location)}" class="map-link" target="_blank">Google Map 位置 →</a>
+                </div>
+            `;
+        });
+        document.getElementById('dayContent').innerHTML = html;
+       
+        document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`[onclick="renderDay(${dayIndex})"]`).classList.add('active');
+    }
+
+    // Init Day Buttons
+    const btnContainer = document.getElementById('dayButtons');
+    itineraryData.forEach(d => {
+        btnContainer.innerHTML += `
+            <button class="day-btn" onclick="renderDay(${d.day})">
+                <span>D</span>
+                <span>${d.day}</span>
+            </button>
+        `;
+    });
+
+    renderDay(1);
 </script>
+
 </body>
 </html>
