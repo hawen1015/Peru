@@ -2,235 +2,229 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Peru & Bolivia 2025</title>
     <script src="[https://cdn.tailwindcss.com"></script]https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #FBFBFB; color: #333; }
-        .tab-content { display: none; }
+        :root { --bg-color: #F7F7F7; --card-bg: #FFFFFF; --accent: #2D3436; }
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: var(--bg-color); color: var(--accent); -webkit-font-smoothing: antialiased; }
+        .app-card { background: var(--card-bg); border-radius: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); }
+        .nav-blur { backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.85); border-top: 1px solid rgba(0,0,0,0.05); }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-out; }
         .tab-content.active { display: block; }
-        .glass-card { background: #FFFFFF; border-radius: 24px; border: 1px solid #F0F0F0; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
-        .tag { font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 700; }
-        .sticky-header { backdrop-filter: blur(10px); background: rgba(255,255,255,0.8); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .tag-must { background: #FF7675; color: white; border-radius: 8px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
+        .tag-info { background: #74B9FF; color: white; border-radius: 8px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
     </style>
 </head>
-<body class="pb-24">
+<body class="safe-area-bottom">
 
-    <header class="sticky-header sticky top-0 z-50 px-6 py-5 border-b border-gray-100 flex justify-between items-center">
-        <div>
-            <h1 class="text-xl font-bold tracking-tight">秘魯玻利維亞</h1>
-            <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Private Tour 2025</p>
+    <div class="px-6 pt-12 pb-6 bg-white border-b border-gray-100">
+        <div class="flex justify-between items-end">
+            <div>
+                <p class="text-[10px] font-bold text-gray-400 tracking-[0.2em]">OCTOBER 2025</p>
+                <h1 class="text-2xl font-bold mt-1">南美冒險中 🇵🇪</h1>
+            </div>
+            <div class="text-right">
+                <p class="text-xs font-bold">LIMA, PERU</p>
+                <p class="text-xs text-blue-500">19°C · 多雲</p>
+            </div>
         </div>
-        <div class="text-right">
-            <span class="text-xs bg-black text-white px-3 py-1 rounded-full">18 Days</span>
-        </div>
-    </header>
+    </div>
 
-    <main class="p-4 space-y-6">
-       
-        <section id="itinerary" class="tab-content active space-y-6">
+    <main class="p-5 pb-32">
+
+        <div id="tab-home" class="tab-content active space-y-8">
            
-            <div class="glass-card p-5">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-indigo-400 italic">Day 01 | 10.08</span>
-                    <div class="text-right"><p class="text-xs font-bold">利馬</p><p class="text-[10px] text-gray-400">18°C ~ 22°C ☁️</p></div>
+            <section class="space-y-4">
+                <div class="flex items-center gap-2 px-2">
+                    <span class="text-xl font-bold">01</span>
+                    <span class="text-xs text-gray-400">10/08 WED</span>
                 </div>
-                <div class="space-y-4">
-                    <div class="flex gap-4">
-                        <i data-lucide="plane" class="w-5 h-5 text-gray-400"></i>
-                        <div>
-                            <p class="text-sm font-bold">21:20 抵達利馬機接</p>
-                            <p class="text-[11px] text-gray-500">航班 KE7287 / LA2479</p>
+                <div class="app-card p-6 space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-2xl bg-gray-100 flex items-center justify-center">
+                            <i data-lucide="plane-landing" class="w-5 h-5 text-gray-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[10px] text-gray-400 font-bold">ARRIVAL</p>
+                            <p class="text-sm font-bold">21:20 抵達利馬 (KE7287/LA2479)</p>
+                            <p class="text-xs text-gray-500 mt-1">專車接機前往飯店休息</p>
                         </div>
                     </div>
-                    <div class="p-3 bg-gray-50 rounded-2xl border border-gray-100">
-                        <p class="text-[10px] text-gray-400 mb-1">🏨 住宿</p>
-                        <p class="text-sm font-bold">5★ Pullman Miraflores</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores" class="text-[10px] text-blue-500 flex items-center mt-1">📍 Google Map</a>
+                    <div class="p-4 bg-slate-50 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <p class="text-[10px] text-gray-400">STAY</p>
+                            <p class="text-xs font-bold">5★ Pullman Miraflores</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=Pullman+Lima+Miraflores" class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+                            <i data-lucide="map" class="w-4 h-4 text-blue-500"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="glass-card p-5 border-l-4 border-orange-200">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-indigo-400 italic">Day 02 | 10.09</span>
-                    <div class="text-right"><p class="text-xs font-bold">利馬舊城區</p><p class="text-[10px] text-gray-400">19°C ~ 23°C ☀️</p></div>
+            <section class="space-y-4">
+                <div class="flex items-center gap-2 px-2">
+                    <span class="text-xl font-bold">02</span>
+                    <span class="text-xs text-gray-400">10/09 THU</span>
                 </div>
-                <div class="space-y-3">
-                    <p class="text-sm font-bold">09:00 城市巡禮</p>
-                    <p class="text-xs text-gray-600 leading-relaxed">總統府、人骨教堂、Huaca Pucllana、Larcomar 購物中心。</p>
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span class="tag bg-orange-100 text-orange-600">必吃：Casa Tambo 午餐</span>
-                        <span class="tag bg-indigo-100 text-indigo-600">攻略：人骨教堂地宮</span>
+                <div class="app-card p-6 space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center">
+                            <i data-lucide="camera" class="w-5 h-5 text-amber-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[10px] text-gray-400 font-bold">SIGHTSEEING</p>
+                            <p class="text-sm font-bold">利馬舊城區巡禮</p>
+                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                                聖馬丁廣場、總統府、人骨教堂地下墓穴。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-2xl bg-orange-50 flex items-center justify-center">
+                            <i data-lucide="utensils" class="w-5 h-5 text-orange-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-[10px] text-gray-400 font-bold">LUNCH</p>
+                            <p class="text-sm font-bold underline">Casa Tambo</p>
+                            <div class="flex gap-2 mt-2">
+                                <span class="tag-must">必點：Ceviche</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="glass-card p-5">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-indigo-400 italic">Day 03 | 10.10</span>
-                    <div class="text-right"><p class="text-xs font-bold">帕拉卡斯/沙漠</p><p class="text-[10px] text-gray-400">22°C ~ 28°C ☀️</p></div>
+            <section class="space-y-4">
+                <div class="flex items-center gap-2 px-2">
+                    <span class="text-xl font-bold">06</span>
+                    <span class="text-xs text-gray-400">10/13 MON</span>
                 </div>
-                <div class="space-y-4">
-                    <p class="text-sm font-bold">自然保護區 & Huacachina 沙漠</p>
-                    <div class="grid grid-cols-2 gap-2">
-                        <div class="p-3 bg-yellow-50 rounded-xl"><p class="text-[10px] text-yellow-700">下午活動</p><p class="text-xs font-bold">滑沙 & 越野車</p></div>
-                        <div class="p-3 bg-gray-50 rounded-xl"><p class="text-[10px] text-gray-500">住宿</p><p class="text-xs font-bold">5★ The Legend</p></div>
+                <div class="app-card p-6 bg-slate-900 text-white space-y-6 border-none shadow-xl">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold tracking-widest">HIGHLIGHT</p>
+                            <h2 class="text-xl font-bold mt-1">天空之城：馬丘比丘</h2>
+                        </div>
+                        <i data-lucide="mountain" class="w-6 h-6 text-indigo-400"></i>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-[10px] font-bold">1</div>
+                            <p class="text-xs font-light">搭乘 Vistadome 全景火車前往熱水鎮</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-[10px] font-bold">2</div>
+                            <p class="text-xs font-light">探索印加遺址 (Machu Picchu Citadel)</p>
+                        </div>
+                        <div class="mt-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                            <p class="text-[10px] text-indigo-300 font-bold">DINNER EXPERIENCE</p>
+                            <p class="text-sm font-bold mt-1">Belmond Hiram Bingham 奢華火車晚餐</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="glass-card p-5 border-l-4 border-purple-200">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-indigo-400 italic">Day 04 | 10.11</span>
-                    <div class="text-right"><p class="text-xs font-bold">納茲卡線</p><p class="text-[10px] text-gray-400">20°C ~ 27°C ☀️</p></div>
+            <section class="space-y-4">
+                <div class="flex items-center gap-2 px-2">
+                    <span class="text-xl font-bold">12</span>
+                    <span class="text-xs text-gray-400">10/19 SUN</span>
                 </div>
-                <div class="space-y-2 text-sm">
-                    <p class="font-bold italic text-purple-600">「空中俯瞰神秘地畫」</p>
-                    <p>上午：鳥島船行 (Ballestas Islands)</p>
-                    <p>10:00：納茲卡線飛行 (建議空腹)</p>
-                </div>
-            </div>
-
-            <div class="px-2 font-bold text-gray-400 text-xs tracking-widest pt-4">SACRED VALLEY HIGHLIGHTS</div>
-
-            <div class="glass-card p-5 border-l-4 border-green-200 bg-green-50/10">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-indigo-400 italic">Day 06 | 10.13</span>
-                    <div class="text-right"><p class="text-xs font-bold">馬丘比丘</p><p class="text-[10px] text-gray-400">8°C ~ 21°C ⛅</p></div>
-                </div>
-                <div class="space-y-4 text-sm">
-                    <p class="font-bold text-green-700">探索印加失落之城</p>
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2"><i data-lucide="train" class="w-4 h-4 text-indigo-500"></i><p>Vistadome 全景火車</p></div>
-                        <div class="flex items-center gap-2"><i data-lucide="utensils" class="w-4 h-4 text-orange-500"></i><p class="font-bold underline">Hiram Bingham 奢華晚餐</p></div>
+                <div class="app-card p-6 bg-blue-50/30 space-y-6">
+                    <div class="flex justify-between items-start text-blue-900">
+                        <div>
+                            <p class="text-[10px] font-bold tracking-widest opacity-60">BOLIVIA</p>
+                            <h2 class="text-lg font-bold">天空之鏡 · 烏尤尼</h2>
+                        </div>
+                        <i data-lucide="cloud" class="w-6 h-6"></i>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-4 bg-white rounded-[20px] shadow-sm">
+                            <p class="text-[10px] text-gray-400 mb-1">ACTIVITY</p>
+                            <p class="text-xs font-bold">火車墳場探索</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-[20px] shadow-sm">
+                            <p class="text-[10px] text-gray-400 mb-1">SUNSET</p>
+                            <p class="text-xs font-bold">鹽湖夕陽紅酒</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-indigo-600 rounded-3xl text-white">
+                        <p class="text-[10px] opacity-70">STAY EXPERIENE</p>
+                        <p class="text-sm font-bold">5★ Palacio de Sal (鹽磚旅館)</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="glass-card p-5">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-red-400 italic">Day 08 | 10.15</span>
-                    <div class="text-right"><p class="text-xs font-bold text-red-500">彩虹山 5,200m</p><p class="text-[10px] text-gray-400">-2°C ~ 12°C ❄️</p></div>
-                </div>
-                <p class="text-xs text-gray-500 mb-2 font-bold">⚠️ 極高海拔挑戰</p>
-                <div class="flex gap-2">
-                    <span class="tag bg-red-50 text-red-600">必喝：古柯茶</span>
-                    <span class="tag bg-gray-100 text-gray-600">攻略：現場自費騎馬</span>
-                </div>
-            </div>
+        </div>
 
-            <div class="px-2 font-bold text-gray-400 text-xs tracking-widest pt-4">BOLIVIA SKY MIRROR</div>
-            <div class="glass-card p-5 bg-blue-50/20 border-l-4 border-blue-300">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-indigo-400 italic">Day 12 | 10.19</span>
-                    <div class="text-right"><p class="text-xs font-bold">烏尤尼鹽湖</p><p class="text-[10px] text-gray-400">-5°C ~ 15°C ☀️</p></div>
-                </div>
-                <div class="space-y-3">
-                    <p class="text-sm font-bold">天空之鏡日落與紅酒</p>
-                    <p class="text-xs italic text-blue-600">「入住房間即是鹽磚建成的 5★ Palacio de Sal」</p>
-                </div>
-            </div>
-
-            <div class="px-2 font-bold text-gray-400 text-xs tracking-widest pt-4">AMAZON RAINFOREST</div>
-            <div class="glass-card p-5 bg-emerald-50/20 border-l-4 border-emerald-300">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-bold text-indigo-400 italic">Day 15-17</span>
-                    <div class="text-right"><p class="text-xs font-bold text-emerald-700">亞馬遜雨林</p><p class="text-[10px] text-gray-400">24°C ~ 32°C 💧</p></div>
-                </div>
-                <div class="space-y-2 text-sm">
-                    <p>Sandoval 湖船行、夜間探險、樹冠走道</p>
-                    <p class="tag bg-emerald-100 text-emerald-600 inline-block">裝備：防蚊液/長袖/快乾衣</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="flights" class="tab-content space-y-4">
-            <h2 class="text-lg font-bold px-2">航班時刻表</h2>
+        <div id="tab-flights" class="tab-content space-y-4">
+            <h2 class="text-lg font-bold px-2">航班與交通</h2>
             <div class="space-y-3">
-                <div class="glass-card p-4 flex justify-between items-center">
-                    <div><p class="text-[10px] text-gray-400">10/12 LIM ✈️ CUZ</p><p class="text-sm font-bold">LA2609</p></div>
-                    <div class="text-right"><p class="text-sm font-bold">11:30 - 12:50</p></div>
+                <div class="app-card p-5 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase">10/12 LIM → CUZ</p>
+                        <p class="text-sm font-bold">LATAM Airlines LA2609</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm font-bold">11:30</p>
+                        <p class="text-[10px] text-gray-400">Gate Pending</p>
+                    </div>
                 </div>
-                <div class="glass-card p-4 flex justify-between items-center">
-                    <div><p class="text-[10px] text-gray-400">10/19 LPB ✈️ UYU</p><p class="text-sm font-bold">OB304</p></div>
-                    <div class="text-right"><p class="text-sm font-bold">07:40 - 08:40</p></div>
                 </div>
-                <div class="glass-card p-4 flex justify-between items-center">
-                    <div><p class="text-[10px] text-gray-400">10/22 LIM ✈️ PEM</p><p class="text-sm font-bold">LA2260</p></div>
-                    <div class="text-right"><p class="text-sm font-bold">10:20 - 12:50</p></div>
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <section id="packing" class="tab-content space-y-6">
-            <h2 class="text-lg font-bold px-2">打包清單建議</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="glass-card p-4">
-                    <p class="text-xs font-bold border-b pb-2 mb-2 text-indigo-500">💊 藥品類</p>
-                    <ul class="text-[11px] space-y-2 text-gray-600">
-                        <li>• 高山症藥 (Diamox)</li>
-                        <li>• 腸胃藥/止痛藥</li>
-                        <li>• 維他命 C</li>
-                    </ul>
-                </div>
-                <div class="glass-card p-4">
-                    <p class="text-xs font-bold border-b pb-2 mb-2 text-indigo-500">👕 衣物類</p>
-                    <ul class="text-[11px] space-y-2 text-gray-600">
-                        <li>• 洋蔥式穿法外套</li>
-                        <li>• 防水防風夾克</li>
-                        <li>• 太陽眼鏡/遮陽帽</li>
-                    </ul>
-                </div>
-                <div class="glass-card p-4 col-span-2">
-                    <p class="text-xs font-bold border-b pb-2 mb-2 text-indigo-500">📜 文件與重要物品</p>
-                    <ul class="text-[11px] space-y-2 text-gray-600">
-                        <li>• 護照正本 (效期6個月)</li>
-                        <li>• 玻利維亞簽證文件</li>
-                        <li>• 黃皮書 (亞馬遜必備)</li>
-                    </ul>
+        <div id="tab-packing" class="tab-content space-y-6">
+            <h2 class="text-lg font-bold px-2">準備清單</h2>
+            <div class="space-y-4">
+                <div class="app-card p-6">
+                    <h3 class="text-sm font-bold mb-4 border-b pb-2">🩺 必帶藥品</h3>
+                    <div class="grid grid-cols-2 gap-2 text-xs text-gray-600">
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> 高山症藥 (Diamox)</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> 腸胃藥</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> 止痛藥</div>
+                        <div class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> 維他命C</div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
     </main>
 
-    <nav class="fixed bottom-6 left-6 right-6 h-16 bg-black/90 text-white rounded-full flex justify-around items-center px-6 z-50 shadow-2xl backdrop-blur-md">
-        <button onclick="switchTab('itinerary')" class="nav-btn flex flex-col items-center opacity-100" id="btn-itinerary">
-            <i data-lucide="map-pin" class="w-5 h-5"></i>
-            <span class="text-[9px] mt-1 font-medium">行程</span>
+    <nav class="fixed bottom-0 left-0 right-0 h-24 nav-blur flex justify-around items-start pt-3 px-6 z-50 rounded-t-[32px]">
+        <button onclick="switchTab('home')" class="flex flex-col items-center gap-1 nav-btn active text-gray-800" id="btn-home">
+            <i data-lucide="calendar" class="w-6 h-6"></i>
+            <span class="text-[10px] font-bold">行程</span>
         </button>
-        <button onclick="switchTab('flights')" class="nav-btn flex flex-col items-center opacity-40" id="btn-flights">
-            <i data-lucide="plane" class="w-5 h-5"></i>
-            <span class="text-[9px] mt-1 font-medium">航班</span>
+        <button onclick="switchTab('flights')" class="flex flex-col items-center gap-1 nav-btn text-gray-300" id="btn-flights">
+            <i data-lucide="plane" class="w-6 h-6"></i>
+            <span class="text-[10px] font-bold">航班</span>
         </button>
-        <button onclick="switchTab('packing')" class="nav-btn flex flex-col items-center opacity-40" id="btn-packing">
-            <i data-lucide="briefcase" class="w-5 h-5"></i>
-            <span class="text-[9px] mt-1 font-medium">行李</span>
+        <button onclick="switchTab('packing')" class="flex flex-col items-center gap-1 nav-btn text-gray-300" id="btn-packing">
+            <i data-lucide="briefcase-medical" class="w-6 h-6"></i>
+            <span class="text-[10px] font-bold">準備</span>
         </button>
     </nav>
 
     <script>
-        // 初始化 Lucide 圖示
         lucide.createIcons();
 
-        // 分頁切換邏輯
         function switchTab(tabId) {
-            // 隱藏所有分頁
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            // 顯示選擇的分頁
-            document.getElementById(tabId).classList.add('active');
+            // Hide all
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.replace('text-gray-800', 'text-gray-300'));
+
+            // Show current
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.replace('text-gray-300', 'text-gray-800');
            
-            // 更新按鈕透明度
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.add('opacity-40'));
-            document.getElementById('btn-' + tabId).classList.remove('opacity-40');
-            document.getElementById('btn-' + tabId).classList.add('opacity-100');
-           
-            // 切換時自動捲動到頂部
-            window.scrollTo(0, 0);
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 </body>
 </html>
+
