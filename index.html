@@ -258,35 +258,136 @@
 </nav>
 
 <script>
-   // 1. 完整的 18 天行程資料 (以 Day 3 為範例加入圖片與詳細攻略)
    const itineraryData = [
-       { day: 1, date: "10/08", title: "利馬抵達", weather: "18°C 陰", location: "Lima",
-         items: [
-             { type: "交通", title: "機場私人接機", desc: "專車接往飯店休息。" },
-             { type: "住宿", title: "Pullman Miraflores (5★)", desc: "首晚入住利馬最精華地段。" }
-         ]},
-       { day: 2, date: "10/09", title: "利馬：美食與歷史", weather: "19°C 多雲", location: "Lima Old Town",
-         items: [
-             { type: "景點", title: "利馬舊城區", desc: "總統府、人骨教堂。", longDesc: "這裡是世界遺產！人骨教堂地下的地宮非常震撼，記得保持肅靜。", tags: [{text: "景點故事", color: "var(--tag-story)"}] }
-         ]},
-       { day: 3, date: "10/10", title: "沙漠與綠洲", weather: "24°C 晴", location: "Paracas",
-         items: [
-             {
-               type: "景點",
-               title: "Paracas 自然保護區",
-               img: "https://a1.bbkz.net/forum/attachment.php?attachmentid=3553901&thumb=1&d=1704653528", // 這裡放入景點照片網址
-               desc: "欣賞壯麗的海蝕景觀與紅色沙灘。",
-               longDesc: "各位貴賓請看！這裡就是被譽為『秘魯加拉巴哥』的帕拉卡斯。這片保護區最迷人的地方在於**黃金沙漠與湛藍海洋的直接碰撞**。我們會去看著名的『紅沙灘』，那裡的沙子因為火山岩成分呈現粉紅色，拍照非常美！請留意海面上，運氣好的話可以看到海獅和成群的紅鶴喔！",
-               tags: [{text: "導遊強力推薦", color: "var(--tag-story)"}]
-             },
-             { type: "景點", title: "Huacachina 沙漠越野車", desc: "衝沙與滑沙體驗。", longDesc: "這絕對是行程中最刺激的一環！我們會搭乘特製的噴射沙車在沙丘間穿梭，記得把手機拿穩，沙子很細，要保護好鏡頭。" }
-         ]},
-       // ... (中間 Day 4 - 17 請保留您原本的資料)
-       { day: 18, date: "10/25", title: "珍重再見", weather: "20°C 陰", location: "Lima Airport",
-         items: [
-             { type: "交通", title: "機場送機", desc: "搭乘 20:10 航班 (KL744) 啟程回國。" }
-         ]}
-   ];
+   { day: 1, date: "10/08", title: "利馬抵達", weather: "18°C 陰", location: "Lima",
+     items: [
+         { type: "交通", title: "機場私人接機", desc: "22:05 抵達利馬，專車接往飯店。", longDesc: "歡迎來到南美！利馬是秘魯的門戶。首晚最重要的任務就是『休息』。我們安排了 Miraflores 區的飯店，這裡治安好且臨海。先好好睡一覺，適應時差，明天開始精彩的冒險！" },
+         { type: "住宿", title: "Pullman Miraflores (5★)", desc: "入住飯店休息。" }
+     ]},
+   { day: 2, date: "10/09", title: "利馬：美食與歷史", weather: "19°C 多雲", location: "Lima Old Town",
+     items: [
+         {
+           type: "景點", title: "利馬舊城區與人骨教堂",
+           img: "./images/lima_old_town.jpg",
+           desc: "造訪總統府、聖馬丁廣場。",
+           longDesc: "利馬舊城區是世界遺產。**聖方濟各聖殿地下的人骨教堂**非常神祕，那裡存放了約七萬具人骨。下午我們會去 Larcomar 商場，在那裡可以一邊喝咖啡一邊欣賞太平洋的日落，這是利馬最愜意的時刻！",
+           tags: [{text: "景點故事", color: "var(--tag-story)"}]
+         },
+         { type: "美食", title: "Casa Tambo 午餐", desc: "品嚐道地秘魯佳餚。", longDesc: "一定要試試秘魯國菜 **Ceviche (涼拌檸檬魚)** 或是 **Lomo Saltado (醬爆牛肉)**，搭配一杯冰涼的 Pisco Sour (皮斯科酸酒)，保證您愛上秘魯美食！", tags: [{text: "必吃美食", color: "var(--tag-food)"}] }
+     ]},
+   { day: 3, date: "10/10", title: "沙漠與綠洲", weather: "24°C 晴", location: "Paracas",
+     items: [
+         {
+           type: "景點", title: "Paracas 自然保護區",
+           img: "./images/paracas.jpg",
+           desc: "欣賞壯麗的海蝕景觀與紅色沙灘。",
+           longDesc: "這裡是黃金沙漠與湛藍大海的交界。**紅沙灘 (Playa Roja)** 是拍照首選。請留意這裡的太陽直射非常強，一定要塗好防曬，戴上墨鏡！",
+           tags: [{text: "私房景點", color: "var(--tag-story)"}]
+         },
+         { type: "活動", title: "Huacachina 衝沙與滑沙", desc: "沙漠中的冒險體驗。", longDesc: "我們會搭乘噴射沙車在沙丘飛馳。小攻略：滑沙時請保持嘴巴閉緊，否則會吃進細沙喔！這裡的夕陽美到會讓您屏住呼吸。" }
+     ]},
+   { day: 4, date: "10/11", title: "納茲卡飛行", weather: "23°C 晴", location: "Nazca",
+     items: [
+         {
+           type: "景點", title: "納茲卡線飛行",
+           img: "./images/nazca_lines.jpg",
+           desc: "小飛機鳥瞰地外文明之謎。",
+           longDesc: "這是一個千年未解之謎！飛行約 35 分鐘，您會看到蜂鳥、蜘蛛與外星人的巨型地畫。**導遊提醒**：建議當天早餐不要吃得太飽，飛機會左右側傾以便觀察地畫，有些人可能會有輕微暈機感。",
+           tags: [{text: "世界遺產", color: "var(--tag-story)"}]
+         }
+     ]},
+   { day: 5, date: "10/12", title: "前進印加心臟", weather: "21°C 晴", location: "Sacred Valley",
+     items: [
+         { type: "交通", title: "飛往庫斯科 (LA2609)", desc: "11:30 起飛。", longDesc: "抵達庫斯科後，我們會直接前往海拔較低(2430m)的聖谷。這是為了緩解高山症的關鍵安排。下午造訪 **Maras 鹽田**，那是三千個鹽池組成的壯觀場景。" },
+         { type: "住宿", title: "Sierra Sacred Valley (4★)", desc: "在聖谷好好適應高度。" }
+     ]},
+   { day: 6, date: "10/13", title: "夢幻天空之城", weather: "22°C 晴", location: "Machu Picchu",
+     items: [
+         {
+           type: "景點", title: "馬丘比丘門票與導覽",
+           img: "./images/machu_picchu.jpg",
+           desc: "印加帝國的巔峰之作。",
+           longDesc: "各位，我們終於來到此行的重頭戲！馬丘比丘不僅是建築奇蹟，更是印加人的靈魂所在地。**必看點：** 太陽神廟、三窗廟。記得穿雙舒適的鞋，那裡的階梯可是非常考驗體力的！",
+           tags: [{text: "一生必去", color: "var(--tag-story)"}]
+         },
+         { type: "住宿", title: "Sumaq Machu Picchu (5★)", desc: "熱水鎮頂級飯店。" }
+     ]},
+   { day: 7, date: "10/14", title: "奢華火車回歸", weather: "20°C 晴", location: "Cusco",
+     items: [
+         {
+           type: "體驗", title: "Hiram Bingham 奢華火車",
+           img: "./images/belmond_train.jpg",
+           desc: "Belmond 旗艦火車體驗。",
+           longDesc: "這不只是交通工具，是一場移動的盛宴。在車上您可以點杯特製調酒，聽著樂隊演奏，欣賞窗外的聖谷美景，感受 20 世紀初的貴族氣息。",
+           tags: [{text: "極致奢華", color: "var(--tag-buy)"}]
+         }
+     ]},
+   { day: 8, date: "10/15", title: "古都庫斯科", weather: "19°C 晴", location: "Cusco",
+     items: [
+         { type: "景點", title: "Sacsayhuaman 巨石陣", desc: "印加防禦堡壘。", longDesc: "這裡的石頭大得驚人，有的重達百噸，印加人竟然能將它們完美無縫拼接。這是在庫斯科拍照視野最好的地方之一。" },
+         { type: "必買", title: "羊駝毛織品", desc: "聖布拉斯區購物。", longDesc: "在庫斯科市區，您可以買到高品質的 Alpaca 織品。推薦看標籤上有 **Baby Alpaca** 的，那才是最柔軟親膚的等級。", tags: [{text: "購物清單", color: "var(--tag-buy)"}] }
+     ]},
+   { day: 9, date: "10/16", title: "高原之魂", weather: "15°C 晴", location: "Puno",
+     items: [
+         { type: "交通", title: "Titicaca Train 火車之旅", desc: "全天橫跨高原。", longDesc: "這趟 10 小時的火車雖然長，但景色絕對值得。我們會穿越海拔 4300 公尺的最高點 La Raya。車上有精緻午餐和民俗表演。" }
+     ]},
+   { day: 10, date: "10/17", title: "最高淡水湖", weather: "14°C 晴", location: "Lake Titicaca",
+     items: [
+         {
+           type: "景點", title: "Uros 蘆葦浮島",
+           img: "./images/uros_islands.jpg",
+           desc: "住在蘆葦上的民族。",
+           longDesc: "整個島嶼連地盤都是蘆葦編織的！踩上去軟綿綿的像是在蹦床上。這裡的人民色彩鮮豔，是拍攝人文大片的好地方。",
+           tags: [{text: "獨特文化", color: "var(--tag-story)"}]
+         }
+     ]},
+   { day: 11, date: "10/18", title: "跨越國界：玻利維亞", weather: "13°C 晴", location: "La Paz",
+     items: [
+         { type: "活動", title: "過境與拉巴斯抵達", desc: "經 Copacabana 前往 La Paz。", longDesc: "今天要進入玻利維亞了。La Paz 是世界上最高的首都，城市的立體感會讓您大吃一驚！" }
+     ]},
+   { day: 12, date: "10/19", title: "天空之鏡：純白世界", weather: "12°C 晴", location: "Uyuni",
+     items: [
+         {
+           type: "景點", title: "烏尤尼鹽湖一日遊",
+           img: "./images/uyuni_salt_flats.jpg",
+           desc: "世界最大的鹽沼。",
+           longDesc: "各位，這裡就是傳說中的『天空之鏡』！我們會帶大家去尋找積水區，拍出完美的倒影照。**導遊攻略：** 記得穿上顏色鮮豔的衣服（紅色、黃色效果最好），拍照前先把鞋子脫了（我們會提供長筒膠鞋）。",
+           tags: [{text: "必拍美景", color: "var(--tag-story)"}]
+         },
+         { type: "住宿", title: "Palacio de Sal 鹽之宮殿", desc: "鹽蓋的飯店。", longDesc: "牆壁、桌椅、甚至床架都是鹽塊砌成的！千萬不要因為好奇去舔牆壁喔，那可是有很多人碰過的。" }
+     ]},
+   { day: 13, date: "10/20", title: "鹽湖深度探索", weather: "12°C 晴", location: "Salar de Uyuni",
+     items: [
+         { type: "景點", title: "仙人掌島 (Incahuasi)", desc: "鹽湖中央的奇蹟。", longDesc: "在一片銀白世界中，竟然有一座長滿千年仙人掌的岩石島。爬到山頂可以 360 度俯瞰整片鹽湖，非常震撼。" },
+         { type: "美食", title: "鹽湖私人午餐", desc: "在無邊際鹽原享用美食。", longDesc: "我們為各位準備了私人的野餐，配上玻利維亞紅酒。這絕對是您這輩子吃過背景最壯觀的一餐！", tags: [{text: "必吃推薦", color: "var(--tag-food)"}] }
+     ]},
+   { day: 14, date: "10/21", title: "拉巴斯市區巡禮", weather: "16°C 多雲", location: "La Paz",
+     items: [
+         { type: "活動", title: "女巫市場與纜車", desc: "探尋神祕信仰。", longDesc: "在女巫市場，您會看到各種乾燥的羊駝胎兒，這是玻利維亞人用來祈福的祭品。接著搭乘大眾運輸纜車，從高空俯瞰這座大碗公形狀的城市。" }
+     ]},
+   { day: 15, date: "10/22", title: "前進綠色地獄", weather: "31°C 濕熱", location: "Amazon Jungle",
+     items: [
+         { type: "交通", title: "飛往亞馬遜 (LA2260)", desc: "10:20 飛往 Puerto Maldonado。", longDesc: "從寒冷的高原瞬間跳到熱情的雨林！這裡需要預防蚊蟲，請換上長袖透氣衣物。記得帶好您的防蚊液。" }
+     ]},
+   { day: 16, date: "10/23", title: "亞馬遜探險", weather: "30°C 陣雨", location: "Amazon Jungle",
+     items: [
+         {
+           type: "景點", title: "樹冠步道與尋找金剛鸚鵡",
+           img: "./images/amazon_canopy.jpg",
+           desc: "觀察雨林頂部生態。",
+           longDesc: "我們會走在吊橋上，觀察樹冠層的動物。亞馬遜的早晨非常熱鬧，您可以聽到各種猴子與鳥類的叫聲，這是真正的自然交響樂。",
+           tags: [{text: "自然觀察", color: "var(--tag-story)"}]
+         }
+     ]},
+   { day: 17, date: "10/24", title: "重返利馬", weather: "19°C 陰", location: "Lima",
+     items: [
+         { type: "活動", title: "自由購物時間", desc: "整理行李與採購最後紀念品。", longDesc: "回到利馬可以輕鬆一下。推薦去 **Larco Museum**，它是全世界公認最好的博物館之一，還有一個非常有名的色情陶器館。" }
+     ]},
+   { day: 18, date: "10/25", title: "珍重再見", weather: "20°C 陰", location: "Lima Airport",
+     items: [
+         { type: "活動", title: "最後巡禮與送機", desc: "晚上搭機離境。", longDesc: "感謝這 18 天與我們一起在南美洲留下足跡。希望您帶著裝滿照片的手機和滿滿的回憶平安回家。Buen Viaje (旅途平安)！" }
+     ]}
+];
    // 2. 切換「行程/交通/準備」分頁的功能
    function showTab(tabId, el) {
        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
