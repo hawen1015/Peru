@@ -186,14 +186,80 @@
        width: 100%;
        justify-content: center;
    }
+        /* 大地圖容器 */
+.map-container {
+   background: #FFF;
+   margin: 20px;
+   padding: 20px;
+   border-radius: 20px;
+   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+   text-align: center;
+   position: relative;
+   overflow: hidden;
+}
+.map-svg {
+   width: 100%;
+   height: auto;
+   filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.1));
+}
+.map-legend {
+   display: flex;
+   justify-content: center;
+   gap: 15px;
+   font-size: 11px;
+   color: var(--text-sub);
+   margin-top: 10px;
+}
+.legend-item::before {
+   content: '';
+   display: inline-block;
+   width: 20px;
+   border-bottom: 2px dashed var(--accent-color);
+   margin-right: 5px;
+   vertical-align: middle;
+}
     
     </style>
 </head>
 <body>
 
 <header>
-    <div class="user-greet">OCTOBER 2025 | 8 PAX</div>
-    <h1 class="trip-title">祕魯 & 玻利維亞<br>安地斯巔峰之旅</h1>
+    <div class="map-container">
+<h3 style="font-size: 14px; margin-bottom: 15px; letter-spacing: 2px;">ROUTE OVERVIEW</h3>
+<svg class="map-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+<path d="M150 50 L250 50 L300 250 L250 450 L100 450 Z" fill="none" stroke="#EEE" stroke-width="2" />
+<g fill="var(--accent-color)">
+<circle cx="80" cy="150" r="5" /> <text x="45" y="145" font-size="12">利馬</text>
+<circle cx="100" cy="220" r="4" /> <text x="60" y="240" font-size="10">納茲卡</text>
+<circle cx="180" cy="200" r="5" /> <text x="170" y="190" font-size="12">聖谷/馬丘</text>
+<circle cx="220" cy="280" r="5" /> <text x="230" y="285" font-size="12">普諾(湖)</text>
+<circle cx="280" cy="320" r="5" /> <text x="290" y="325" font-size="12">拉巴斯</text>
+<circle cx="260" cy="420" r="5" /> <text x="270" y="435" font-size="12">烏尤尼</text>
+<circle cx="250" cy="100" r="5" /> <text x="260" y="105" font-size="12">亞馬遜</text>
+</g>
+<g fill="none" stroke="#8C7B68" stroke-width="1.5" stroke-dasharray="5,3">
+<path d="M80 150 Q70 185 100 220" />
+<text x="40" y="190" fill="#999" font-size="9" font-style="italic" stroke="none">🚗 7h</text>
+<path d="M85 150 Q130 150 180 200" stroke="#7A6A53" />
+<text x="120" y="165" fill="#999" font-size="9" font-style="italic" stroke="none">✈️ 1.5h</text>
+<path d="M185 205 L215 275" />
+<text x="205" y="240" fill="#999" font-size="9" font-style="italic" stroke="none">🚂 10h</text>
+<path d="M225 285 L275 315" />
+<text x="240" y="315" fill="#999" font-size="9" font-style="italic" stroke="none">🚌 6h</text>
+<path d="M280 325 L265 415" />
+<text x="275" y="375" fill="#999" font-size="9" font-style="italic" stroke="none">✈️ 1h</text>
+<path d="M280 315 Q290 200 255 105" />
+<text x="285" y="200" fill="#999" font-size="9" font-style="italic" stroke="none">✈️ 1h</text>
+</g>
+</svg>
+<div class="map-legend">
+<span class="legend-item">🚗/🚌 車程</span>
+<span class="legend-item" style="--accent-color: #7A6A53;">✈️ 班機</span>
+<span class="legend-item">🚂 火車</span>
+</div>
+</div>
+    <div class="user-greet">OCTOBER 2026 | </div>
+    <h1 class="trip-title">祕魯 & 玻利維亞<br>圓夢之旅</h1>
 </header>
 
 <div id="itinerary" class="tab-content active">
