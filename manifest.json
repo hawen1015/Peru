@@ -1,0 +1,9 @@
+{
+ "name": "Peru 2026",
+ "short_name": "Peru",
+ "start_url": "/",
+ "display": "standalone",
+ "background_color": "#F9F8F4",
+ "theme_color": "#4A69BD",
+ "icons": [{ "src": "icon.png", "sizes": "512x512", "type": "image/png" }]
+}
