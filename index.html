@@ -440,75 +440,108 @@
         ]
     },
     {
-        day: 5, date: "10/12", title: "前進聖谷", weather: "21°C 晴", location: "Sacred Valley",
-        items: [
-            {
-                type: "交通", title: "班機 LA2609",
-                transport: { from: "利馬 (LIM)", to: "庫斯科 (CUZ)", mode: "✈️", time: "1h 20m", mapUrl: "https://www.google.com/maps/dir/Lima+Airport/Cusco+Airport" },
-                desc: "11:30 - 12:50 飛往印加帝國首都。",
-                longDesc: "抵達後我們不停留庫斯科，直接降到海拔較低的聖谷。下午參觀 Moray 圓形梯田，那是印加人的『農業實驗室』。慢慢走，讓心跳跟上海拔的節奏。"
-            },
-            { type: "住宿", title: "4★ Sierra Sacred Valley", desc: "海拔 2430m 有助於適應。" }
-        ]
-    },
-    {
-        day: 6, date: "10/13", title: "馬丘比丘：失落之城", weather: "22°C 晴", location: "Machu Picchu",
-        items: [
-            {
-                type: "景點", title: "馬丘比丘門票與導覽",
-                transport: { from: "聖谷", to: "熱水鎮", mode: "🚂", time: "1.5h", mapUrl: "https://www.google.com/maps/dir/Ollantaytambo/Machu+Picchu" },
-                desc: "世界新七大奇蹟。",
-                longDesc: "馬丘比丘最美的時候是霧氣剛散開的瞬間。我們會有專業導遊講解石塊如何精密疊合。提醒大家，馬丘比丘內沒有廁所，進入前請先在入口處解決喔！",
-                tags: [{text: "一生必去", color: "var(--tag-story)"}]
-            }
-        ]
-    },
-    {
-        day: 7, date: "10/14", title: "奢華火車之旅", weather: "20°C 晴", location: "Cusco",
-        items: [
-            {
-                type: "體驗", title: "Hiram Bingham 奢華號",
-                transport: { from: "熱水鎮", to: "波羅伊", mode: "🚂", time: "3.5h", mapUrl: "https://www.google.com/maps/search/Hiram+Bingham+Train" },
-                desc: "Belmond 旗艦奢華火車回程。",
-                longDesc: "這是此行最華麗的享受！車上有精緻餐點、樂隊現場表演和免費供應的調酒。您可以到最後一節的露天觀景車廂看星空，這絕對是人生難忘的瞬間。",
-                tags: [{text: "極致奢華", color: "var(--tag-buy)"}]
-            }
-        ]
-    },
-    {
-        day: 8, date: "10/15", title: "古都巡禮", weather: "19°C 晴", location: "Cusco",
-        items: [
-            {
-                type: "景點", title: "Sacsayhuaman 巨石陣",
-                transport: { from: "庫斯科市中心", to: "巨石陣", mode: "🚗", time: "15m", mapUrl: "https://www.google.com/maps/dir/Cusco/Sacsayhuaman" },
-                desc: "感嘆印加建築的鬼斧神工。",
-                longDesc: "庫斯科市區很好逛，San Blas 區有很多特色手創店。如果您想買伴手禮，可以在這裡選購。記得，在高海拔地區動作放慢，多喝可可茶 (Mate de Coca)。"
-            }
-        ]
-    },
-    {
-        day: 9, date: "10/16", title: "全景火車前往普諾", weather: "15°C 晴", location: "Puno",
-        items: [
-            {
-                type: "交通", title: "PeruRail Titicaca Train",
-                transport: { from: "庫斯科", to: "普諾", mode: "🚂", time: "10h", mapUrl: "https://www.google.com/maps/dir/Cusco/Puno" },
-                desc: "橫跨高原的景觀火車之旅。",
-                longDesc: "雖然車程長，但景色從安地斯山脈過渡到高原平原，非常壯麗。火車會停靠海拔 4319m 的 La Raya，那是這段鐵路的最高點，可以下車拍照和買當地織品。"
-            }
-        ]
-    },
-    {
-        day: 10, date: "10/17", title: "的的喀喀湖", weather: "14°C 晴", location: "Lake Titicaca",
-        items: [
-            {
-                type: "景點", title: "Uros 蘆葦浮島",
-                transport: { from: "普諾港口", to: "浮島", mode: "🚤", time: "30m", mapUrl: "https://www.google.com/maps/search/Uros+Floating+Islands" },
-                desc: "拜訪世界最高可通航湖泊。",
-                longDesc: "烏羅斯族完全生活在蘆葦編織的小島上，甚至連學校和教堂都是蘆葦做的。他們會示範如何搭建島嶼，非常有生活智慧。這裡的刺繡色彩非常大膽，很適合拍照！",
-                tags: [{text: "湖泊生活", color: "var(--tag-story)"}]
-            }
-        ]
-    },
+       day: 5, date: "10/12", title: "飛往印加聖谷 (Fly to Sacred Valley)", weather: "21°C 晴", location: "Sacred Valley",
+       items: [
+           {
+               type: "交通", title: "國內線航班 (LIM-CUZ LA2609)",
+               transport: { from: "Lima (LIM)", to: "Cusco (CUZ)", mode: "✈️", time: "1h 20m", mapUrl: "https://www.google.com/maps/dir/Lima+Airport/Cusco+Airport" },
+               desc: "11:30 起飛，12:50 抵達印加古都。",
+               longDesc: "🎧 導遊碎碎念：抵達庫斯科 (Cusco) 後，我們不進市區，直接前往海拔較低 (2,430m) 的聖谷 (Sacred Valley)。這是預防高山症最專業的安排。沿途會經過 Moray 圓形梯田，讓身體在美景中慢慢適應氣壓。"
+           },
+           { type: "住宿", title: "4★ Sierra Sacred Valley", desc: "入住飯店休息，適應海拔。" }
+       ]
+   },
+   {
+       day: 6, date: "10/13", title: "聖地馬丘比丘 (Machu Picchu Day)", weather: "22°C 晴", location: "Machu Picchu",
+       items: [
+           {
+               type: "體驗", title: "景觀火車 (Vistadome Train)",
+               transport: { from: "Ollantaytambo", to: "Aguas Calientes", mode: "🚂", time: "1.5h", mapUrl: "https://www.google.com/maps/dir/Ollantaytambo/Machu+Picchu" },
+               desc: "08:00 - 09:25 全景觀窗火車。",
+               longDesc: "火車擁有全景天窗，能一覽安地斯山脈的峽谷壯麗景色。車上偶爾還會有傳統民俗舞蹈表演，非常有活力！"
+           },
+           {
+               type: "景點", title: "馬丘比丘 2 號線 (Circuit 2)",
+               desc: "10:00 經典全景路線。",
+               longDesc: "🎧 導遊碎碎念：**2 號線是公認最完整的路線**！您可以在這裡拍到那張最經典的馬丘比丘全景明信片照，並造訪神廟區與居住區的核心建築，是必走的深度巡禮。"
+           },
+           {
+               type: "景點", title: "馬丘比丘 3 號線 (Circuit 3)",
+               desc: "14:00 下層遺跡路線。",
+               longDesc: "🎧 導遊碎碎念：**3 號線專注於下層遺跡**。這條線路負擔較小，可以近距離觀察太陽神廟 (Temple of the Sun) 與皇室居所，感受印加石工技術的細膩，與 2 號線的高視角截然不同。"
+           },
+           {
+               type: "體驗", title: "Belmond Hiram Bingham 奢華火車",
+               transport: { from: "Aguas Calientes", to: "Ollantaytambo", mode: "🚂", time: "1.5h", mapUrl: "https://www.google.com/maps/search/Hiram+Bingham+Train" },
+               desc: "17:50 -19:25 回程，包含豪華晚餐與下午茶。",
+               longDesc: "🍴 導遊推薦：這被譽為『移動的宮殿』。內部裝潢重現 1920 年代的貴族風格。您可以在酒吧車廂享用無限量供應的 Pisco Sour，聽著現場樂隊演奏，並享用最高等級的四道式晚宴。",
+               tags: [{text: "極致體驗", color: "var(--tag-buy)"}]
+           },
+           { type: "住宿", title: "4★ Sierra Sacred Valley", desc: "返回聖谷飯店。" }
+       ]
+   },
+   {
+       day: 7, date: "10/14", title: "聖谷文化與 Pachamanca (Sacred Valley Culture)", weather: "20°C 晴", location: "Sacred Valley / Cusco",
+       items: [
+           {
+               type: "景點", title: "奧揚泰坦博遺址 (Ollantaytambo)",
+               desc: "10:00 探訪印加最後的要塞。",
+               longDesc: "這裡是印加人當年對抗西班牙人的重要堡壘。巨大的階梯形梯田非常壯觀，爬上去後可以俯瞰整個山谷與小鎮的街道佈局。"
+           },
+           {
+               type: "美食", title: "印加大地之鍋 (Pachamanca)",
+               desc: "12:00 傳統地下石燒料理。",
+               longDesc: "🍴 導遊介紹：Pachamanca 在克丘亞語中意為『大地的鍋子』。這是利用高溫石頭埋入地下悶熟農產品與肉類的傳統方式，不僅是料理，更是一場對大地之母的祭祀儀式！",
+               tags: [{text: "傳統美食", color: "var(--tag-food)"}]
+           },
+           {
+               type: "交通", title: "前往庫斯科 (Drive to Cusco)",
+               transport: { from: "Sacred Valley", to: "Cusco", mode: "🚗", time: "2h", mapUrl: "https://www.google.com/maps/dir/Cusco/Sacsayhuaman" },
+               desc: "下午驅車前往古都庫斯科。",
+               longDesc: "一路上風景如畫，我們會進入海拔 3,400 公尺的庫斯科。今晚入住 Casa Andina Premium，這是一家極具當地風格的飯店。"
+           },
+           { type: "住宿", title: "5★ Casa Andina Premium Cusco", desc: "入住飯店休息。" }
+       ]
+   },
+   {
+       day: 8, date: "10/15", title: "彩虹山挑戰 (Vinicunca Rainbow Mountain)", weather: "12°C 晴/冷", location: "Rainbow Mountain",
+       items: [
+           {
+               type: "景點", title: "彩虹山 (Vinicunca)",
+               transport: { from: "Cusco", to: "Vinicunca", mode: "🚗", time: "3.5h", mapUrl: "https://www.google.com/maps/dir/Cusco/Puno" },
+               desc: "海拔 5,200m 的色彩奇蹟。",
+               longDesc: "🎧 導遊碎碎念：這天需要 4:00 出發。彩虹山的美麗源自於礦物質的層次堆積。您可以選擇步行 (挑戰自我)、騎馬或摩托車 (省體力)。**重要建議：** 這裡海拔極高且風大，防寒與含氧量要注意，慢慢走才是最快的路！",
+               tags: [{text: "高海拔挑戰", color: "var(--tag-buy)"}]
+           },
+           { type: "住宿", title: "5★ Casa Andina Premium Cusco", desc: "18:00 返回飯店。" }
+       ]
+   },
+   {
+       day: 9, date: "10/16", title: "高原全景火車 (PeruRail Titicaca Train)", weather: "15°C 晴", location: "Cusco to Puno",
+       items: [
+           {
+               type: "體驗", title: "的的喀喀湖全景火車",
+               transport: { from: "Cusco", to: "Puno", mode: "🚂", time: "10.5h", mapUrl: "https://www.google.com/maps/dir/Cusco/Puno" },
+               desc: "07:50 - 18:20 橫跨安地斯高原。",
+               longDesc: "🍴 導遊介紹：這段路程雖長，但絕對舒適。車費包含精緻午餐與下午茶。火車設有露天觀景車廂，您可以一邊吹著高山涼風，一邊拍攝羊駝與壯麗的荒原景觀。",
+               tags: [{text: "景觀之旅", color: "var(--tag-story)"}]
+           },
+           { type: "住宿", title: "5★ GHL Hotel Puno", desc: "的的喀喀湖畔飯店。" }
+       ]
+   },
+   {
+       day: 10, date: "10/17", title: "的的喀喀湖探險 (Lake Titicaca Tour)", weather: "14°C 晴", location: "Lake Titicaca",
+       items: [
+           {
+               type: "景點", title: "烏羅斯浮島 & 塔奇萊島 (Uros & Taquile)",
+               transport: { from: "Puno Port", to: "Islands", mode: "🚤", time: "7h (含船程)", mapUrl: "https://www.google.com/maps/search/Uros+Floating+Islands" },
+               desc: "08:00 - 15:00 湖泊深度遊。",
+               longDesc: "🎧 導遊碎碎念：這是世界最高可通航湖泊。我們將拜訪由蘆葦編織的 **Uros 浮島**，體驗踩在「水上床墊」的感覺；接著前往 **Taquile 島**，那裡的男性以編織工藝聞名，被列為非物質遺產。午餐將享用湖區鮮魚料理！",
+               tags: [{text: "湖泊文化", color: "var(--tag-story)"}]
+           },
+           { type: "住宿", title: "5★ GHL Hotel Puno", desc: "湖畔美景飯店。" }
+       ]
+   },
     {
         day: 11, date: "10/18", title: "跨越邊界前往拉巴斯", weather: "13°C 晴", location: "La Paz",
         items: [
