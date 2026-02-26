@@ -273,52 +273,65 @@
 
 <div id="flights" class="tab-content">
 <div style="padding-top: 10px;">
-<h2>路線導覽與交通資訊</h2>
-<div class="map-card">
-<div class="card-type">Route Overview / 行程總覽</div>
-<svg class="map-svg" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg">
+<h2 style="margin-bottom: 15px;">Route & Transport / 路線與交通</h2>
+<div class="map-card" style="background: var(--card-bg); border-radius: 18px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.03);">
+<div style="text-align: center; margin-bottom: 20px;">
+<div class="card-type" style="margin-bottom: 10px;">Travel Route Map</div>
+<svg class="map-svg" viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
 <g fill="var(--accent-color)" font-family="Noto Sans TC">
-<circle cx="80" cy="150" r="5" /> <text x="40" y="145" font-size="12">利馬</text>
-<circle cx="95" cy="225" r="4" /> <text x="55" y="240" font-size="10">納茲卡</text>
-<circle cx="185" cy="205" r="5" /> <text x="175" y="195" font-size="12">聖谷/馬丘</text>
-<circle cx="225" cy="285" r="5" /> <text x="235" y="290" font-size="12">普諾(湖)</text>
-<circle cx="280" cy="320" r="5" /> <text x="290" y="325" font-size="12">拉巴斯</text>
-<circle cx="265" cy="420" r="5" /> <text x="275" y="435" font-size="12">烏尤尼</text>
-<circle cx="250" cy="95" r="5" /> <text x="260" y="100" font-size="12">亞馬遜</text>
+<circle cx="80" cy="150" r="6" /> <text x="35" y="145" font-size="12" font-weight="bold">利馬 Lima</text>
+<circle cx="100" cy="220" r="4" /> <text x="50" y="240" font-size="10">帕拉卡斯 Paracas</text>
+<circle cx="185" cy="210" r="6" /> <text x="175" y="195" font-size="12" font-weight="bold">聖谷/馬丘</text>
+<circle cx="230" cy="290" r="5" /> <text x="240" y="295" font-size="12">普諾 Puno</text>
+<circle cx="290" cy="330" r="5" /> <text x="300" y="335" font-size="12">拉巴斯 La Paz</text>
+<circle cx="270" cy="430" r="6" /> <text x="280" y="445" font-size="12" font-weight="bold">烏尤尼 Uyuni</text>
+<circle cx="260" cy="100" r="5" /> <text x="270" y="105" font-size="12">亞馬遜 Amazon</text>
 </g>
-<g fill="none" stroke="#8C7B68" stroke-width="1.5" stroke-dasharray="5,3">
-<path d="M80 150 Q75 190 95 225" />
-<text x="45" y="195" fill="#999" font-size="10" font-style="italic" stroke="none">🚗 7h</text>
-<path d="M85 150 Q130 155 180 200" stroke-dasharray="none" stroke="#7A6A53" stroke-width="1" />
-<text x="115" y="165" fill="#7A6A53" font-size="10" font-style="italic" stroke="none">✈️ 1.5h</text>
-<path d="M190 210 L220 280" />
-<text x="210" y="245" fill="#999" font-size="10" font-style="italic" stroke="none">🚂 10h</text>
-<path d="M230 290 L275 315" />
-<text x="245" y="315" fill="#999" font-size="10" font-style="italic" stroke="none">🚌 6h</text>
-<path d="M280 325 L270 415" stroke-dasharray="none" stroke="#7A6A53" stroke-width="1" />
-<text x="278" y="375" fill="#7A6A53" font-size="10" font-style="italic" stroke="none">✈️ 1h</text>
-<path d="M280 315 Q295 200 255 100" stroke-dasharray="none" stroke="#7A6A53" stroke-width="1" />
-<text x="290" y="210" fill="#7A6A53" font-size="10" font-style="italic" stroke="none">✈️ 1h</text>
-</g>
+<g fill="none" stroke-width="1.8">
+<path d="M80 150 L100 220" stroke="#8C7B68" stroke-dasharray="5,3" /> <path d="M85 155 Q135 160 185 210" stroke="#7A6A53" /> <path d="M190 215 L230 290" stroke="#8C7B68" stroke-dasharray="2,2" /> <path d="M235 295 L290 330" stroke="#8C7B68" stroke-dasharray="5,3" /> <path d="M290 335 L275 430" stroke="#7A6A53" /> <path d="M85 145 Q160 80 260 100" stroke="#7A6A53" /> </g>
 </svg>
-<div class="map-legend">
-<span>🚗/🚌 車程</span>
-<span style="color: #7A6A53;">✈️ 班機 (直航)</span>
-<span>🚂 火車</span>
+<div class="map-legend" style="display: flex; justify-content: center; gap: 15px; font-size: 11px; color: #999; margin-top: 10px;">
+<span>✈️ 班機 (實線)</span>
+<span>🚗/🚌 車程 (虛線)</span>
+<span>🚂 火車 (點線)</span>
 </div>
 </div>
-<div class="info-section">
-<h3>核心航段明細</h3>
-<div class="card">
-<div class="info-row"><span class="info-label">10/08 抵達</span><span>LA2479 22:05</span></div>
-<div class="info-row"><span class="info-label">10/12 內陸</span><span>LA2609 LIM-CUZ</span></div>
-<div class="info-row"><span class="info-label">10/19 跨國</span><span>OB304 LPB-UYU</span></div>
-<div class="info-row"><span class="info-label">10/22 亞馬遜</span><span>LA2260 LPB-PEM</span></div>
+<div class="transport-details" style="border-top: 1px solid #EEE; padding-top: 20px;">
+<h4 style="font-size: 14px; color: var(--accent-color); margin-bottom: 12px;">核心航段與長程交通</h4>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div style="display: flex; justify-content: space-between; font-size: 13px;">
+<span style="color: #666;">10/12 國內線</span>
+<span style="font-weight: 500;">LA2609 (11:30-12:50) 利馬➔庫斯科</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;">
+<span style="color: #666;">10/16 觀景火車</span>
+<span style="font-weight: 500;">Titicaca Train (10.5h) 庫斯科➔普諾</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;">
+<span style="color: #666;">10/18 跨國段</span>
+<span style="font-weight: 500; color: #D2691E;">🚌 普諾➔拉巴斯 (需備簽證)</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;">
+<span style="color: #666;">10/19 玻國航空</span>
+<span style="font-weight: 500;">OB304 (07:40-08:40) 拉巴斯➔烏尤尼</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;">
+<span style="color: #666;">10/22 亞馬遜線</span>
+<span style="font-weight: 500;">LA2260 (10:20-12:50) 利馬➔亞馬遜</span>
 </div>
 </div>
 </div>
 </div>
-
+<div class="card" style="margin-top: 20px; background: #FFF9F2; border-radius: 12px; padding: 15px; border: 1px solid #FFE4C4;">
+<div style="color: #A0522D; font-size: 13px; font-weight: bold; margin-bottom: 8px;">💡 交通注意事項</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 12px; color: #8B4513; line-height: 1.6;">
+<li>**護照正本**：所有飛行段及 10/18 跨國巴士段均需隨身攜帶。</li>
+<li>**行李限額**：內陸段小飛機行李限制較嚴，請留意重量。</li>
+<li>**暈車提醒**：高原公路蜿蜒，易暈車者請於半小時前服用藥物。</li>
+</ul>
+</div>
+</div>
+</div>
 <div id="packing" class="tab-content">
     <div style="padding-top: 10px;">
         <h2>行李與行前準備</h2>
