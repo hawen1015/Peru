@@ -355,173 +355,90 @@
 
 <script>
   const itineraryData = [
-
     {
-
         day: 1, date: "10/08", title: "抵達利馬 (Arrival in Lima)", weather: "18°C 陰", location: "Lima",
-
         items: [
-
             {
-
                 type: "交通", title: "機場接機 (Airport Transfer)", 
-
                 transport: { from: "Jorge Chávez Int'l Airport", to: "Pullman Miraflores", mode: "🚗", time: "45m - 1h", mapUrl: "https://www.google.com/maps/dir/Jorge+Chávez+International+Airport/Pullman+Lima+Miraflores" },
-
                 desc: "航班：KE7287 (21:20) & LA2479 (22:05)。",
-
                 longDesc: "歡迎抵達秘魯！今晚兩批夥伴分別抵達。利馬機場 (Aeropuerto Internacional Jorge Chávez) 是南美重要樞紐。接機後前往位於米拉弗洛雷斯區 (Miraflores) 的飯店，這裡是利馬治安與環境最好的區域。"
-
             },
-
             { type: "住宿", title: "5★ Pullman Lima Miraflores", desc: "入住飯店休息。" }
-
         ]
-
     },
-
     {
-
         day: 2, date: "10/09", title: "利馬城市遊 (Lima City Tour)", weather: "19°C 多雲", location: "Lima Old Town",
-
         items: [
-
             {
-
                 type: "景點", title: "利馬舊城區 (Historic Centre of Lima)", 
-
                 transport: { from: "Miraflores", to: "Plaza Mayor", mode: "🚗", time: "30-40m", mapUrl: "https://www.google.com/maps/search/Plaza+Mayor+Lima" },
-
                 desc: "包含總統府 (Palacio de Gobierno) 與聖馬丁廣場 (Plaza San Martín)。",
-
                 longDesc: "這裡被列為世界遺產。總統府與中央廣場 (Plaza Mayor) 是利馬建城的起點。我們也會漫步到以秘魯獨立英雄命名的聖馬丁廣場，欣賞華麗的殖民建築。"
-
             },
-
             {
-
                 type: "景點", title: "聖方濟各聖殿與人骨教堂 (Basílica y Convento de San Francisco)", 
-
                 desc: "著名的地下墓穴 (Catacombs)。",
-
                 longDesc: "🎧 導遊碎碎念：這座修道院下方的人骨地宮 (Catacumbas) 存放了約 7 萬具遺骸。雖然有點神祕感，但請仔細觀察他們將骨頭排列成幾何圓形的獨特葬禮文化。"
-
             },
-
             {
-
                 type: "美食", title: "午餐：Casa Tambo", 
-
                 desc: "在 18 世紀古宅中享用道地料理。",
-
                 longDesc: "🍴 導遊推薦菜：這裡的 **Lomo Saltado (醬爆牛肉)** 融合了印加與亞洲烹飪技巧；另外推薦 **Causa Limeña (檸檬馬鈴薯泥)**，它是一道精緻的冷盤，賣相極佳！",
-
                 tags: [{text: "必吃餐廳", color: "var(--tag-food)"}]
-
             },
-
             {
-
                 type: "景點", title: "普克亞納遺址 (Huaca Pucllana) & Larcomar", 
-
                 desc: "金字塔遺跡與濱海商場。",
-
                 longDesc: "下午參觀由土磚堆砌而成的 Huaca Pucllana 金字塔。最後在蓋在斷崖上的 Larcomar 購物中心吹海風，這是利馬最現代化、最有品牌質感的休閒地。",
-
                 tags: [{text: "古今對照", color: "var(--tag-story)"}]
-
-            }
-
+            },
+             { type: "住宿", title: "5★ Pullman Lima Miraflores", desc: "入住飯店休息。" }
         ]
-
     },
-
     {
-
         day: 3, date: "10/10", title: "沙漠與綠洲之旅 (Desert & Oasis)", weather: "24°C 晴", location: "Paracas / Huacachina",
-
         items: [
-
             {
-
                 type: "景點", title: "帕拉卡斯自然保護區 (Reserva Nacional de Paracas)", 
-
                 transport: { from: "Pullman Lima", to: "Paracas", mode: "🚗", time: "3.5h - 4h", mapUrl: "https://www.google.com/maps/dir/Lima/Reserva+Nacional+de+Paracas" },
-
                 desc: "欣賞紅沙灘 (Playa Roja) 與沙漠景觀。",
-
                 longDesc: "🎧 導遊碎碎念：早上我們沿著泛美公路 (Pan-American Highway) 南下。這片保護區是陸地沙漠與冰冷洋流的碰撞點，『紅沙灘』的色澤在夕陽下非常迷幻，請準備好相機。"
-
             },
-
             {
-
                 type: "活動", title: "瓦卡奇納沙漠 (Huacachina Oasis)", 
-
                 transport: { from: "Paracas", to: "Huacachina", mode: "🚗", time: "1h 15m", mapUrl: "https://www.google.com/maps/dir/Paracas/Huacachina" },
-
                 desc: "Buggy (越野沙車) 與 Sandboarding (滑沙)。",
-
                 longDesc: "這是南美洲唯一的綠洲。我們會搭乘專業沙車俯衝沙丘，尖叫聲請隨意！滑沙時建議雙手收緊。今晚入住附近的 **The Legend Paracas (Resort & Spa)**，讓身體徹底放鬆。",
-
                 tags: [{text: "絕美綠洲", color: "var(--tag-buy)"}]
-
             },
-
             { type: "住宿", title: "5★ The Legend Paracas Resort", desc: "享受度假村設施。" }
-
         ]
-
     },
-
     {
-
         day: 4, date: "10/11", title: "生態與納茲卡之謎 (Ballestas & Nazca Lines)", weather: "22°C 晴", location: "Pisco / Lima",
-
         items: [
-
             {
-
                 type: "景點", title: "巴耶斯塔群島 / 鳥島 (Islas Ballestas)", 
-
                 transport: { from: "The Legend", to: "Marina", mode: "🚤", time: "2h", mapUrl: "https://www.google.com/maps/search/Islas+Ballestas" },
-
                 desc: "近距離觀察海獅、企鵝與神祕燭台地畫 (El Candelabro)。",
-
                 longDesc: "🎧 導遊碎碎念：坐快艇出發時，會先看到沙丘上巨大的『燭台圖案』。之後在島嶼周邊可以看到成千上萬的候鳥與曬太陽的海獅。海上風浪大且有鳥糞「驚喜」，建議穿有帽子的外套。"
-
             },
-
             {
-
                 type: "景點", title: "納茲卡線飛行 (Nazca Lines Flight from Pisco)", 
-
                 transport: { from: "Paracas", to: "Pisco Airport (PIO)", mode: "🚗", time: "20m", mapUrl: "https://www.google.com/maps/search/Aeropuerto+de+Pisco" },
-
                 desc: "搭乘小飛機從 Pisco 機場起飛，鳥瞰地畫。",
-
                 longDesc: "10:00 準時報到。我們將鳥瞰 Hummingbird (蜂鳥)、Spider (蜘蛛)、Monkey (猴子) 等巨型圖騰。由於飛機會大幅度側傾，容易暈機的夥伴請在登機前做好準備。",
-
                 tags: [{text: "外星人傑作", color: "var(--tag-story)"}]
-
             },
-
             {
-
                 type: "交通", title: "返回利馬 (Return to Lima)", 
-
                 transport: { from: "Pisco", to: "Miraflores", mode: "🚗", time: "3.5h - 4h", mapUrl: "https://www.google.com/maps/dir/Pisco/Miraflores+Lima" },
-
                 desc: "開車返回 Pullman Miraflores 飯店。",
-
                 longDesc: "結束精彩的『陸海空』全餐後，我們北上回利馬。今晚可以簡單吃點飯店周邊的美食，整理行囊，明天我們將飛往高原心臟！"
-
             }
-
         ]
-
     },
-
     {
         day: 5, date: "10/12", title: "前進聖谷", weather: "21°C 晴", location: "Sacred Valley",
         items: [
