@@ -720,48 +720,73 @@
    ]
 },
    {
-       day: 12, date: "10/19", title: "天空之鏡：純白世界 (Salar de Uyuni)", weather: "12°C 晴", location: "Uyuni",
-       items: [
-           {
-               type: "交通", title: "國內線航班 (LPB-UYU OB304)",
-               transport: { from: "La Paz", to: "Uyuni", mode: "✈️", time: "1h", mapUrl: "https://www.google.com/maps/dir/La+Paz+Airport/Uyuni+Airport" },
-               desc: "07:40 起飛，08:40 抵達烏尤尼。",
-               longDesc: "終於來到天空之鏡！我們將造訪：**火車墳場 (Train Cemetery)** 拍攝荒廢工業風；**Colchani** 觀看居民如何從鹽湖中採鹽；並在**鹽雕博物館**看鹽磚藝術。中午我們在鹽湖中央野餐，傍晚配著紅酒欣賞絕美夕陽倒影。",
-               tags: [{text: "人生必去", color: "var(--tag-story)"}]
-           },
-           { type: "住宿", title: "5★ Palacio de Sal", desc: "全球第一座鹽磚飯店。" }
-       ]
-   },
-   {
-       day: 13, date: "10/20", title: "鹽湖緩衝與享受設施 (Leisure Day)", weather: "12°C 晴", location: "Salar de Uyuni",
-       items: [
-           {
-               type: "體驗", title: "鹽之宮殿享受 & 包車自由行",
-               desc: "自由活動，享受全球首座由鹽磚砌成的飯店設施。",
-               longDesc: "🎧 導遊碎碎念：**Palacio de Sal** 飯店的牆壁、桌椅甚至床架都是鹽塊砌成的！飯店的 SPA 非常有名，推薦預約。因為我們有包車，想出門的話，可以去附近的 **Uyuni 小鎮市集** 逛逛，買些當地特有的手工羊駝毛織品，或是請司機帶去鹽湖邊緣拍攝搞怪的照片。",
-               tags: [{text: "奢華放鬆", color: "var(--tag-buy)"}]
-           },
-           { type: "住宿", title: "5★ Palacio de Sal", desc: "在純白世界中入眠。" }
-       ]
-   },
-   {
-       day: 14, date: "10/21", title: "拉巴斯巡禮與返利馬 (La Paz Stopover)", weather: "15°C 多雲", location: "La Paz / Lima",
-       items: [
-           {
-               type: "交通", title: "烏尤尼飛拉巴斯 (OB305)",
-               transport: { from: "Uyuni", to: "La Paz", mode: "✈️", time: "1h", mapUrl: "https://www.google.com/maps/dir/Uyuni/La+Paz" },
-               desc: "09:15 - 10:15 抵達拉巴斯。",
-               longDesc: "在轉機回利馬前，我們有充足的時間。推薦去 **女巫市場 (Mercado de las Brujas)** 尋找神祕的藥草與護身符；搭乘**天空纜車 (Mi Teleférico)** 俯瞰城市奇觀；或是到 **Calle Sagarnaca** 找間精品咖啡廳 (如 Typica Coffee) 享受最後的高原午後。"
-           },
-           {
-               type: "交通", title: "跨國航班 (LPB-LIM OB746)",
-               transport: { from: "La Paz (LPB)", to: "Lima (LIM)", mode: "✈️", time: "1h 40m", mapUrl: "https://www.google.com/maps/dir/Lima/Paracas3" },
-               desc: "19:45 起飛，20:25 抵達利馬，入住機場飯店休息。",
-               longDesc: "回到利馬機場，我們直接步行到對面的 Costa del Sol 飯店，免去車馬勞頓，為明早的亞馬遜行程養精蓄銳。"
-           },
-           { type: "住宿", title: "4★ Costa del Sol Wyndham Lima Airport", desc: "機場步行即達。" }
-       ]
-   },
+   day: 12,
+   date: "10/19",
+   title: "天空之鏡 | 地表的純白幻境",
+   location: "Uyuni",
+   weather: "-5 - 15°C 極乾燥、紫外線極強",
+   hotel: "Palacio de Sal (鹽之宮殿)",
+   outfit: "防風防水外套 + 太陽眼鏡 + 高筒防水靴",
+   items: [
+       {
+           type: "景點",
+           title: "烏尤尼鹽原經典巡禮",
+           desc: "07:40 飛抵烏尤尼，展開火車墳場與純白鹽湖之旅。",
+           transport: { from: "✈️ LPB", to: "☁️ UYU", mode: "✈️ OB304", time: "1 小時" },
+           longDesc: "導遊碎碎念：抵達後我們直接進入鹽原。今天我們會看到工業遺留的廢墟美學，也會進入無邊際的白色荒漠。鹽湖午餐是人生清單等級的體驗，夕陽配紅酒更是浪漫極致。",
+           extras: {
+               wiki: "<b>🏛️ 硬核地質百科：</b><br>• <b>成因：</b>烏尤尼曾是史前巨湖 Minchin，隨著乾涸留下了 100 億噸鹽。這裡海拔落差不到 1 公尺，是 NASA 用來校準衛星鏡面的全球最平坦表面。<br>• <b>火車墳場：</b>19 世紀末英國工程師建立的鐵路遺址，原本用來運輸礦產，隨礦業凋零與玻利維亞喪失出海口而廢棄，鹽風的腐蝕賦予了這群蒸汽火車一種賽博龐克的末日感。<br>• <b>Colchani & 製鹽坊：</b>這裡居民至今仍使用傳統方式採集鹽塊。<b>旗幟廣場</b>與<b>達卡鹽雕</b>則是為了紀念越野賽事而設立的地標。",
+               food: "<b>🍽️ 舌尖南美：鹽湖野餐。</b> 在純白無際的鹽原中心，工作人員會架起桌椅，享用當地特有的藜麥沙拉、烤雞與安地斯馬鈴薯。夕陽時分提供的玻利維亞高海拔紅酒（如 Tarija 產區），果香濃郁且單寧柔順。",
+               photo: "<b>📸 攝影特搜：透視錯覺。</b> 由於鹽原沒有參照物，利用近大遠小的原理，將人物放在遠處、道具放在近處（如品客罐、恐龍模型），可拍出各種荒謬有趣的視覺特效。夕陽時分請換上鮮豔衣物，倒影效果最震撼。"
+           }
+       }
+   ]
+},
+{
+   day: 13,
+   date: "10/20",
+   title: "鹽之宮殿 | 緩衝與火山側影",
+   location: "Uyuni / Colchani",
+   weather: "-2 - 16°C 晴朗",
+   hotel: "Palacio de Sal",
+   outfit: "休閒服 + 保暖外衣",
+   items: [
+       {
+           type: "體驗",
+           title: "享受全球第一間鹽旅館設施",
+           desc: "自由活動日，深入體驗鹽建築學或探訪周邊景點。",
+           longDesc: "導遊碎碎念：今天我們節奏放慢。您可以留在飯店享受專業的鹽浴 SPA，或利用我們包車的優勢前往附近的特色景點。這間飯店不僅是住的地方，它本身就是一件地景藝術。",
+           extras: {
+               wiki: "<b>🏛️ 建築黑科技：Palacio de Sal。</b> 這是世界第一間完全由鹽塊建造的飯店。使用了超過 100 萬塊重達 10 公斤的鹽磚（Salt blocks），連床架、桌椅、甚至天花板的圓頂都是鹽做的。鹽建築具有絕佳的隔熱性能，但在雨季需要不斷維修以防損耗。<br><br><b>🚐 包車建議行程：</b><br>• <b>仙人掌島 (Incahuasi Island)：</b>鹽湖中心一座長滿千年仙人掌的孤島，其實是遠古火山的頂部，島上全是珊瑚化石，站在山頂看鹽原一望無際。<br>• <b>圖努帕火山 (Tunupa Volcano) 腳下：</b>前往探訪當地的木乃伊遺跡，或在火山口下方觀察成群的<b>安地斯紅鶴 (Flamingos)</b>，顏色鮮豔對比純白鹽池非常美麗。",
+               food: "<b>🍽️ 推薦料理：鹽烤羊羔肉 (Cordero al Sal)。</b> 利用當地粗鹽包裹肉塊慢烤，肉質鮮嫩且帶有獨特的礦物芬芳。晚上在飯店酒吧點一杯玻利維亞可可葉調酒，氣氛極佳。",
+               photo: "<b>📸 攝影點：</b>飯店內部的大廳。鹽磚牆面在室內燈光下會透出一種溫潤的象牙色澤，細部顆粒紋理非常適合微距攝影。"
+           }
+       }
+   ]
+},
+{
+   day: 14,
+   date: "10/21",
+   title: "拉巴斯中轉 | 飛越天空之城",
+   location: "Uyuni / La Paz / Lima",
+   weather: "6 - 15°C 多雲",
+   hotel: "Costa del Sol Wyndham Lima Airport",
+   outfit: "舒適飛行服 + 保暖外套",
+   items: [
+       {
+           type: "交通",
+           title: "雙城大中轉 (UYU - LPB - LIM)",
+           desc: "09:15 飛拉巴斯，19:45 飛利馬。中間有 9 小時的城市空檔。",
+           transport: { from: "✈️ UYU", to: "✈️ LIM", mode: "✈️ OB305 / OB746", time: "中轉 9h" },
+           longDesc: "導遊碎碎念：今天雖然是飛行日，但拉巴斯的 9 小時中轉我們不會浪費。我們會進入這座全世界海拔最高的行政首都，體驗『空中巴士』纜車系統，並在利馬落地後直接步行至對面的機場飯店休息。",
+           extras: {
+               wiki: "<b>🏛️ 拉巴斯中轉必訪清單：</b><br>• <b>Mi Teleférico 纜車：</b>這不是觀光設施，而是居民的通勤工具。建議搭乘<b>紅線或紫線</b>，從高處俯瞰整個拉巴斯盆地，這震撼力絕對是世界級的。<br>• <b>女巫市場 (Mercado de las Brujas)：</b>販售各種祭祀用品，最驚人的是掛在牆上的<b>草泥馬乾屍</b>（當地蓋房時埋入地基獻給 Pachamama 大地之母的祭品），是深入研究安地斯巫術文化的窗口。<br>• <b>月亮谷 (Valle de la Luna)：</b>距離市區約 40 分鐘，地形如同月球表面般荒涼，是強烈侵蝕作用形成的黏土尖峰林。",
+               food: "<b>🍽️ 咖啡廳推薦：Typica Coffee。</b> 這被譽為玻利維亞最好的咖啡館，建築充滿殖民風格。玻利維亞的咖啡豆（尤其是 Geisha 品種）近期在國際賽事表現優異，絕對值得一喝。",
+               photo: "<b>📸 攝影點：</b>在纜車移動中，使用快門優先模式捕捉盆地內密集紅磚屋與遠方雪山 <b>Illimani</b> 的大對比，這是拉巴斯最經典的視覺印象。"
+           }
+       }
+   ]
+},
    {
        day: 15, date: "10/22", title: "前進亞馬遜雨林 (Welcome to Amazon)", weather: "31°C 濕熱", location: "Amazon",
        items: [
