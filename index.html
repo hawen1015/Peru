@@ -256,6 +256,26 @@
    border-radius: 6px;
    margin-top: 10px;
 }
+    /* 打包清單樣式 */
+.check-item {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 12px;
+   padding: 6px 0;
+   color: #444;
+   border-bottom: 1px dashed #f0f0f0;
+}
+.check-item input[type="checkbox"] {
+   width: 16px;
+   height: 16px;
+   accent-color: var(--accent-color); /* 勾選顏色與 App 統一 */
+   cursor: pointer;
+}
+.check-item input[type="checkbox"]:checked + span {
+   text-decoration: line-through;
+   color: #bbb;
+}
     
     </style>
 </head>
@@ -358,6 +378,45 @@
 </tbody>
 </table>
 </div>
+</div>
+</div>
+</div>
+    <div class="card" style="margin-top: 20px; background: #FFF5F5; border: 1px solid #FFDADA; border-radius: 12px; padding: 15px;">
+<div style="color: #C62828; font-weight: bold; font-size: 14px; margin-bottom: 10px;">🏥 健康守則 (Health Tips)</div>
+<ul style="margin: 0; padding-left: 18px; font-size: 12px; color: #555; line-height: 1.7;">
+<li><strong style="color: #C62828;">預防高山症：</strong>抵達庫斯科前 24 小時開始服用藥物。進入高原後多喝古柯茶 (Coca Tea)，行動放慢，避免飲酒與暴食。</li>
+<li><strong style="color: #C62828;">雨林防護：</strong>亞馬遜段請穿長袖長褲，並噴灑含 DEET 成分的防蚊液，預防黃熱病與瘧疾。</li>
+<li><strong style="color: #C62828;">腸胃健康：</strong>避免生食與路邊攤，僅飲用瓶裝水。</li>
+<li><strong style="color: #C62828;">防曬：</strong>高原紫外線極強，容易曬傷，請務必補擦防曬。</li>
+</ul>
+</div>
+<div class="card" style="margin-top: 20px; background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 15px;">
+<div style="font-weight: bold; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; font-size: 14px;">
+       ✅ 互動打包清單 (可點擊勾選)
+</div>
+<div id="packingList">
+<div style="margin-bottom: 15px;">
+<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 5px;">📄 重要文件</div>
+<div class="check-item"><input type="checkbox"> 護照正本 & 影本 (跨國段必備)</div>
+<div class="check-item"><input type="checkbox"> 玻利維亞簽證/落地簽文件</div>
+<div class="check-item"><input type="checkbox"> 黃熱病疫苗接種證明 (黃皮書)</div>
+<div class="check-item"><input type="checkbox"> 旅遊保險明細</div>
+</div>
+<div style="margin-bottom: 15px;">
+<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 5px;">🧥 穿著裝備</div>
+<div class="check-item"><input type="checkbox"> 防水防風外套 (彩虹山/鹽湖必備)</div>
+<div class="check-item"><input type="checkbox"> 輕羽絨/刷毛層 (洋蔥式穿法)</div>
+<div class="check-item"><input type="checkbox"> 好走的登山鞋/防滑運動鞋</div>
+<div class="check-item"><input type="checkbox"> 遮陽帽 & 毛帽手套 (高原低溫用)</div>
+<div class="check-item"><input type="checkbox"> 泳衣 (鹽旅館 SPA / 溫泉)</div>
+</div>
+<div style="margin-bottom: 15px;">
+<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 5px;">💊 必備藥品/雜項</div>
+<div class="check-item"><input type="checkbox"> 高山症藥 (Diamox) & 暈車藥</div>
+<div class="check-item"><input type="checkbox"> 強效防蚊液 (亞馬遜用)</div>
+<div class="check-item"><input type="checkbox"> 墨鏡 (鹽湖反光強，必備！)</div>
+<div class="check-item"><input type="checkbox"> 萬用轉接頭 (南美多為雙圓孔或雙平孔)</div>
+<div class="check-item"><input type="checkbox"> 行動電源 & 暖暖包</div>
 </div>
 </div>
 </div>
@@ -798,6 +857,17 @@ itineraryData.forEach(day => {
        `;
    });
    renderDay(1); // 預設顯示第一天
+// 自動儲存勾選狀態 (LocalStorage)
+document.querySelectorAll('#packingList input[type="checkbox"]').forEach((checkbox, index) => {
+   // 讀取紀錄
+   const savedStatus = localStorage.getItem('pack_item_' + index);
+   if (savedStatus === 'true') checkbox.checked = true;
+   // 監聽點擊並儲存
+   checkbox.addEventListener('change', () => {
+       localStorage.setItem('pack_item_' + index, checkbox.checked);
+   });
+});
+
 </script>
 
 </body>
