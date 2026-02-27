@@ -788,50 +788,92 @@
    ]
 },
    {
-       day: 15, date: "10/22", title: "前進亞馬遜雨林 (Welcome to Amazon)", weather: "31°C 濕熱", location: "Amazon",
-       items: [
-           {
-               type: "交通", title: "國內線航班 (LIM-PEM LA2260)",
-               transport: { from: "Lima", to: "Puerto Maldonado", mode: "✈️", time: "2h 30m", mapUrl: "https://www.google.com/maps/dir/Lima/Paracas4" },
-               desc: "10:20 - 12:50 飛往亞馬遜門戶。",
-               longDesc: "🍴 導遊介紹：歡迎來到亞馬遜！入住 Inkaterra Hacienda Concepción，這段期間餐費全包。下午我們先進行**雨林步道導覽**，感受原始森林的氣味；傍晚進行**河流探險**，觀察黃昏出沒的凱門鱷與水鳥。",
-               tags: [{text: "全包式體驗", color: "var(--tag-food)"}]
-           },
-           { type: "住宿", title: "Luxury Inkaterra Hacienda Concepción", desc: "包含所有雨林活動與餐食。" }
-       ]
-   },
-   {
-       day: 16, date: "10/23", title: "野生動物觀測 (Wild Amazon)", weather: "30°C 陣雨", location: "Sandoval Lake",
-       items: [
-           {
-               type: "景點", title: "Sandoval 湖 & 樹冠層步道",
-               desc: "在湖面上尋找大水獺與猴子。",
-               longDesc: "🎧 導遊碎碎念：今天要去被譽為『亞馬遜最美』的 **Sandoval 湖**。我們會搭木舟靜靜划行，這裡有機會看到巨型水獺與金剛鸚鵡。下午挑戰 **Canopy Walkway (空中步道)**，從樹頂俯瞰雨林生態，晚上再進行夜間搜索動物。",
-               tags: [{text: "生物多樣性", color: "var(--tag-story)"}]
+   day: 15,
+   date: "10/22",
+   title: "進入亞馬遜 | 飛往綠色心臟",
+   location: "Puerto Maldonado",
+   weather: "24-32°C 潮濕悶熱、午後雷雨",
+   hotel: "Inkaterra Hacienda Concepción",
+   outfit: "透氣長袖長褲 (防蟲) + 高溫防曬",
+   items: [
+       {
+           type: "交通",
+           title: "飛往馬德雷德迪奧斯 (LA2260)",
+           desc: "10:20 起飛，12:50 抵達亞馬遜門戶。",
+           transport: { from: "✈️ LIM", to: "🌳 PEM", mode: "✈️ 飛機", time: "1.5 小時" },
+           longDesc: "導遊碎碎念：抵達後我們會改乘獨木舟前往飯店。亞馬遜的熱浪與都市不同，帶著濃郁的泥土與植物香氣。今天傍晚的河流探險，請準備好手電筒，水邊的眼睛正在盯著你！",
+           extras: {
+               wiki: "<b>🏛️ 住宿百科：Inkaterra 的永續美學。</b><br>這座飯店建在昔日的木瓜與可可種植園上。其設計理念是與自然共生，客房沒有插座與空調（僅公用區有），利用天然通風與煤油燈營造與世隔絕的氛圍。這裡是祕魯生物多樣性的研究基地，飯店內記錄了超過 200 種鳥類。",
+               photo: "<b>📸 攝影點：</b>飯店前往客房的木棧道。兩側是高聳的亞馬遜棕櫚樹，黃昏時分光線穿透樹冠，能拍出極具深度感的綠色隧道。"
            }
-       ]
-   },
-   {
-       day: 17, date: "10/24", title: "深入雨林生活 (Jungle Deep Dive)", weather: "30°C 多雲", location: "Amazon",
-       items: [
-           {
-               type: "活動", title: "植物園巡禮 & 巴西果小屋",
-               desc: "認識雨林藥用植物與當地經濟作物。",
-               longDesc: "我們會參觀有機植物園，認識亞馬遜天然的『藥房』；接著造訪巴西果小屋，學習如何處理堅硬的巴西堅果。傍晚前往 **Inland Collpa** 觀察哺乳動物舔食礦物鹽，這是雨林特有的自然現象。"
+       }
+   ]
+},
+{
+   day: 16,
+   date: "10/23",
+   title: "雨林生態巔峰 | 尋找巨型水獺",
+   location: "Sandoval Lake",
+   weather: "25-33°C 濕度 90%",
+   hotel: "Inkaterra Hacienda Concepción",
+   outfit: "登山靴 + 望遠鏡 + 充足飲水",
+   items: [
+       {
+           type: "景點",
+           title: "Sandoval 湖與樹冠層步道",
+           desc: "造訪雨林最美的牛軛湖，登上 30 公尺高的空中步道。",
+           longDesc: "導遊碎碎念：Sandoval 湖需要步行穿過泥濘地，但絕對值得。這裡可以看到瀕臨絕種的巨型水獺。夜間探索時，注意看草叢裡的紅色反光，那是凱門鱷的眼睛！",
+           extras: {
+               wiki: "<b>🏛️ 硬核生物百科：</b><br>• <b>牛軛湖 (Oxbow Lake)：</b>這是河流改道後留下的馬蹄形湖泊，是亞馬遜生物密度最高的地方。<br>• <b>空中步道 (Canopy Walkway)：</b>熱帶雨林 90% 的生命活動發生在樹冠層。透過步道，你可以跨越不同高度的「垂直分層」，觀察那些平時在地面看不見的高空附生植物與繽紛鳥類。<br>• <b>夜間生態：</b>亞馬遜在入夜後才真正覺醒。你會看到巨大的捕鳥蛛 (Tarantula) 與隱彩斑斕的箭毒蛙，這是雨林生存競爭最激烈的時刻。",
+               photo: "<b>📸 攝影特搜：</b>在空中步道時，快門速度需保持在 1/500 以上，以捕捉快速閃過的金剛鸚鵡或松鼠猴。Sandoval 湖面上反射的雲影則是絕佳的寬景素材。"
            }
-       ]
-   },
-   {
-       day: 18, date: "10/25", title: "珍重再見 (Departure)", weather: "20°C 陰", location: "Lima",
-       items: [
-           {
-               type: "交通", title: "重返利馬 (PEM-LIM LA2261)",
-               transport: { from: "Puerto Maldonado", to: "Lima", mode: "✈️", time: "1h 35m", mapUrl: "https://www.google.com/maps/dir/Lima/Paracas5" },
-               desc: "12:45 - 14:20 返回起點利馬。",
-               longDesc: "18 天的南美大圓滿行程即將結束。回到利馬後，請確認您的國際線航班銜接。感謝這趟旅程有你們相伴，帶著滿滿的感動與照片，平安回家！"
+       }
+   ]
+},
+{
+   day: 17,
+   date: "10/24",
+   title: "植物智慧 | 巴西果與鹽舔食區",
+   location: "Inland Collpa",
+   weather: "24-31°C 多雲有雨",
+   hotel: "Inkaterra Hacienda Concepción",
+   outfit: "長袖防護 + 防蚊液",
+   items: [
+       {
+           type: "景點",
+           title: "植物園巡禮與 Inland Collpa",
+           desc: "學習雨林醫藥，觀察森林深處的鹽舔奇景。",
+           longDesc: "導遊碎碎念：巴西果 (Brazil Nut) 是雨林的經濟命脈。傍晚我們會去 Inland Collpa，這是一個隱蔽的補鹽區，各種動物會來這裡補充礦物質，這對牠們來說就像是森林裡的維他命補給站。",
+           extras: {
+               wiki: "<b>🏛️ 硬核植物學：</b><br>• <b>巴西果之謎：</b>這是雨林少數無法人工培植的作物，因為它需要特定的長舌蜂進行授粉，而這種蜂只活在未受破壞的原始林中。所以，每一顆巴西果都是亞馬遜健康的證明。<br>• <b>Inland Collpa (鹽舔區)：</b>雨林植物通常缺乏鈉離子，哺乳動物（如野豬、犰狳）會來這裡挖掘富含礦物質的黏土來中和體內毒素與補充鹽分。",
+               food: "<b>🍽️ 雨林美味：</b>在飯店享用 <b>Juane</b>（用芭蕉葉包裹的調味雞肉米飯），這是亞馬遜最神聖的節日料理，芭蕉葉賦予米飯一種特殊的清香。",
+               photo: "<b>📸 攝影點：</b>在湖上划獨木舟時，使用大光圈拍攝划水出的漣漪，配合四周倒映的茂密森林，能創造出一種幽靜的神祕感。"
            }
-       ]
-   }
+       }
+   ]
+},
+{
+   day: 18,
+   date: "10/25",
+   title: "告別亞馬遜 | 利馬終極採買",
+   location: "Lima",
+   weather: "18-24°C 霧氣微涼",
+   hotel: "準備搭機返家",
+   outfit: "休閒服",
+   items: [
+       {
+           type: "交通",
+           title: "亞馬遜飛回利馬 (LA2261)",
+           desc: "12:45 起飛，14:20 抵達利馬，把握最後採買時間。",
+           transport: { from: "🌳 PEM", to: "✈️ LIM", mode: "✈️ 飛機", time: "1.5 小時" },
+           longDesc: "導遊碎碎念：旅程即將畫下句點。回到利馬後，我們有最後幾個小時可以衝刺採買。從精緻的羊駝毛到最純正的祕魯巧克力，把南美的回憶通通裝進行李箱！",
+           extras: {
+               wiki: "<b>🛍️ 利馬終極採買指南：</b><br>• <b>Larcomar & Inka Plaza：</b>購買頂級羊駝毛 (Alpaca) 的聖地。推薦品牌 <b>Kuna</b> 或 <b>Sol Alpaca</b>，尋找 <i>Baby Alpaca</i> 等級，觸感如絲綢般細滑。<br>• <b>巧克力控必買：</b>祕魯巧克力近年席捲全球。請指名 <b>Cacaosuyo</b>（曾獲世界冠軍）或 <b>Maraná</b>，推薦黑巧克力 70% 以上，最能品嚐到安地斯可可豆的果酸與香氣。<br>• <b>手工藝品：</b>Pucará 牛（帶來好運的小牛陶偶）、或是銀飾（祕魯是產銀大國，工法細緻）。",
+               food: "<b>🍽️ 最後的回味：</b>若還有體力，在利馬最後一餐建議找間著名的海鮮餐廳，最後吃一次 <b>Tiradito</b> (類似 Ceviche 但切法更像生魚片)，為旅程劃下圓滿句點。"
+           }
+       }
+   ]
+},
 ];
     // 這份清單方便你一次對照與修改，不用進去 itineraryData 裡面翻
 const outfitList = {
