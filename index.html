@@ -444,130 +444,132 @@
 <script>
   const itineraryData = [
     {
-        day: 1, date: "10/08", title: "抵達利馬 (Arrival in Lima)", weather: "18°C 陰", location: "Lima",
-        items: [
-            {
-                type: "交通", title: "機場接機 (Airport Transfer)", 
-                transport: { from: "Jorge Chávez Int'l Airport", to: "Pullman Miraflores", mode: "🚗", time: "45m - 1h", mapUrl: "https://www.google.com/maps/dir/Jorge+Chávez+International+Airport/Pullman+Lima+Miraflores" },
-                desc: "航班：KE7287 (21:20) & LA2479 (22:05)。",
-                longDesc: "歡迎抵達秘魯！今晚兩批夥伴分別抵達。利馬機場 (Aeropuerto Internacional Jorge Chávez) 是南美重要樞紐。接機後前往位於米拉弗洛雷斯區 (Miraflores) 的飯店，這裡是利馬治安與環境最好的區域。"
-            },
-            { type: "住宿", title: "5★ Pullman Lima Miraflores", desc: "入住飯店休息。" }
-        ]
-    },
-    {
-        day: 2, date: "10/09", title: "利馬城市遊 (Lima City Tour)", weather: "19°C 多雲", location: "Lima Old Town",
-        items: [
-            {
-                type: "景點", title: "利馬舊城區 (Historic Centre of Lima)", 
-                transport: { from: "Miraflores", to: "Plaza Mayor", mode: "🚗", time: "30-40m", mapUrl: "https://www.google.com/maps/search/Plaza+Mayor+Lima" },
-                desc: "包含總統府 (Palacio de Gobierno) 與聖馬丁廣場 (Plaza San Martín)。",
-                longDesc: "這裡被列為世界遺產。總統府與中央廣場 (Plaza Mayor) 是利馬建城的起點。我們也會漫步到以秘魯獨立英雄命名的聖馬丁廣場，欣賞華麗的殖民建築。"
-            },
-            {
-                type: "景點", title: "聖方濟各聖殿與人骨教堂 (Basílica y Convento de San Francisco)", 
-                desc: "著名的地下墓穴 (Catacombs)。",
-                longDesc: "🎧 導遊碎碎念：這座修道院下方的人骨地宮 (Catacumbas) 存放了約 7 萬具遺骸。雖然有點神祕感，但請仔細觀察他們將骨頭排列成幾何圓形的獨特葬禮文化。"
-            },
-            {
-                type: "美食", title: "午餐：Casa Tambo", 
-                desc: "在 18 世紀古宅中享用道地料理。",
-                longDesc: "🍴 導遊推薦菜：這裡的 **Lomo Saltado (醬爆牛肉)** 融合了印加與亞洲烹飪技巧；另外推薦 **Causa Limeña (檸檬馬鈴薯泥)**，它是一道精緻的冷盤，賣相極佳！",
-                tags: [{text: "必吃餐廳", color: "var(--tag-food)"}]
-            },
-            {
-                type: "景點", title: "普克亞納遺址 (Huaca Pucllana) & Larcomar", 
-                desc: "金字塔遺跡與濱海商場。",
-                longDesc: "下午參觀由土磚堆砌而成的 Huaca Pucllana 金字塔。最後在蓋在斷崖上的 Larcomar 購物中心吹海風，這是利馬最現代化、最有品牌質感的休閒地。",
-                tags: [{text: "古今對照", color: "var(--tag-story)"}]
-            },
-             { type: "住宿", title: "5★ Pullman Lima Miraflores", desc: "入住飯店休息。" }
-        ]
-    },
-    {
-        day: 3, date: "10/10", title: "沙漠與綠洲之旅 (Desert & Oasis)", weather: "24°C 晴", location: "Paracas / Huacachina",
-        items: [
-            {
-                type: "景點", title: "帕拉卡斯自然保護區 (Reserva Nacional de Paracas)", 
-                transport: { from: "Pullman Lima", to: "Paracas", mode: "🚗", time: "3.5h - 4h", mapUrl: "https://www.google.com/maps/dir/Lima/Reserva+Nacional+de+Paracas" },
-                desc: "欣賞紅沙灘 (Playa Roja) 與沙漠景觀。",
-                longDesc: "🎧 導遊碎碎念：早上我們沿著泛美公路 (Pan-American Highway) 南下。這片保護區是陸地沙漠與冰冷洋流的碰撞點，『紅沙灘』的色澤在夕陽下非常迷幻，請準備好相機。"
-            },
-            {
-                type: "活動", title: "瓦卡奇納沙漠 (Huacachina Oasis)", 
-                transport: { from: "Paracas", to: "Huacachina", mode: "🚗", time: "1h 15m", mapUrl: "https://www.google.com/maps/dir/Paracas/Huacachina" },
-                desc: "Buggy (越野沙車) 與 Sandboarding (滑沙)。",
-                longDesc: "這是南美洲唯一的綠洲。我們會搭乘專業沙車俯衝沙丘，尖叫聲請隨意！滑沙時建議雙手收緊。今晚入住附近的 **The Legend Paracas (Resort & Spa)**，讓身體徹底放鬆。",
-                tags: [{text: "絕美綠洲", color: "var(--tag-buy)"}]
-            },
-            { type: "住宿", title: "5★ The Legend Paracas Resort", desc: "享受度假村設施。" }
-        ]
-    },
-    {
-        day: 4, date: "10/11", title: "生態與納茲卡之謎 (Ballestas & Nazca Lines)", weather: "22°C 晴", location: "Pisco / Lima",
-        items: [
-            {
-                type: "景點", title: "巴耶斯塔群島 / 鳥島 (Islas Ballestas)", 
-                transport: { from: "The Legend", to: "Marina", mode: "🚤", time: "2h", mapUrl: "https://www.google.com/maps/search/Islas+Ballestas" },
-                desc: "近距離觀察海獅、企鵝與神祕燭台地畫 (El Candelabro)。",
-                longDesc: "🎧 導遊碎碎念：坐快艇出發時，會先看到沙丘上巨大的『燭台圖案』。之後在島嶼周邊可以看到成千上萬的候鳥與曬太陽的海獅。海上風浪大且有鳥糞「驚喜」，建議穿有帽子的外套。"
-            },
-            {
-                type: "景點", title: "納茲卡線飛行 (Nazca Lines Flight from Pisco)", 
-                transport: { from: "Paracas", to: "Pisco Airport (PIO)", mode: "🚗", time: "20m", mapUrl: "https://www.google.com/maps/search/Aeropuerto+de+Pisco" },
-                desc: "搭乘小飛機從 Pisco 機場起飛，鳥瞰地畫。",
-                longDesc: "10:00 準時報到。我們將鳥瞰 Hummingbird (蜂鳥)、Spider (蜘蛛)、Monkey (猴子) 等巨型圖騰。由於飛機會大幅度側傾，容易暈機的夥伴請在登機前做好準備。",
-                tags: [{text: "外星人傑作", color: "var(--tag-story)"}]
-            },
-            {
-                type: "交通", title: "返回利馬 (Return to Lima)", 
-                transport: { from: "Pisco", to: "Miraflores", mode: "🚗", time: "3.5h - 4h", mapUrl: "https://www.google.com/maps/dir/Pisco/Miraflores+Lima" },
-                desc: "開車返回 Pullman Miraflores 飯店。",
-                longDesc: "結束精彩的『陸海空』全餐後，我們北上回利馬。今晚可以簡單吃點飯店周邊的美食，整理行囊，明天我們將飛往高原心臟！"
+    day: 1,
+    date: "10/08",
+    title: "抵達利馬 | 太平洋之城的初見",
+    location: "Lima",
+    weather: "17-22°C 霧氣微涼",
+    outfit: "薄長袖 + 防風外套",
+    items: [
+        {
+            type: "景點",
+            title: "聖法蘭西斯修道院 (Catacombs)",
+            desc: "深入利馬最神祕的地下地窖與古老圖書館。",
+            longDesc: "導遊碎碎念：這裡的地下墓穴埋葬了超過 25,000 具遺骸。圖書館收藏了兩萬多冊古籍，氣氛非常像《哈利波特》的世界。",
+            extras: {
+                wiki: "<b>硬核百科：</b>這座巴洛克式建築建於 1673 年。其地下墓穴不僅是墓地，更是早期的抗震結構之一。圖書館內藏有 15 世紀的珍貴手稿，甚至有早期印製的聖經。",
+                food: "<b>附近推薦：</b>修道院步行距離內的 <b>L'Eau Vive</b>，由修女經營，氣氛寧靜，燉肉料理非常道地。",
+                photo: "<b>攝影特搜：</b>內部嚴禁攝影，但中庭的迴廊與精緻的摩爾式瓷磚是非常壯觀的取景點。"
             }
-        ]
-    },
-    {
-       day: 5, date: "10/12", title: "飛往印加聖谷 (Fly to Sacred Valley)", weather: "21°C 晴", location: "Sacred Valley",
-       items: [
-           {
-               type: "交通", title: "國內線航班 (LIM-CUZ LA2609)",
-               transport: { from: "Lima (LIM)", to: "Cusco (CUZ)", mode: "✈️", time: "1h 20m", mapUrl: "https://www.google.com/maps/dir/Lima+Airport/Cusco+Airport" },
-               desc: "11:30 起飛，12:50 抵達印加古都。",
-               longDesc: "🎧 導遊碎碎念：抵達庫斯科 (Cusco) 後，我們不進市區，直接前往海拔較低 (2,430m) 的聖谷 (Sacred Valley)。這是預防高山症最專業的安排。沿途會經過 Moray 圓形梯田，讓身體在美景中慢慢適應氣壓。"
-           },
-           { type: "住宿", title: "4★ Sierra Sacred Valley", desc: "入住飯店休息，適應海拔。" }
-       ]
-   },
-   {
-       day: 6, date: "10/13", title: "聖地馬丘比丘 (Machu Picchu Day)", weather: "22°C 晴", location: "Machu Picchu",
-       items: [
-           {
-               type: "體驗", title: "景觀火車 (Vistadome Train)",
-               transport: { from: "Ollantaytambo", to: "Aguas Calientes", mode: "🚂", time: "1.5h", mapUrl: "https://www.google.com/maps/dir/Ollantaytambo/Machu+Picchu" },
-               desc: "08:00 - 09:25 全景觀窗火車。",
-               longDesc: "火車擁有全景天窗，能一覽安地斯山脈的峽谷壯麗景色。車上偶爾還會有傳統民俗舞蹈表演，非常有活力！"
-           },
-           {
-               type: "景點", title: "馬丘比丘 2 號線 (Circuit 2)",
-               desc: "10:00 經典全景路線。",
-               longDesc: "🎧 導遊碎碎念：**2 號線是公認最完整的路線**！您可以在這裡拍到那張最經典的馬丘比丘全景明信片照，並造訪神廟區與居住區的核心建築，是必走的深度巡禮。"
-           },
-           {
-               type: "景點", title: "馬丘比丘 3 號線 (Circuit 3)",
-               desc: "14:00 下層遺跡路線。",
-               longDesc: "🎧 導遊碎碎念：**3 號線專注於下層遺跡**。這條線路負擔較小，可以近距離觀察太陽神廟 (Temple of the Sun) 與皇室居所，感受印加石工技術的細膩，與 2 號線的高視角截然不同。"
-           },
-           {
-               type: "體驗", title: "Belmond Hiram Bingham 奢華火車",
-               transport: { from: "Aguas Calientes", to: "Ollantaytambo", mode: "🚂", time: "1.5h", mapUrl: "https://www.google.com/maps/search/Hiram+Bingham+Train" },
-               desc: "17:50 -19:25 回程，包含豪華晚餐與下午茶。",
-               longDesc: "🍴 導遊推薦：這被譽為『移動的宮殿』。內部裝潢重現 1920 年代的貴族風格。您可以在酒吧車廂享用無限量供應的 Pisco Sour，聽著現場樂隊演奏，並享用最高等級的四道式晚宴。",
-               tags: [{text: "極致體驗", color: "var(--tag-buy)"}]
-           },
-           { type: "住宿", title: "4★ Sierra Sacred Valley", desc: "返回聖谷飯店。" }
-       ]
-   },
+        }
+    ]
+},
+{
+    day: 2,
+    date: "10/09",
+    title: "利馬市區探險 | 跨越時空的文明",
+    location: "Lima",
+    weather: "18-24°C 多雲",
+    outfit: "短袖 + 遮陽帽",
+    items: [
+        {
+            type: "景點",
+            title: "普亞納金字塔 Huaca Pucllana",
+            desc: "市中心的高級地段，竟然藏著 1800 年歷史的金字塔。",
+            longDesc: "導遊碎碎念：這座金字塔是利馬文明留下的遺址，甚至比印加文明還早一千多年！",
+            extras: {
+                wiki: "<b>硬核百科：</b>抗震黑科技！金字塔使用「書架結構」(Bookshelf technique)，將小土磚垂直排列並預留縫隙，使建築在強震中能微幅晃動而不倒塌。",
+                food: "<b>頂級推薦：</b>就在金字塔旁的 <b>Huaca Pucllana 餐廳</b>，晚上點燈後看著古蹟吃 Ceviche (檸檬醃魚)，是利馬最奢華的體驗。",
+                photo: "<b>攝影特搜：</b>建議傍晚前往，金字塔在暖黃色燈光下與後方的現代大樓形成「古今對比」的震撼畫面。"
+            }
+        }
+    ]
+},
+{
+    day: 3,
+    date: "10/10",
+    title: "南下沙漠 | 海鳥與沙丘的奏鳴曲",
+    location: "Paracas / Huacachina",
+    weather: "16-26°C 乾燥晴朗",
+    outfit: "短袖 + 防沙面罩",
+    items: [
+        {
+            type: "景點",
+            title: "瓦卡奇納綠洲 Huacachina",
+            desc: "南美洲唯一的自然沙漠綠洲，如同電影場景。",
+            longDesc: "導遊碎碎念：這裡一定要體驗衝沙 (Sandboarding)，夕陽下的沙漠美得讓人想流淚。",
+            extras: {
+                wiki: "<b>地質百科：</b>這是一個由地下水自然湧出形成的綠洲。傳說湖水是一位印加公主的眼淚，具有治療疾病的神力。",
+                food: "<b>必吃甜點：</b>伊卡特產 <b>Tejas</b>，外層裹糖粉內包核桃與焦糖乳酪，是當地著名的沙漠能量補充品。",
+                photo: "<b>攝影特搜：</b>下午 5 點左右爬上綠洲西側最高的沙丘，可以捕捉到綠洲完全被金光籠罩的絕美全景。"
+            }
+        }
+    ]
+},
+{
+    day: 4,
+    date: "10/11",
+    title: "納茲卡線 | 寫在大地上的天文曆法",
+    location: "Nazca / Paracas",
+    weather: "15-28°C 豔陽高照",
+    outfit: "短袖 + 強力防曬",
+    items: [
+        {
+            type: "景點",
+            title: "納茲卡線 Nazca Lines",
+            desc: "從飛機俯瞰巨大的蜂鳥、猴子與外星人圖騰。",
+            longDesc: "導遊碎碎念：起飛前 2 小時千萬別吃太飽，小飛機的側傾轉向非常考驗耐力！",
+            extras: {
+                wiki: "<b>硬核科學：</b>線條能維持 2000 年是因為當地無風無雨。古人移開表層深色礫石露出下方淺色沙土，因土壤富含石膏，受潮後會硬化形成天然保護層。",
+                food: "<b>必喝推薦：</b>當地的 Pisco 酒莊。記住 Pisco 的硬核規定：蒸餾後不准加水、不准加糖、不准入橡木桶，這才是純粹的靈魂。",
+                photo: "<b>攝影特搜：</b>相機快門請設在 1/1000 秒以上。重點關注「蜂鳥」圖案，那是納茲卡文明與地下水源的象徵標誌。"
+            }
+        }
+    ]
+},
+{
+    day: 5,
+    date: "10/12",
+    title: "飛往高原 | 進入聖谷門戶",
+    location: "Cusco / Urubamba",
+    weather: "8-22°C 早晚溫差大",
+    outfit: "洋蔥式穿法 + 圍巾",
+    items: [
+        {
+            type: "美食",
+            title: "Pachamanca 大地之鍋",
+            desc: "聖谷最古老的石坑烹飪儀式。",
+            longDesc: "導遊碎碎念：看著廚師把食物埋進土裡、覆蓋燙石，那種帶著泥土香氣的原始美味非常有儀式感。",
+            extras: {
+                wiki: "<b>印加百科：</b>Pachamanca 在克丘亞語中意為「大地的胃」。這不僅是煮食，更是對大地之母 (Pachamama) 的祭祀儀式。",
+                food: "<b>推薦餐廳：El Albergue (Ollantaytambo站)</b>，他們有自營養機農場，食材從土裡到餐桌不到 100 公尺。",
+                photo: "<b>攝影特搜：</b>開爐那一刻冒出的陣陣白煙，搭配遠方的安地斯山脈，是極具視覺張力的寫實大片。"
+            }
+        }
+    ]
+},
+{
+    day: 6,
+    date: "10/13",
+    title: "聖谷深度遊 | 印加人的實驗室",
+    location: "Sacred Valley",
+    weather: "9-21°C 晴時多雲",
+    outfit: "登山裝備 + 太陽眼鏡",
+    items: [
+        {
+            type: "景點",
+            title: "馬拉斯鹽田 Maras",
+            desc: "三千多座橫跨山谷的古老鹽池。",
+            longDesc: "導遊碎碎念：這裡產出的玫瑰鹽是頂級廚師的最愛。記住，這裡的鹽水渠道是 500 年前印加人精確設計的。",
+            extras: {
+                wiki: "<b>工程百科：</b>利用含礦物質的溫泉水引流。印加人精確計算了每分鐘流速，分配到 3000 多個池子，展現了高超的水利分配學。",
+                food: "<b>必買手信：</b>玫瑰鹽巧克力、或是聖谷限定的香草食鹽。這是在地最純淨的味道。",
+                photo: "<b>攝影特搜：</b>下午 2-3 點光線斜射時，白色的鹽池會呈現出如鱗片般的層次感，非常壯觀。"
+            }
+        }
+    ]
+},
+ 
    {
        day: 7, date: "10/14", title: "聖谷文化與 Pachamanca (Sacred Valley Culture)", weather: "20°C 晴", location: "Sacred Valley / Cusco",
        items: [
