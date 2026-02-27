@@ -660,6 +660,31 @@
        ]
    }
 ];
+    // 這份清單方便你一次對照與修改，不用進去 itineraryData 裡面翻
+const outfitList = {
+   1: "輕便長袖 + 薄外套 (晚間微涼)",
+   2: "春裝。步行鞋 + 長袖襯衫 + 針織衫",
+   3: "夏裝 + 防風外套 (沙漠衝沙風大)",
+   4: "輕便夏裝 + 帽子 (海島風大需外套)",
+   5: "洋蔥式。薄發熱衣 + 休閒長袖 + 輕羽絨",
+   6: "多層次。清晨冷、爬山熱，隨身帶外套",
+   7: "棉質長袖 + 抓絨外套。墨鏡帽子必備",
+   8: "極地裝備！發熱衣+毛衣+防風外套+毛帽",
+   9: "休閒保暖。觀景台風大需外套",
+   10: "防風保暖。湖面紫外線強，穿長袖防曬",
+   11: "舒適休閒。跨國拉車穿著寬鬆保暖為主",
+   12: "冬裝。鹽湖中午反光強，夕陽後極冷",
+   13: "保暖休閒。帶泳衣(SPA)，早晚穿厚外套",
+   14: "洋蔥式。好走的鞋 + 多層穿法",
+   15: "熱帶雨林。透氣長袖長褲(防蚊)",
+   16: "排汗長袖長褲。建議穿防滑運動鞋",
+   17: "輕便透氣。建議隨身攜帶輕便雨衣",
+   18: "春裝。利馬海邊較陰涼，薄外套搭配長袖"
+};
+// 【自動合併程式碼】這段會幫你把衣服建議塞進去每一天
+itineraryData.forEach(day => {
+   day.outfit = outfitList[day.day] || "請參考天氣穿著";
+});
    // 2. 切換「行程/交通/準備」分頁的功能
    function showTab(tabId, el) {
        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -669,10 +694,10 @@
        window.scrollTo(0,0);
    }
    // 3. 核心功能：渲染每一天的卡片
-   function renderDay(dayIndex) {
+  function renderDay(dayIndex) {
    const day = itineraryData.find(d => d.day === dayIndex);
    if(!day) return;
-   // 這裡新增了日期顯示大標題
+   // 整合日期大標題、天氣與穿著建議
    let html = `
 <div style="text-align:center; margin-bottom:15px;">
 <h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
@@ -680,9 +705,14 @@
 </h2>
 <div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
 </div>
-<div class="weather-info">
+<div class="weather-info" style="margin-bottom: 8px;">
 <span>📍 ${day.location}</span>
 <span>🌡️ ${day.weather}</span>
+</div>
+<div style="text-align:center; margin-bottom:20px;">
+<div style="display:inline-block; font-size:11px; background:rgba(140, 123, 104, 0.08); padding:5px 12px; border-radius:15px; color:#7A6A53; border: 1px solid rgba(140, 123, 104, 0.15); font-weight:500;">
+               👕 穿著建議：${day.outfit}
+</div>
 </div>
    `;
    day.items.forEach((item, idx) => {
