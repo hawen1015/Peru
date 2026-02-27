@@ -600,81 +600,125 @@
        }
    ]
 },
- 
-   {
-       day: 7, date: "10/14", title: "聖谷文化與 Pachamanca (Sacred Valley Culture)", weather: "20°C 晴", location: "Sacred Valley / Cusco",
-       items: [
-           {
-               type: "景點", title: "奧揚泰坦博遺址 (Ollantaytambo)",
-               desc: "10:00 探訪印加最後的要塞。",
-               longDesc: "這裡是印加人當年對抗西班牙人的重要堡壘。巨大的階梯形梯田非常壯觀，爬上去後可以俯瞰整個山谷與小鎮的街道佈局。"
-           },
-           {
-               type: "美食", title: "印加大地之鍋 (Pachamanca)",
-               desc: "12:00 傳統地下石燒料理。",
-               longDesc: "🍴 導遊介紹：Pachamanca 在克丘亞語中意為『大地的鍋子』。這是利用高溫石頭埋入地下悶熟農產品與肉類的傳統方式，不僅是料理，更是一場對大地之母的祭祀儀式！",
-               tags: [{text: "傳統美食", color: "var(--tag-food)"}]
-           },
-           {
-               type: "交通", title: "前往庫斯科 (Drive to Cusco)",
-               transport: { from: "Sacred Valley", to: "Cusco", mode: "🚗", time: "2h", mapUrl: "https://www.google.com/maps/dir/Cusco/Sacsayhuaman" },
-               desc: "下午驅車前往古都庫斯科。",
-               longDesc: "一路上風景如畫，我們會進入海拔 3,400 公尺的庫斯科。今晚入住 Casa Andina Premium，這是一家極具當地風格的飯店。"
-           },
-           { type: "住宿", title: "5★ Casa Andina Premium Cusco", desc: "入住飯店休息。" }
-       ]
-   },
-   {
-       day: 8, date: "10/15", title: "彩虹山挑戰 (Vinicunca Rainbow Mountain)", weather: "12°C 晴/冷", location: "Rainbow Mountain",
-       items: [
-           {
-               type: "景點", title: "彩虹山 (Vinicunca)",
-               transport: { from: "Cusco", to: "Vinicunca", mode: "🚗", time: "3.5h", mapUrl: "https://www.google.com/maps/dir/Cusco/Puno" },
-               desc: "海拔 5,200m 的色彩奇蹟。",
-               longDesc: "🎧 導遊碎碎念：這天需要 4:00 出發。彩虹山的美麗源自於礦物質的層次堆積。您可以選擇步行 (挑戰自我)、騎馬或摩托車 (省體力)。**重要建議：** 這裡海拔極高且風大，防寒與含氧量要注意，慢慢走才是最快的路！",
-               tags: [{text: "高海拔挑戰", color: "var(--tag-buy)"}]
-           },
-           { type: "住宿", title: "5★ Casa Andina Premium Cusco", desc: "18:00 返回飯店。" }
-       ]
-   },
-   {
-       day: 9, date: "10/16", title: "高原全景火車 (PeruRail Titicaca Train)", weather: "15°C 晴", location: "Cusco to Puno",
-       items: [
-           {
-               type: "體驗", title: "的的喀喀湖全景火車",
-               transport: { from: "Cusco", to: "Puno", mode: "🚂", time: "10.5h", mapUrl: "https://www.google.com/maps/dir/Cusco/Puno" },
-               desc: "07:50 - 18:20 橫跨安地斯高原。",
-               longDesc: "🍴 導遊介紹：這段路程雖長，但絕對舒適。車費包含精緻午餐與下午茶。火車設有露天觀景車廂，您可以一邊吹著高山涼風，一邊拍攝羊駝與壯麗的荒原景觀。",
-               tags: [{text: "景觀之旅", color: "var(--tag-story)"}]
-           },
-           { type: "住宿", title: "5★ GHL Hotel Puno", desc: "的的喀喀湖畔飯店。" }
-       ]
-   },
-   {
-       day: 10, date: "10/17", title: "的的喀喀湖探險 (Lake Titicaca Tour)", weather: "14°C 晴", location: "Lake Titicaca",
-       items: [
-           {
-               type: "景點", title: "烏羅斯浮島 & 塔奇萊島 (Uros & Taquile)",
-               transport: { from: "Puno Port", to: "Islands", mode: "🚤", time: "7h (含船程)", mapUrl: "https://www.google.com/maps/search/Uros+Floating+Islands" },
-               desc: "08:00 - 15:00 湖泊深度遊。",
-               longDesc: "🎧 導遊碎碎念：這是世界最高可通航湖泊。我們將拜訪由蘆葦編織的 **Uros 浮島**，體驗踩在「水上床墊」的感覺；接著前往 **Taquile 島**，那裡的男性以編織工藝聞名，被列為非物質遺產。午餐將享用湖區鮮魚料理！",
-               tags: [{text: "湖泊文化", color: "var(--tag-story)"}]
-           },
-           { type: "住宿", title: "5★ GHL Hotel Puno", desc: "湖畔美景飯店。" }
-       ]
-   },
-   {
-       day: 11, date: "10/18", title: "跨越國界前往拉巴斯 (Puno to La Paz)", weather: "13°C 晴", location: "La Paz",
-       items: [
-           {
-               type: "交通", title: "跨國私家車 (Border Crossing)",
-               transport: { from: "Puno (Peru)", to: "La Paz (Bolivia)", mode: "🚗", time: "5.5h - 6h", mapUrl: "https://www.google.com/maps/dir/Puno/La+Paz" },
-               desc: "09:00 飯店出發，前往玻利維亞首都。",
-               longDesc: "🎧 導遊碎碎念：今天我們要離開秘魯進入玻利維亞。過海關時請備妥護照與簽證（或落地簽文件）。拉巴斯 (La Paz) 是世界海拔最高的首都，地形像個大碗公，景色非常震撼！今晚入住設計感十足的 Atix Hotel。"
-           },
-           { type: "住宿", title: "5★ Atix Hotel", desc: "拉巴斯頂級設計飯店。" }
-       ]
-   },
+ {
+   day: 7,
+   date: "10/14",
+   title: "軍事堡壘與大地之胃 | 回歸庫斯科",
+   location: "Ollantaytambo / Cusco",
+   weather: "8-20°C 晴朗",
+   hotel: "Casa Andina Premium Cusco",
+   outfit: "輕便登山服 + 太陽眼鏡",
+   items: [
+       {
+           type: "景點",
+           title: "歐蘭太坦波 (Ollantaytambo) 遺址",
+           desc: "10:00 探訪印加唯一保留至今的活城市。",
+           longDesc: "導遊碎碎念：這裡曾是印加反抗軍的臨時首都。你會看到巨大的六塊石壁，每塊重達 50 噸，很難想像印加人如何將它們從對面山頭運過河並推上陡峭的高地。",
+           extras: {
+               wiki: "<b>🏛️ 硬核軍事百科：</b>這是印加人少數在對抗西班牙人時取得勝利的戰場。其防禦塔設計利用了山谷的峽口地形進行伏擊。注意觀察對面山壁上的<b>維拉科查 (Viracocha) 面孔</b>與糧倉，那種通風設計能讓穀物自然乾燥保存數年。",
+               food: "<b>🍽️ 舌尖南美：Pachamanca 大地之鍋。</b> 12:00 體驗這項超過兩千年的烹飪儀式。食材包括五種馬鈴薯、羊羔肉、草泥馬肉，用燒紅的火山石埋入土中燜熟。這種帶著泥土與香草 (Huacatay) 氣息的原始美味，是安地斯人對大地母親最深的敬意。",
+               photo: "<b>📸 攝影點：</b>爬到遺址高處，俯瞰棋盤狀的歐蘭太坦波古城，這裡是研究印加都市計畫最完美的視角。"
+           }
+       },
+       {
+           type: "交通",
+           title: "驅車前往庫斯科市中心",
+           desc: "從聖谷緩步攀升，回到海拔 3,400m 的印加帝國首都。",
+           transport: { from: "🏰 Ollantaytambo", to: "🏨 Casa Andina", mode: "🚐 專車", time: "約 2 小時" },
+           longDesc: "導遊碎碎念：離開溫暖的聖谷回到庫斯科，海拔會再次爬升。今晚入住 Casa Andina Premium，這是一座修復完美的 17 世紀莊園飯店，非常有氛圍。"
+       }
+   ]
+},
+{
+   day: 8,
+   date: "10/15",
+   title: "彩虹山挑戰 | 地球的礦物調色盤",
+   location: "Vinicunca (Rainbow Mountain)",
+   weather: "-2 - 15°C 極寒、大風",
+   hotel: "Casa Andina Premium Cusco",
+   outfit: "保暖內層 + 刷毛中層 + 防風厚外套 + 毛帽",
+   items: [
+       {
+           type: "景點",
+           title: "維尼昆卡彩虹山 (Vinicunca)",
+           desc: "海拔 5,200m 的生理與視覺極限挑戰。",
+           transport: { from: "🏨 Cusco", to: "🌈 Rainbow Mt", mode: "🚐 專車", time: "單程 3 小時" },
+           longDesc: "導遊碎碎念：04:00 出發是為了避開下午的山頂雲霧。雖然可以騎馬或摩托車減輕體力消耗，但最後登頂那段坡路仍需靠意志力前進。氧氣瓶與古柯葉是必備品。",
+           extras: {
+               wiki: "<b>🏛️ 地質百科：</b>為什麼是彩虹色？這不是染色，而是不同礦物的沉積：紅色代表<b>氧化鐵</b>、黃色代表<b>硫化鐵</b>、紫色則是<b>氧化錳</b>。由於全球暖化導致山頂萬年積雪消融，這片奇景直到 2015 年才被世人發現。",
+               food: "<b>🍽️ 能量補給：</b>今天包含午餐。在極高海拔，身體消化會變慢，建議多攝取碳水化合物。飯店提供的餐盒通常會有香蕉與燕麥條，這對預防高山症伴隨的低血糖很有幫助。",
+               photo: "<b>📸 攝影祕訣：</b>彩虹山最美的角度在山頂右側的斜坡。若有雲層飄過，等待陽光灑在礦物層上的那一秒，顏色會瞬間從灰暗跳躍至鮮豔。建議使用 CPL 偏光鏡消除高山反射。"
+           }
+       }
+   ]
+},
+{
+   day: 9,
+   date: "10/16",
+   title: "安地斯高原快鐵 | 橫跨阿爾蒂普拉諾",
+   location: "Cusco to Puno",
+   weather: "5-18°C 晴朗多風",
+   hotel: "GHL Hotel Puno",
+   outfit: "薄長袖 + 舒適披肩",
+   items: [
+       {
+           type: "交通",
+           title: "PeruRail Titicaca Train",
+           desc: "07:50 - 18:20 世界上最迷人的景觀鐵道之一。",
+           transport: { from: "🚉 Cusco", to: "💧 Puno", mode: "🚂 觀光火車", time: "10.5 小時" },
+           longDesc: "導遊碎碎念：這不是單純的移動，而是一場流動的饗宴。火車會經過海拔 4,313m 的 La Raya 最高點，那裡風景最壯闊。車上包含全套午餐與下午茶。",
+           extras: {
+               wiki: "<b>🏛️ 高原地理百科：</b>火車穿越的是<b>阿爾蒂普拉諾高原 (Altiplano)</b>，這是僅次於青藏高原的世界第二大高台。窗外一望無際的黃色草場是安地斯針草 (Ichu)，你會看到大量成群的羊駝與秘魯特有的圓形泥屋建築。",
+               food: "<b>🍽️ 火車饗宴：</b>午餐推薦嘗試火車主廚特製的<b>高原羊肉</b>。下午茶時間更有專業調酒師展示如何調製完美的 Pisco Sour，配上當地特有的紫色玉米甜點。",
+               photo: "<b>📸 攝影特搜：</b>整列火車最精華在<b>車尾的開放式觀景車廂</b>。建議在火車慢速通過高原村莊時，拍攝鐵道延伸至雪山盡頭的震撼畫面。"
+           }
+       }
+   ]
+},
+{
+   day: 10,
+   date: "10/17",
+   title: "的的喀喀湖 | 消失的水上文明",
+   location: "Lake Titicaca",
+   weather: "6-19°C 陽光極強",
+   hotel: "GHL Hotel Puno",
+   outfit: "強效防曬 + 帽子 + 薄外套",
+   items: [
+       {
+           type: "景點",
+           title: "烏羅斯浮島 (Uros) 與 塔奇勒島 (Taquile)",
+           desc: "08:00 - 15:00 探訪全球海拔最高的可航行湖泊。",
+           longDesc: "導遊碎碎念：這是我最喜歡的一天。烏羅斯人用蘆葦造島，踏上去的感覺像是在水床上行走；而塔奇勒島則是『男人編織』的奇特國度。",
+           extras: {
+               wiki: "<b>🏛️ 水上建築黑科技：</b><br>• <b>Uros 蘆葦島：</b>利用當地生長的<b>托托拉蘆葦 (Totora)</b> 層層堆疊。最底層是泥塊與植物根部，島嶼需要每三個月補充一次新鮮蘆葦，否則會從底部腐爛。甚至連房屋、床鋪、船隻都是蘆葦做的。<br>• <b>Taquile 織品文化：</b>這裡被列為 UNESCO 文化遺產。島上男性從小學編織，透過帽子的顏色（紅白相間或純紅）就能一眼看出這名男子的婚姻狀態與社會地位。",
+               food: "<b>🍽️ 必吃推薦：烤鱒魚 (Trucha a la Plancha)</b>。的的喀喀湖盛產大型鱒魚，肉質呈粉紅色，鮮美扎實。搭配炸馬鈴薯與沙拉，是在島上最棒的午餐。",
+               photo: "<b>📸 攝影點：</b>烏羅斯島色彩極鮮豔（金黃草色與當地人的彩色服飾），適合拍攝強烈對比的人文大片。在塔奇勒島，可以捕捉老男人在廣場專心織毛線的超現實畫面。"
+           }
+       }
+   ]
+},
+{
+   day: 11,
+   date: "10/18",
+   title: "跨越國境 | 前往玻利維亞門戶",
+   location: "Puno / La Paz",
+   weather: "5-17°C 多雲時晴",
+   hotel: "Atix Hotel (La Paz)",
+   outfit: "薄長袖 + 容易穿脫的外套",
+   items: [
+       {
+           type: "交通",
+           title: "普諾至拉巴斯 跨國專車",
+           desc: "09:00 出發，跨越邊境進入玻利維亞。",
+           transport: { from: "🇵🇪 Puno", to: "🇧🇴 La Paz", mode: "🚐 跨國專車", time: "約 5 小時" },
+           longDesc: "導遊碎碎念：今日重點在於<b>邊境通關</b>。請確保護照內已備妥玻利維亞簽證。兩國邊境有一段需要步行跨過牌樓，感覺非常神聖。抵達拉巴斯後，入住極具現代設計感的 Atix Hotel。",
+           extras: {
+               wiki: "<b>🏛️ 歷史百科：</b>拉巴斯是世界最高的行政首都（平均 3,600m）。整座城市坐落於一個巨大的火山口盆地中。從高原邊緣看下去，密密麻麻的紅磚房順著山坡傾瀉而下，視覺衝擊力極強。",
+               photo: "<b>📸 攝影點：</b>進入拉巴斯盆地前的<b> El Alto 觀景點</b>。這是全球最壯觀的城市景觀之一，你可以拍到遠處海拔 6,400m 的伊利馬尼雪山 (Illimani) 守護著整座繁華盆地的壯麗景象。"
+           }
+       }
+   ]
+},
    {
        day: 12, date: "10/19", title: "天空之鏡：純白世界 (Salar de Uyuni)", weather: "12°C 晴", location: "Uyuni",
        items: [
