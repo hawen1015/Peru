@@ -325,29 +325,30 @@
 
 <div id="flights" class="tab-content">
 <div style="padding-top: 10px;">
-<h2 style="margin-bottom: 15px;">Route & Transport / 路線與交通</h2>
+  <h2 style="margin-bottom: 15px;">Route & Transport / 路線與交通</h2>
 <div class="map-card" style="background: var(--card-bg); border-radius: 18px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.03);">
 <div style="text-align: center; margin-bottom: 20px;">
-<div class="card-type" style="margin-bottom: 10px;">Travel Route Map</div>
+  <div class="card-type" style="margin-bottom: 10px;">Travel Route Map</div>
 <svg class="map-svg" viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
 <g fill="var(--accent-color)" font-family="Noto Sans TC">
-<circle cx="80" cy="150" r="6" /> <text x="35" y="145" font-size="12" font-weight="bold">利馬 Lima</text>
-<circle cx="100" cy="220" r="4" /> <text x="50" y="240" font-size="10">帕拉卡斯 Paracas</text>
-<circle cx="185" cy="210" r="6" /> <text x="175" y="195" font-size="12" font-weight="bold">聖谷/馬丘</text>
-<circle cx="230" cy="290" r="5" /> <text x="240" y="295" font-size="12">普諾 Puno</text>
-<circle cx="290" cy="330" r="5" /> <text x="300" y="335" font-size="12">拉巴斯 La Paz</text>
-<circle cx="270" cy="430" r="6" /> <text x="280" y="445" font-size="12" font-weight="bold">烏尤尼 Uyuni</text>
-<circle cx="260" cy="100" r="5" /> <text x="270" y="105" font-size="12">亞馬遜 Amazon</text>
+  <circle cx="80" cy="150" r="6" /> <text x="35" y="145" font-size="12" font-weight="bold">利馬 Lima</text>
+  <circle cx="100" cy="220" r="4" /> <text x="50" y="240" font-size="10">帕拉卡斯 Paracas</text>
+  <circle cx="185" cy="210" r="6" /> <text x="175" y="195" font-size="12" font-weight="bold">聖谷/馬丘</text>
+  <circle cx="230" cy="290" r="5" /> <text x="240" y="295" font-size="12">普諾 Puno</text>
+  <circle cx="290" cy="330" r="5" /> <text x="300" y="335" font-size="12">拉巴斯 La Paz</text>
+  <circle cx="270" cy="430" r="6" /> <text x="280" y="445" font-size="12" font-weight="bold">烏尤尼 Uyuni</text>
+  <circle cx="260" cy="100" r="5" /> <text x="270" y="105" font-size="12">亞馬遜 Amazon</text>
 </g>
 <g fill="none" stroke-width="1.8">
-<path d="M80 150 L100 220" stroke="#8C7B68" stroke-dasharray="5,3" />
-<path d="M85 155 Q135 160 185 210" stroke="#7A6A53" />
-<path d="M190 215 L230 290" stroke="#8C7B68" stroke-dasharray="2,2" />
-<path d="M235 295 L290 330" stroke="#8C7B68" stroke-dasharray="5,3" />
-<path d="M290 335 L275 430" stroke="#7A6A53" />
-<path d="M85 145 Q160 80 260 100" stroke="#7A6A53" />
+  <path d="M80 150 L100 220" stroke="#8C7B68" stroke-dasharray="5,3" />
+  <path d="M85 155 Q135 160 185 210" stroke="#7A6A53" />
+  <path d="M190 215 L230 290" stroke="#8C7B68" stroke-dasharray="2,2" />
+  <path d="M235 295 L290 330" stroke="#8C7B68" stroke-dasharray="5,3" />
+  <path d="M290 335 L275 430" stroke="#7A6A53" />
+  <path d="M85 145 Q160 80 260 100" stroke="#7A6A53" />
 </g>
 </svg>
+
 <div class="map-legend" style="display: flex; justify-content: center; gap: 15px; font-size: 11px; color: #999; margin-top: 10px;">
 <span>✈️ 班機</span><span>🚗 車程</span><span>🚂 火車</span>
 </div>
@@ -394,7 +395,9 @@
 </table>
 </div>
 </div>
-</div> </div> <div id="packing" class="tab-content">
+</div> 
+</div> 
+<div id="packing" class="tab-content">
 <div style="padding-top: 10px;">
 <h2 style="margin-bottom: 15px;">Preparation / 行前準備</h2>
 <div class="card" style="background: #FFF5F5; border: 1px solid #FFDADA; border-radius: 12px; padding: 15px; margin-bottom: 20px;">
@@ -449,18 +452,48 @@
 <div class="check-item"><input type="checkbox"> 暖暖包 (彩虹山凌晨與鹽湖夕陽)</div>
 <div class="check-item"><input type="checkbox"> 偏光墨鏡 (鹽湖反射強光救星)</div>
 <div class="check-item"><input type="checkbox"> U 型頸枕 (Day 9 長途火車救星)</div>
+
+<div id="translate" class="tab-content" style="display: none; padding: 20px; height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+<div style="text-align: center; margin-bottom: 40px;">
+<h2 style="font-size: 24px; color: #333; margin-bottom: 10px;">即時翻譯工具</h2>
+<p style="font-size: 14px; color: #888;">點擊下方按鈕將自動開啟 Google 翻譯</p>
+</div>
+<a href="googletranslate://?sl=en&tl=zh-TW&op=translate"
+      style="display: flex; align-items: center; background: #4285f4; color: white; padding: 30px; border-radius: 24px; text-decoration: none; margin-bottom: 25px; box-shadow: 0 8px 16px rgba(66,133,244,0.25);">
+<span style="font-size: 48px; margin-right: 20px;">🎤</span>
+<div style="text-align: left;">
+<div style="font-size: 20px; font-weight: bold;">聽導遊講話</div>
+<div style="font-size: 13px; opacity: 0.9; margin-top: 4px;">預設：英文 ➔ 中文語音</div>
+</div>
+</a>
+<a href="googletranslate://?sl=es&tl=zh-TW&op=translate"
+      style="display: flex; align-items: center; background: #34a853; color: white; padding: 30px; border-radius: 24px; text-decoration: none; box-shadow: 0 8px 16px rgba(52,168,83,0.25);">
+<span style="font-size: 48px; margin-right: 20px;">📸</span>
+<div style="text-align: left;">
+<div style="font-size: 20px; font-weight: bold;">看菜單/路牌</div>
+<div style="font-size: 13px; opacity: 0.9; margin-top: 4px;">預設：西文 ➔ 中文拍照</div>
+</div>
+</a>
+<p style="text-align: center; color: #bbb; font-size: 12px; margin-top: 50px;">
+       ※ 請確保手機已安裝 Google 翻譯 App
+</p>
+</div>
 </div>
 </div> </div>  </div> </div>  </div> </div>
+
 <nav>
-    <button class="nav-item active" onclick="showTab('itinerary', this)">
-        <span class="nav-icon">🗓️</span>行程
-    </button>
-    <button class="nav-item" onclick="showTab('flights', this)">
-        <span class="nav-icon">✈️</span>交通
-    </button>
-    <button class="nav-item" onclick="showTab('packing', this)">
-        <span class="nav-icon">🧳</span>準備
-    </button>
+<button class="nav-item active" onclick="showTab('itinerary', this)">
+<span class="nav-icon">🗓️</span>行程
+</button>
+<button class="nav-item" onclick="showTab('flights', this)">
+<span class="nav-icon">✈️</span>交通
+</button>
+<button class="nav-item" onclick="showTab('packing', this)">
+<span class="nav-icon">🎒</span>準備
+</button>
+<button class="nav-item" onclick="showTab('translate', this)">
+<span class="nav-icon">🗣️</span>翻譯
+</button>
 </nav>
 
 <script>
