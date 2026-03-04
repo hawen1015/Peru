@@ -503,7 +503,7 @@
    location: "Lima",
    weather: "17-22°C 霧氣微涼",
    hotel: "Pullman Lima Miraflores",
-        hotelUrl: "https://maps.app.goo.gl/u5ZCxiXJBZEREOgbeDwQm1M",
+        hotelUrl: "https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores",
    outfit: "輕便服裝 + 防風外套",
    items: [
        {
@@ -1007,8 +1007,11 @@ function renderDay(dayIndex) {
 <span>🌡️ ${day.weather}</span>
    ${day.hotel ? `
 <span style="font-weight: 500; color: var(--accent-color);">
-       🏨 <a href="${day.hotelUrl || '#'}" target="_blank" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">
-           ${day.hotel}
+   🏨 <a href="${day.hotelUrl}"
+         target="_blank"
+         rel="noopener noreferrer"
+         style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">
+       ${day.hotel}
 </a>
 </span>` : ''}
 </div>
