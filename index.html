@@ -147,17 +147,7 @@
         .info-section h3 { font-size: 16px; margin: 25px 0 15px; color: var(--accent-color); }
         .info-row { display: flex; justify-content: space-between; border-bottom: 1px solid #EEE; padding: 14px 0; font-size: 14px; }
         .info-label { color: var(--text-sub); }
-    /* 景點圖片樣式 */
-   .card-img {
-       width: calc(100% + 44px); /* 讓圖片左右貼邊，抵銷 card 的 padding */
-       margin-left: -22px;
-       margin-top: -22px;
-       height: 200px;
-       object-fit: cover;
-       border-radius: 18px 18px 0 0; /* 只有上方圓角 */
-       margin-bottom: 15px;
-       display: block;
-   }
+   
    /* 展開介紹的容器：預設高度為 0 (隱藏) */
    .details-content {
        max-height: 0;
@@ -316,6 +306,22 @@
    from { opacity: 0; transform: translateY(-5px); }
    to { opacity: 1; transform: translateY(0); }
 }
+/* 讓地圖線條根據交通工具變換樣式 */
+.path-flight {
+   stroke: #A0522D;
+   stroke-dasharray: 6, 4; /* 虛線代表飛機 */
+   stroke-width: 2;
+}
+.path-train {
+   stroke: #8C7B68;
+   stroke-dasharray: 2, 2; /* 點線代表火車 */
+   stroke-width: 2;
+}
+.path-car {
+   stroke: #7A6A53;
+   stroke-dasharray: 0;    /* 實線代表開車 */
+   stroke-width: 2;
+}   
     </style>
 </head>
 <body>
@@ -1036,7 +1042,7 @@ function renderDay(dayIndex) {
    day.items.forEach((item, idx) => {
        const itemId = `item-${dayIndex}-${idx}`;
        let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
-       let imgHtml = item.img ? `<img src="${item.img}" class="card-img">` : '';
+       let imgHtml = '';
        let transportHtml = item.transport ? `
 <div class="route-path">
 <div class="route-step">
@@ -1044,11 +1050,10 @@ function renderDay(dayIndex) {
 <div class="route-line"><span class="route-time">${item.transport.mode} ${item.transport.time}</span></div>
 <span>🏁 ${item.transport.to}</span>
 </div>
-<a href="${item.transport.mapUrl}" target="_blank" class="nav-btn">🧭 開啟 Google Map 導航</a>
+<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.transport.to)}" target="_blank" class="nav-btn">🧭 開啟 Google Map 導航</a>
 </div>` : '';
        html += `
 <div class="card">
-               ${imgHtml}
 <div class="card-type">${item.type}</div>
 <div class="card-title">${item.title}</div>
                ${transportHtml}
