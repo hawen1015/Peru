@@ -322,6 +322,59 @@
    stroke-dasharray: 0;    /* 實線代表開車 */
    stroke-width: 2;
 }   
+/* 路徑小地圖樣式 */
+.mini-route-map {
+    background: #fdfcf9;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0 20px 0;
+}
+.route-timeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px 0;
+}
+.route-node {
+    text-align: center;
+    flex: 1;
+    z-index: 2;
+}
+.node-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    margin: 0 auto 5px;
+}
+.node-label {
+    font-size: 11px;
+    color: #555;
+    font-weight: 500;
+}
+.route-link {
+    position: absolute;
+    top: 14px;
+    height: 2px;
+    background: #ddd;
+    z-index: 1;
+}
+.time-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 2px 6px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    font-size: 10px;
+    color: var(--accent-color);
+    white-space: nowrap;
+}
+    
     </style>
 </head>
 <body>
@@ -518,6 +571,9 @@
    hotel: "Pullman Lima Miraflores",
         hotelUrl: "https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores",
    outfit: "輕便服裝 + 防風外套",
+   routeMap: [
+      { from: "利馬機場 (LIM)", to: "飯店", time: "45-60 min", mode: "🚗 開車" }
+    ],
    items: [
        {
            type: "交通",
@@ -542,7 +598,12 @@
    hotel: "Pullman Lima Miraflores",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores",
    outfit: "短袖 + 舒適走路鞋",
-   items: [
+  routeMap: [
+      { from: "飯店", to: "舊城區", time: "30 min", mode: "🚗" },
+      { from: "聖馬丁廣場", to: "人骨教堂", time: "10 min", mode: "🚗" },
+      { from: "舊城區", to: "Huaca Pucllana", time: "25 min", mode: "🚗" }
+    ],
+    items: [
        {
            type: "景點",
            title: "舊城區探險 & Huaca Pucllana",
@@ -565,6 +626,11 @@
    hotel: "The Legend Paracas",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=The+Legend+Paracas+Resort",
    outfit: "短袖 + 防沙面罩 + 太陽眼鏡",
+routeMap: [
+      { from: "利馬", to: "Paracas", time: "3.5 hr", mode: "🚗" },
+      { from: "Paracas", to: "Huacachina", time: "1.5 hr", mode: "🚗" }
+    ],
+    
    items: [
        {
            type: "交通",
@@ -589,7 +655,12 @@
    hotel: "Pullman Lima Miraflores",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores",
    outfit: "短袖 + 防曬 + 輕薄外衣",
-   items: [
+  routeMap: [
+      { from: "Paracas", to: "鳥島碼頭", time: "10 min", mode: "🚗" },
+      { from: "機場", to: "納茲卡線", time: "30 min", mode: "✈️" },
+      { from: "Paracas", to: "利馬", time: "4 hr", mode: "🚗" }
+    ],
+    items: [
        {
            type: "景點",
            title: "鳥島船行 & 納茲卡線觀光飛行",
@@ -613,7 +684,11 @@
    hotel: "Sierra Sacred Valley",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Sierra+Sacred+Valley",
    outfit: "薄長袖 + 圍巾 + 防曬背心",
-   items: [
+   routeMap: [
+      { from: "利馬機場", to: "庫斯科 (CUZ)", time: "1.5 hr", mode: "✈️" },
+      { from: "機場", to: "聖谷飯店", time: "1.5 hr", mode: "🚗" }
+    ],
+    items: [
        {
            type: "交通",
            title: "利馬飛往庫斯科 (LA2609)",
@@ -637,7 +712,12 @@
    hotel: "Sierra Sacred Valley",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Sierra+Sacred+Valley",
    outfit: "防滑登山鞋 + 透氣長袖 + 遮陽帽",
-   items: [
+   routeMap: [
+      { from: "飯店", to: "火車站", time: "20 min", mode: "🚗" },
+      { from: "熱水鎮", to: "馬丘比丘", time: "25 min", mode: "🚌" },
+      { from: "熱水鎮", to: "回程", time: "1.5 hr", mode: "🚂" }
+    ],
+    items: [
        {
            type: "景點",
            title: "馬丘比丘 2 號線 (Circuit 2)：宇宙與城市的鳥瞰",
@@ -682,7 +762,11 @@
    hotel: "Casa Andina Premium Cusco",
      hotelUrl: "https://www.google.com/maps/search/?api=1&query=Casa+Andina+Premium+Cusco",
    outfit: "輕便登山服 + 太陽眼鏡",
-   items: [
+   routeMap: [
+      { from: "聖谷飯店", to: "Ollantaytambo", time: "15 min", mode: "🚗" },
+      { from: "聖谷", to: "庫斯科市區", time: "2 hr", mode: "🚗" }
+    ],
+     items: [
        {
            type: "景點",
            title: "歐蘭太坦波 (Ollantaytambo) 遺址",
@@ -712,7 +796,11 @@
    hotel: "Casa Andina Premium Cusco",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Casa+Andina+Premium+Cusco",
    outfit: "保暖內層 + 刷毛中層 + 防風厚外套 + 毛帽",
-   items: [
+   routeMap: [
+      { from: "飯店", to: "彩虹山", time: "3 hr", mode: "🚗" },
+      { from: "彩虹山", to: "飯店", time: "3 hr", mode: "🚗" }
+    ],
+    items: [
        {
            type: "景點",
            title: "維尼昆卡彩虹山 (Vinicunca)",
@@ -736,7 +824,10 @@
    hotel: "GHL Hotel Puno",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=GHL+Hotel+Lago+Titicaca",
    outfit: "薄長袖 + 舒適披肩",
-   items: [
+  routeMap: [
+      { from: "庫斯科", to: "普諾 (Puno)", time: "10.5 hr", mode: "🚂" }
+    ],
+    items: [
        {
            type: "交通",
            title: "PeruRail Titicaca Train",
@@ -760,7 +851,10 @@
    hotel: "GHL Hotel Puno",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=GHL+Hotel+Lago+Titicaca",
    outfit: "強效防曬 + 帽子 + 薄外套",
-   items: [
+   routeMap: [
+      { from: "碼頭", to: "浮島探索", time: "7 hr", mode: "⛵" }
+    ],
+    items: [
        {
            type: "景點",
            title: "烏羅斯浮島 (Uros) 與 塔奇勒島 (Taquile)",
@@ -783,7 +877,10 @@
    hotel: "Atix Hotel (La Paz)",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Atix+Hotel+La+Paz",
    outfit: "薄長袖 + 容易穿脫的外套",
-   items: [
+  routeMap: [
+      { from: "普諾", to: "拉巴斯 (La Paz)", time: "5 hr", mode: "🚗" }
+    ],
+    items: [
        {
            type: "交通",
            title: "普諾至拉巴斯 跨國專車",
@@ -807,7 +904,11 @@
    hotel: "Palacio de Sal (鹽之宮殿)",
       hotelUrl: "https://www.google.com/maps/search/?api=1&query=Palacio+de+Sal+Bolivia", 
    outfit: "防風防水外套 + 太陽眼鏡 + 高筒防水靴",
-   items: [
+   routeMap: [
+      { from: "拉巴斯", to: "烏尤尼 (UYU)", time: "1 hr", mode: "✈️" },
+      { from: "烏尤尼", to: "鹽旅館", time: "45 min", mode: "🚗" }
+    ],
+       items: [
        {
            type: "景點",
            title: "烏尤尼鹽原經典巡禮",
@@ -831,7 +932,10 @@
    hotel: "Palacio de Sal",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Palacio+de+Sal+Bolivia", 
    outfit: "休閒服 + 保暖外衣",
-   items: [
+   routeMap: [
+      { from: "鹽旅館", to: "周邊走走", time: "自由", mode: "🚶" }
+    ],
+    items: [
        {
            type: "體驗",
            title: "享受全球第一間鹽旅館設施",
@@ -854,7 +958,12 @@
    hotel: "Costa del Sol Wyndham Lima Airport",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Costa+del+Sol+Wyndham+Lima+Airport", 
    outfit: "舒適飛行服 + 保暖外套",
-   items: [
+  routeMap: [
+      { from: "烏尤尼", to: "拉巴斯", time: "1 hr", mode: "✈️" },
+      { from: "拉巴斯市區", to: "景點", time: "30 min", mode: "🚠" },
+      { from: "拉巴斯", to: "利馬機場", time: "2 hr", mode: "✈️" }
+    ],
+    items: [
        {
            type: "交通",
            title: "雙城大中轉 (UYU - LPB - LIM)",
@@ -878,7 +987,12 @@
    hotel: "Inkaterra Hacienda Concepción",
        hotelUrl: "https://www.google.com/maps/search/?api=1&query=Inkaterra+Hacienda+Concepcion", 
    outfit: "透氣長袖長褲 (防蟲) + 高溫防曬",
-   items: [
+   routeMap: [
+      { from: "利馬", to: "亞馬遜 (PEM)", time: "2.5 hr", mode: "✈️" },
+      { from: "機場", to: "飯店碼頭", time: "20 min", mode: "🚗" },
+      { from: "碼頭", to: "飯店", time: "25 min", mode: "🚤" }
+    ],
+       items: [
        {
            type: "交通",
            title: "飛往馬德雷德迪奧斯 (LA2260)",
@@ -902,7 +1016,10 @@
    hotel: "Inkaterra Hacienda Concepción",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Inkaterra+Hacienda+Concepcion", 
    outfit: "登山靴 + 望遠鏡 + 充足飲水",
-   items: [
+   routeMap: [
+      { from: "飯店", to: "Sandoval Lake", time: "1.5 hr", mode: "🚶+🚤" }
+    ],
+    items: [
        {
            type: "景點",
            title: "Sandoval 湖與樹冠層步道",
@@ -925,7 +1042,10 @@
    hotel: "Inkaterra Hacienda Concepción",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Inkaterra+Hacienda+Concepcion", 
    outfit: "長袖防護 + 防蚊液",
-   items: [
+   routeMap: [
+      { from: "飯店", to: "植物園", time: "20 min", mode: "🚤" }
+    ],
+    items: [
        {
            type: "景點",
            title: "植物園巡禮與 Inland Collpa",
@@ -947,7 +1067,11 @@
    weather: "18-24°C 霧氣微涼",
    hotel: "準備搭機返家",
    outfit: "休閒服",
-   items: [
+   routeMap: [
+      { from: "飯店", to: "PEM 機場", time: "45 min", mode: "🚤+🚗" },
+      { from: "亞馬遜", to: "利馬", time: "1.5 hr", mode: "✈️" }
+    ],
+    items: [
        {
            type: "交通",
            title: "亞馬遜飛回利馬 (LA2261)",
@@ -1013,80 +1137,124 @@ itineraryData.forEach(day => {
 function renderDay(dayIndex) {
   const day = itineraryData.find(d => d.day === dayIndex);
   if(!day) return;
+
+  // 1. 生成路徑小地圖 HTML (處理今日動線與時間)
+  let routeHtml = '';
+  if (day.routeMap && day.routeMap.length > 0) {
+      routeHtml = `
+      <div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:15px; margin: 15px 0 20px 0;">
+          <div style="font-size:12px; color:#8C7B68; margin-bottom:12px; font-weight:bold;">📍 今日動線與預計交通時間</div>
+          <div style="display:flex; align-items:flex-start; overflow-x:auto; padding-bottom:10px;">
+      `;
+      day.routeMap.forEach((r, idx) => {
+          routeHtml += `
+            <div style="flex:1; min-width:90px; position:relative; text-align:center;">
+                <div class="node-dot" style="width:10px; height:10px; background:#A0522D; border-radius:50%; margin:0 auto 8px; position:relative; z-index:2;"></div>
+                <div class="node-label" style="font-size:11px; color:#333; font-weight:600; line-height:1.2;">${r.from}</div>
+                <div style="position:absolute; top:4px; left:50%; width:100%; height:2px; background:#EEE; z-index:1;">
+                    <span style="position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #EEE; padding:1px 5px; border-radius:8px; font-size:10px; color:#A0522D; white-space:nowrap; font-weight:bold;">
+                        ${r.mode} ${r.time}
+                    </span>
+                </div>
+            </div>`;
+          if(idx === day.routeMap.length - 1) {
+              routeHtml += `
+              <div style="flex:0.5; min-width:45px; text-align:center;">
+                  <div class="node-dot" style="width:10px; height:10px; background:#CCC; border-radius:50%; margin:0 auto 8px;"></div>
+                  <div class="node-label" style="font-size:11px; color:#666;">${r.to}</div>
+              </div>`;
+          }
+      });
+      routeHtml += `</div></div>`;
+  }
+
+  // 2. 組合頁面內容 (注意：這裡只用一個 let html，後續用 += 累加)
   let html = `
-<div style="text-align:center; margin-bottom:15px;">
-<h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
-       Day ${day.day} <span style="color:#CCC; font-weight:300; margin:0 8px;">|</span> ${day.date}
-</h2>
-<div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
-</div>
-<div class="weather-info" style="margin-bottom: 8px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px;">
-<span>📍 ${day.location}</span>
-<span>🌡️ ${day.weather}</span>
-   ${day.hotel ? `
-<span style="font-weight: 500; color: var(--accent-color);">
-   🏨 <a href="${day.hotelUrl}"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">
-       ${day.hotel}
-</a>
-</span>` : ''}
-</div>
-<div style="text-align:center; margin-bottom:20px;">
-<div style="display:inline-block; font-size:11px; background:rgba(140, 123, 104, 0.08); padding:5px 12px; border-radius:15px; color:#7A6A53; border: 1px solid rgba(140, 123, 104, 0.15); font-weight:500;">
-       👕 穿著建議：${day.outfit}
-</div>
-</div>
+    <div style="text-align:center; margin-bottom:15px;">
+        <h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
+               Day ${day.day} <span style="color:#CCC; font-weight:300; margin:0 8px;">|</span> ${day.date}
+        </h2>
+        <div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
+    </div>
+    
+    <div class="weather-info" style="margin-bottom: 8px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px;">
+        <span>📍 ${day.location}</span>
+        <span>🌡️ ${day.weather}</span>
+        ${day.hotel ? `
+        <span style="font-weight: 500; color: var(--accent-color);">
+           🏨 <a href="${day.hotelUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">
+               ${day.hotel}
+           </a>
+        </span>` : ''}
+    </div>
+
+    <div style="text-align:center; margin-bottom:20px;">
+        <div style="display:inline-block; font-size:11px; background:rgba(140, 123, 104, 0.08); padding:5px 12px; border-radius:15px; color:#7A6A53; border: 1px solid rgba(140, 123, 104, 0.15); font-weight:500;">
+               👕 穿著建議：${day.outfit}
+        </div>
+    </div>
+
+    ${routeHtml} 
   `;
-   day.items.forEach((item, idx) => {
+
+  // 3. 渲染每一個行程卡片
+  day.items.forEach((item, idx) => {
        const itemId = `item-${dayIndex}-${idx}`;
        let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
-       let imgHtml = '';
        let transportHtml = '';
-if (item.transport) {
-   // 建立精確的 A 到 B 導航連結
-   // origin: 起點, destination: 終點, travelmode: 交通模式
-   const origin = encodeURIComponent(item.transport.from);
-   const destination = encodeURIComponent(item.transport.to);
-   const mode = item.transport.mode.includes('機') ? 'flight' : 'driving'; // 簡單判斷模式
-   const directionUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
-   transportHtml = `
-<div class="route-path">
-<div class="route-step">
-<span>📍 ${item.transport.from}</span>
-<div class="route-line"><span class="route-time">${item.transport.mode} ${item.transport.time}</span></div>
-<span>🏁 ${item.transport.to}</span>
-</div>
-<a href="${directionUrl}" target="_blank" class="nav-btn">🧭 顯示路線導航</a>
-</div>`;
-}
+       
+       if (item.transport) {
+           // 修正導航連結：使用 A 到 B 的模式，並修正 ${} 語法
+           const origin = encodeURIComponent(item.transport.from);
+           const destination = encodeURIComponent(item.transport.to);
+           const directionUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving`;
+           
+           transportHtml = `
+            <div class="route-path">
+                <div class="route-step">
+                    <span>📍 ${item.transport.from}</span>
+                    <div class="route-line"><span class="route-time">${item.transport.mode} ${item.transport.time}</span></div>
+                    <span>🏁 ${item.transport.to}</span>
+                </div>
+                <a href="${directionUrl}" target="_blank" class="nav-btn">🧭 顯示路線導航</a>
+            </div>`;
+       }
+
        html += `
-<div class="card">
-<div class="card-type">${item.type}</div>
-<div class="card-title">${item.title}</div>
-               ${transportHtml}
-<div class="card-desc">${item.desc}</div>
-<div class="card-long-desc" style="white-space: pre-wrap; display:block; margin-top:10px; color:#666; font-size:13px; border-left:2px solid #EEE; padding-left:10px;">${item.longDesc || ''}</div>
-               ${tagsHtml}
-               ${item.extras ? `
-<div class="extra-info-container">
-                       ${item.extras.wiki ? `<span class="info-badge badge-wiki" onclick="toggleExtra('${itemId}-wiki')">🏛️ 深度百科</span>` : ''}
-                       ${item.extras.food ? `<span class="info-badge badge-food" onclick="toggleExtra('${itemId}-food')">🍽️ 舌尖南美</span>` : ''}
-                       ${item.extras.photo ? `<span class="info-badge badge-photo" onclick="toggleExtra('${itemId}-photo')">📸 攝影特搜</span>` : ''}
-</div>
-<div id="${itemId}-wiki" class="info-content">${item.extras.wiki}</div>
-<div id="${itemId}-food" class="info-content">${item.extras.food}</div>
-<div id="${itemId}-photo" class="info-content">${item.extras.photo}</div>
-               ` : ''}
-</div>
+        <div class="card">
+            <div class="card-type">${item.type}</div>
+            <div class="card-title">${item.title}</div>
+            ${transportHtml}
+            <div class="card-desc">${item.desc}</div>
+            <div class="card-long-desc" style="white-space: pre-wrap; display:block; margin-top:10px; color:#666; font-size:13px; border-left:2px solid #EEE; padding-left:10px;">${item.longDesc || ''}</div>
+            ${tagsHtml}
+            ${item.extras ? `
+                <div class="extra-info-container">
+                    ${item.extras.wiki ? `<span class="info-badge badge-wiki" onclick="toggleExtra('${itemId}-wiki')">🏛️ 深度百科</span>` : ''}
+                    ${item.extras.food ? `<span class="info-badge badge-food" onclick="toggleExtra('${itemId}-food')">🍽️ 舌尖南美</span>` : ''}
+                    ${item.extras.photo ? `<span class="info-badge badge-photo" onclick="toggleExtra('${itemId}-photo')">📸 攝影特搜</span>` : ''}
+                </div>
+                <div id="${itemId}-wiki" class="info-content">${item.extras.wiki}</div>
+                <div id="${itemId}-food" class="info-content">${item.extras.food}</div>
+                <div id="${itemId}-photo" class="info-content">${item.extras.photo}</div>
+            ` : ''}
+        </div>
        `;
    });
+
+   // 4. 更新 DOM 並處理按鈕狀態
    document.getElementById('dayContent').innerHTML = html;
+   
    document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
-   const activeBtn = document.querySelector(`[onclick="renderDay(${dayIndex})"]`);
-   if(activeBtn) activeBtn.classList.add('active');
+   // 修正按鈕選取邏輯，確保能精準對應 Day 數字
+   const allBtns = document.querySelectorAll('.day-btn');
+   if(allBtns[dayIndex - 1]) {
+       allBtns[dayIndex - 1].classList.add('active');
+   }
+   
+   window.scrollTo(0,0);
 }
+
 function toggleExtra(id) {
    const el = document.getElementById(id);
    const isVisible = el.style.display === 'block';
