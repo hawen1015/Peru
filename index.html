@@ -1120,17 +1120,17 @@ itineraryData.forEach(day => {
     window.scrollTo(0,0);
 }
  
-   // 3. 核心功能：渲染每一天的卡片
+// 2. 核心渲染功能
 function renderDay(dayIndex) {
  const day = itineraryData.find(d => d.day === dayIndex);
  if(!day) return;
- // 1. 生成路徑小地圖 (優化間距，解決顯示不全問題)
+ // --- 生成動線小地圖 ---
  let routeHtml = '';
  if (day.routeMap && day.routeMap.length > 0) {
      routeHtml = `
-<div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:25px 15px 15px 15px; margin: 15px 0 20px 0;">
+<div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:30px 15px 15px 15px; margin: 15px 0 20px 0;">
 <div style="font-size:12px; color:#8C7B68; margin-bottom:20px; font-weight:bold;">📍 今日動線與預計交通時間</div>
-<div style="display:flex; align-items:flex-start; overflow-x:auto; padding-top:10px; padding-bottom:10px;">
+<div style="display:flex; align-items:flex-start; overflow-x:auto; padding-top:10px;">
      `;
      day.routeMap.forEach((r, idx) => {
          routeHtml += `
@@ -1138,7 +1138,7 @@ function renderDay(dayIndex) {
 <div style="width:10px; height:10px; background:#A0522D; border-radius:50%; margin:0 auto 10px; position:relative; z-index:2;"></div>
 <div style="font-size:11px; color:#333; font-weight:600; line-height:1.2; white-space:nowrap;">${r.from}</div>
 <div style="position:absolute; top:4px; left:50%; width:100%; height:2px; background:#EEE; z-index:1;">
-<span style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:2px 6px; border-radius:10px; font-size:10px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<span style="position:absolute; top:-22px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:2px 6px; border-radius:10px; font-size:10px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                        ${r.mode} ${r.time}
 </span>
 </div>
@@ -1153,7 +1153,7 @@ function renderDay(dayIndex) {
      });
      routeHtml += `</div></div>`;
  }
- // 2. 組合頁面基礎資訊 (標題、天氣、穿著)
+ // --- 組合頁面 HTML ---
  let html = `
 <div style="text-align:center; margin-bottom:15px;">
 <h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
@@ -1166,9 +1166,7 @@ function renderDay(dayIndex) {
 <span>🌡️ ${day.weather}</span>
        ${day.hotel ? `
 <span style="font-weight: 500; color: var(--accent-color);">
-          🏨 <a href="${day.hotelUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">
-              ${day.hotel}
-</a>
+          🏨 <a href="${day.hotelUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">${day.hotel}</a>
 </span>` : ''}
 </div>
 <div style="text-align:center; margin-bottom:20px;">
@@ -1178,7 +1176,7 @@ function renderDay(dayIndex) {
 </div>
    ${routeHtml}
  `;
- // 3. 渲染行程卡片 (已移除 transportHtml 虛線框)
+ // --- 渲染卡片 ---
  day.items.forEach((item, idx) => {
       const itemId = `item-${dayIndex}-${idx}`;
       let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
@@ -1195,15 +1193,16 @@ function renderDay(dayIndex) {
                    ${item.extras.food ? `<span class="info-badge badge-food" onclick="toggleExtra('${itemId}-food')">🍽️ 舌尖南美</span>` : ''}
                    ${item.extras.photo ? `<span class="info-badge badge-photo" onclick="toggleExtra('${itemId}-photo')">📸 攝影特搜</span>` : ''}
 </div>
-<div id="${itemId}-wiki" class="info-content">${item.extras.wiki}</div>
-<div id="${itemId}-food" class="info-content">${item.extras.food}</div>
-<div id="${itemId}-photo" class="info-content">${item.extras.photo}</div>
+<div id="${itemId}-wiki" class="info-content" style="display:none;">${item.extras.wiki}</div>
+<div id="${itemId}-food" class="info-content" style="display:none;">${item.extras.food}</div>
+<div id="${itemId}-photo" class="info-content" style="display:none;">${item.extras.photo}</div>
            ` : ''}
 </div>
       `;
   });
+  // 寫入畫面
   document.getElementById('dayContent').innerHTML = html;
-  // 更新按鈕狀態
+  // 更新按鈕 active 狀態
   document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
   const allBtns = document.querySelectorAll('.day-btn');
   if(allBtns[dayIndex - 1]) {
@@ -1211,29 +1210,25 @@ function renderDay(dayIndex) {
   }
   window.scrollTo(0,0);
 }
+// 3. 輔助功能：切換百科內容
 function toggleExtra(id) {
-   const el = document.getElementById(id);
-   const isVisible = el.style.display === 'block';
-   const card = el.closest('.card');
-   card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
-   el.style.display = isVisible ? 'none' : 'block';
+  const el = document.getElementById(id);
+  const isVisible = el.style.display === 'block';
+  // 隱藏同一張卡片內的其他展開項
+  const card = el.closest('.card');
+  card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
+  el.style.display = isVisible ? 'none' : 'block';
 }
+// 4. 初始化
 const btnContainer = document.getElementById('dayButtons');
-if(btnContainer.innerHTML.trim() === "") { // 避免重複生成按鈕
-   itineraryData.forEach(d => {
-       btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
-   });
+if(btnContainer && btnContainer.innerHTML.trim() === "") {
+  itineraryData.forEach(d => {
+      btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
+  });
 }
-renderDay(1);// 預設顯示第一天
-// 自動儲存勾選狀態 (LocalStorage)
-document.querySelectorAll('#packingList input[type="checkbox"]').forEach((checkbox, index) => {
-   // 讀取紀錄
-   const savedStatus = localStorage.getItem('pack_item_' + index);
-   if (savedStatus === 'true') checkbox.checked = true;
-   // 監聽點擊並儲存
-   checkbox.addEventListener('change', () => {
-       localStorage.setItem('pack_item_' + index, checkbox.checked);
-   });
+// 預設顯示第一天
+document.addEventListener('DOMContentLoaded', () => {
+   renderDay(1);
 });
 
 </script>
