@@ -571,13 +571,15 @@
    date: "10/08",
    title: "抵達利馬 | 展開南美夢幻之旅",
    location: "Lima",
+        locations: [
+ { name: "利馬機場 (LIM)", lat: -12.0211, lng: -77.1143 },
+ { name: "Pullman Lima Miraflores (飯店)", lat: -12.1292, lng: -77.0301 }
+],
    weather: "17-22°C 霧氣微涼",
    hotel: "Pullman Lima Miraflores",
         hotelUrl: "https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores",
    outfit: "輕便服裝 + 防風外套",
-   routeMap: [
-      { from: "利馬機場 (LIM)", to: "飯店", time: "45-60 min", mode: "🚗 開車" }
-    ],
+   routeMap: [{ from: "利馬機場 (LIM)", to: "Miraflores 飯店", time: "1 hr", mode: "🚗" }],
    items: [
        {
            type: "交通",
@@ -597,10 +599,13 @@
    date: "10/09",
    title: "利馬城市遊 | 殖民遺產與千年古蹟",
    location: "Lima city",
-    locations: [
- { name: "舊城區聖馬丁廣場", lat: -12.0511, lng: -77.0348 },
- { name: "武器廣場/大教堂", lat: -12.0469, lng: -77.0297 },
- { name: "Huaca Pucllana 遺址", lat: -12.1107, lng: -77.0337 }
+   locations: [
+ { name: "總統府/舊城區", lat: -12.0453, lng: -77.0309 },
+ { name: "聖馬丁廣場", lat: -12.0511, lng: -77.0348 },
+ { name: "人骨教堂 (San Francisco)", lat: -12.0452, lng: -77.0271 },
+ { name: "Casa Tambo (午餐)", lat: -12.0465, lng: -77.0295 },
+ { name: "Huaca Pucllana 遺址", lat: -12.1107, lng: -77.0337 },
+ { name: "Larcomar 購物中心", lat: -12.1325, lng: -77.0300 }
 ],
    weather: "18-24°C 多雲轉晴",
    hotel: "Pullman Lima Miraflores",
@@ -630,6 +635,11 @@
    date: "10/10",
    title: "穿越沙漠 | Paracas 與瓦卡奇納綠洲",
    location: "Paracas / Ica",
+   locations: [
+ { name: "Paracas 自然保護區", lat: -13.8833, lng: -76.2833 },
+ { name: "Huacachina 瓦卡奇納沙漠", lat: -14.0875, lng: -75.7633 },
+ { name: "The Legend Paracas (飯店)", lat: -13.8350, lng: -76.2450 }
+],
    weather: "16-26°C 乾燥晴朗",
    hotel: "The Legend Paracas",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=The+Legend+Paracas+Resort",
@@ -658,12 +668,19 @@ routeMap: [
    date: "10/11",
    title: "海上生物與納茲卡之謎 | 回歸利馬",
    location: "Paracas / Nazca",
+  locations: [
+ { name: "Paracas 碼頭 (鳥島)", lat: -13.8322, lng: -76.2483 },
+ { name: "Pisco 機場 (納茲卡飛行)", lat: -13.7436, lng: -76.2205 },
+ { name: "Pullman Lima Miraflores", lat: -12.1292, lng: -77.0301 }
+],
+
    weather: "15-28°C 豔陽高照",
    hotel: "Pullman Lima Miraflores",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores",
    outfit: "短袖 + 防曬 + 輕薄外衣",
   routeMap: [
       { from: "Paracas", to: "鳥島碼頭", time: "10 min", mode: "🚗" },
+      { from: "鳥島遊船", to: "Pisco/Nazca 機場", time: "45 min", mode: "🚢" },
       { from: "機場", to: "納茲卡線", time: "30 min", mode: "✈️" },
       { from: "Paracas", to: "利馬", time: "4 hr", mode: "🚗" }
     ],
@@ -686,6 +703,10 @@ routeMap: [
    date: "10/12",
    title: "飛向安地斯之魂 | 聖谷高度適應",
    location: "Lima / Cusco / Sacred Valley",
+   locations: [
+ { name: "庫斯科機場 (CUZ)", lat: -13.5357, lng: -71.9389 },
+ { name: "Sierra Sacred Valley (飯店)", lat: -13.3150, lng: -72.0550 }
+],
    weather: "8-21°C 高原乾爽",
    hotel: "Sierra Sacred Valley",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Sierra+Sacred+Valley",
@@ -713,15 +734,22 @@ routeMap: [
    date: "10/13",
    title: "馬丘比丘巔峰日 | 雙線探秘與奢華之最",
    location: "Machu Picchu",
+  locations: [
+ { name: "Ollantaytambo 火車站", lat: -13.2580, lng: -72.2635 },
+ { name: "Machu Picchu 遺址 (2/3號線)", lat: -13.1631, lng: -72.5450 },
+ { name: "Aguas Calientes (熱水鎮)", lat: -13.1550, lng: -72.5249 }
+],
+
    weather: "12-24°C 山區多變",
    hotel: "Sierra Sacred Valley",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Sierra+Sacred+Valley",
    outfit: "防滑登山鞋 + 透氣長袖 + 遮陽帽",
    routeMap: [
-      { from: "飯店", to: "火車站", time: "20 min", mode: "🚗" },
-      { from: "熱水鎮", to: "馬丘比丘", time: "25 min", mode: "🚌" },
-      { from: "熱水鎮", to: "回程", time: "1.5 hr", mode: "🚂" }
-    ],
+   { from: "聖谷飯店", to: "奧蘭泰坦博站", time: "30 min", mode: "🚗" },
+   { from: "奧蘭泰坦博", to: "熱水鎮", time: "1.5 hr", mode: "🚆" },
+   { from: "熱水鎮", to: "馬丘比丘遺址", time: "25 min", mode: "🚌" },
+   { from: "馬丘比丘", to: "奧蘭泰坦博", time: "1.5 hr", mode: "🚆" }
+],
     items: [
        {
            type: "景點",
@@ -762,14 +790,19 @@ routeMap: [
    date: "10/14",
    title: "軍事堡壘與大地之胃 | 回歸庫斯科",
    location: "Ollantaytambo / Cusco",
+     locations: [
+ { name: "Ollantaytambo 遺址", lat: -13.2580, lng: -72.2635 },
+ { name: "Pachamanca 體驗點", lat: -13.3150, lng: -72.0550 },
+ { name: "Casa Andina Premium Cusco", lat: -13.5180, lng: -71.9750 }
+],
    weather: "8-20°C 晴朗",
    hotel: "Casa Andina Premium Cusco",
      hotelUrl: "https://www.google.com/maps/search/?api=1&query=Casa+Andina+Premium+Cusco",
    outfit: "輕便登山服 + 太陽眼鏡",
    routeMap: [
-      { from: "聖谷飯店", to: "Ollantaytambo", time: "15 min", mode: "🚗" },
-      { from: "聖谷", to: "庫斯科市區", time: "2 hr", mode: "🚗" }
-    ],
+   { from: "奧蘭泰坦博", to: "莫瑞梯田/鹽田", time: "1 hr", mode: "🚗" },
+   { from: "聖谷", to: "庫斯科飯店", time: "1.5 hr", mode: "🚗" }
+],
      items: [
        {
            type: "景點",
@@ -795,6 +828,10 @@ routeMap: [
    date: "10/15",
    title: "彩虹山挑戰 | 地球的礦物調色盤",
    location: "Vinicunca (Rainbow Mountain)",
+    locations: [
+ { name: "Vinicunca 彩虹山登山口", lat: -13.8698, lng: -71.3030 },
+ { name: "Casa Andina Premium Cusco", lat: -13.5180, lng: -71.9750 }
+],
    weather: "-2 - 15°C 極寒、大風",
    hotel: "Casa Andina Premium Cusco",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Casa+Andina+Premium+Cusco",
@@ -822,6 +859,10 @@ routeMap: [
    date: "10/16",
    title: "安地斯高原快鐵 | 橫跨阿爾蒂普拉諾",
    location: "Cusco to Puno",
+    locations: [
+ { name: "Wanchaq 火車站 (庫斯科)", lat: -13.5244, lng: -71.9700 },
+ { name: "GHL Hotel Puno", lat: -15.8250, lng: -69.9950 }
+],
    weather: "5-18°C 晴朗多風",
    hotel: "GHL Hotel Puno",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=GHL+Hotel+Lago+Titicaca",
@@ -848,6 +889,10 @@ routeMap: [
    date: "10/17",
    title: "的的喀喀湖 | 消失的水上文明",
    location: "Lake Titicaca",
+    locations: [
+ { name: "Uros 蘆葦浮島", lat: -15.8200, lng: -69.9100 },
+ { name: "Taquile 塔奇萊島", lat: -15.7770, lng: -69.4740 }
+],
    weather: "6-19°C 陽光極強",
    hotel: "GHL Hotel Puno",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=GHL+Hotel+Lago+Titicaca",
@@ -874,13 +919,18 @@ routeMap: [
    date: "10/18",
    title: "跨越國境 | 前往玻利維亞門戶",
    location: "Puno / La Paz",
+    locations: [
+ { name: "Desaguadero (邊境關口)", lat: -16.5650, lng: -69.0410 },
+ { name: "Atix Hotel (拉巴斯)", lat: -16.5360, lng: -68.0870 }
+],
    weather: "5-17°C 多雲時晴",
    hotel: "Atix Hotel (La Paz)",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Atix+Hotel+La+Paz",
    outfit: "薄長袖 + 容易穿脫的外套",
-  routeMap: [
-      { from: "普諾", to: "拉巴斯 (La Paz)", time: "5 hr", mode: "🚗" }
-    ],
+ routeMap: [
+   { from: "普諾 (Puno)", to: "Copacabana 邊境", time: "3 hr", mode: "🚗" },
+   { from: "Copacabana", to: "拉巴斯 (La Paz)", time: "3.5 hr", mode: "🚗" }
+],
     items: [
        {
            type: "交通",
@@ -900,14 +950,19 @@ routeMap: [
    date: "10/19",
    title: "天空之鏡 | 地表的純白幻境",
    location: "Uyuni",
+       locations: [
+ { name: "Uyuni 火車墳場", lat: -20.4788, lng: -66.8378 },
+ { name: "Colchani 鹽村", lat: -20.3000, lng: -66.9333 },
+ { name: "Palacio de Sal (鹽旅館)", lat: -20.3300, lng: -67.0500 }
+],
    weather: "-5 - 15°C 極乾燥、紫外線極強",
    hotel: "Palacio de Sal (鹽之宮殿)",
       hotelUrl: "https://www.google.com/maps/search/?api=1&query=Palacio+de+Sal+Bolivia", 
    outfit: "防風防水外套 + 太陽眼鏡 + 高筒防水靴",
    routeMap: [
-      { from: "拉巴斯", to: "烏尤尼 (UYU)", time: "1 hr", mode: "✈️" },
-      { from: "烏尤尼", to: "鹽旅館", time: "45 min", mode: "🚗" }
-    ],
+   { from: "拉巴斯 (LPB)", to: "烏尤尼 (UYU)", time: "1 hr", mode: "✈️" },
+   { from: "烏尤尼機場", to: "鹽湖區", time: "30 min", mode: "🚗" }
+],
        items: [
        {
            type: "景點",
@@ -927,6 +982,10 @@ routeMap: [
    date: "10/20",
    title: "鹽之宮殿 | 緩衝與火山側影",
    location: "Uyuni / Colchani",
+    locations: [
+ { name: "Incahuasi Island (仙人掌島)", lat: -20.2428, lng: -67.6250 },
+ { name: "Palacio de Sal", lat: -20.3300, lng: -67.0500 }
+],
    weather: "-2 - 16°C 晴朗",
    hotel: "Palacio de Sal",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Palacio+de+Sal+Bolivia", 
@@ -953,6 +1012,10 @@ routeMap: [
    date: "10/21",
    title: "拉巴斯中轉 | 飛越天空之城",
    location: "Uyuni / La Paz / Lima",
+    locations: [
+ { name: "拉巴斯市中心 (轉機快閃)", lat: -16.4950, lng: -68.1330 },
+ { name: "Costa del Sol Wyndham (機場飯店)", lat: -12.0220, lng: -77.1110 }
+],
    weather: "6 - 15°C 多雲",
    hotel: "Costa del Sol Wyndham Lima Airport",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Costa+del+Sol+Wyndham+Lima+Airport", 
@@ -961,6 +1024,7 @@ routeMap: [
       { from: "烏尤尼", to: "拉巴斯", time: "1 hr", mode: "✈️" },
       { from: "拉巴斯市區", to: "景點", time: "30 min", mode: "🚠" },
       { from: "拉巴斯", to: "利馬機場", time: "2 hr", mode: "✈️" }
+      { from: "利馬機場", to: "機場飯店", time: "5 min", mode: "🚶" }
     ],
     items: [
        {
@@ -981,14 +1045,17 @@ routeMap: [
    date: "10/22",
    title: "進入亞馬遜 | 飛往綠色心臟",
    location: "Puerto Maldonado",
+       locations: [
+ { name: "Puerto Maldonado 碼頭", lat: -12.5920, lng: -69.1830 },
+ { name: "Inkaterra Hacienda Concepción", lat: -12.5530, lng: -69.0620 }
+],
    weather: "24-32°C 潮濕悶熱、午後雷雨",
    hotel: "Inkaterra Hacienda Concepción",
        hotelUrl: "https://www.google.com/maps/search/?api=1&query=Inkaterra+Hacienda+Concepcion", 
    outfit: "透氣長袖長褲 (防蟲) + 高溫防曬",
    routeMap: [
       { from: "利馬", to: "亞馬遜 (PEM)", time: "2.5 hr", mode: "✈️" },
-      { from: "機場", to: "飯店碼頭", time: "20 min", mode: "🚗" },
-      { from: "碼頭", to: "飯店", time: "25 min", mode: "🚤" }
+       { from: "碼頭接駁", to: "雨林飯店 (渡船)", time: "45 min", mode: "🚢" }
     ],
        items: [
        {
@@ -1009,14 +1076,16 @@ routeMap: [
    date: "10/23",
    title: "雨林生態巔峰 | 尋找巨型水獺",
    location: "Sandoval Lake",
+    locations: [
+ { name: "Sandoval Lake (聖多瓦爾湖)", lat: -12.6050, lng: -69.0450 },
+ { name: "Canopy Walkway (樹冠層步道)", lat: -12.5530, lng: -69.0620 }
+],
    weather: "25-33°C 濕度 90%",
    hotel: "Inkaterra Hacienda Concepción",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Inkaterra+Hacienda+Concepcion", 
    outfit: "登山靴 + 望遠鏡 + 充足飲水",
-   routeMap: [
-      { from: "飯店", to: "Sandoval Lake", time: "1.5 hr", mode: "🚶+🚤" }
-    ],
-    items: [
+   routeMap: [{ from: "飯店", to: "桑多瓦爾湖/叢林", time: "2-4 hr", mode: "🚣" }],
+       items: [
        {
            type: "景點",
            title: "Sandoval 湖與樹冠層步道",
@@ -1035,14 +1104,16 @@ routeMap: [
    date: "10/24",
    title: "植物智慧 | 巴西果與鹽舔食區",
    location: "Inland Collpa",
+    locations: [
+ { name: "Brazil Nut Hut (巴西果小屋)", lat: -12.5530, lng: -69.0620 },
+ { name: "Inland Collpa (生態觀察區)", lat: -12.5530, lng: -69.0620 }
+],
    weather: "24-31°C 多雲有雨",
    hotel: "Inkaterra Hacienda Concepción",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Inkaterra+Hacienda+Concepcion", 
    outfit: "長袖防護 + 防蚊液",
-   routeMap: [
-      { from: "飯店", to: "植物園", time: "20 min", mode: "🚤" }
-    ],
-    items: [
+  routeMap: [{ from: "飯店", to: "桑多瓦爾湖/叢林", time: "2-4 hr", mode: "🚣" }],
+        items: [
        {
            type: "景點",
            title: "植物園巡禮與 Inland Collpa",
@@ -1061,6 +1132,10 @@ routeMap: [
    date: "10/25",
    title: "告別亞馬遜 | 利馬終極採買",
    location: "Lima",
+    locations: [
+ { name: "Puerto Maldonado 機場 (PEM)", lat: -12.6130, lng: -69.2300 },
+ { name: "利馬機場 (LIM)", lat: -12.0211, lng: -77.1143 }
+]
    weather: "18-24°C 霧氣微涼",
    hotel: "準備搭機返家",
    outfit: "休閒服",
@@ -1134,29 +1209,36 @@ function renderDay(dayIndex) {
  const day = itineraryData.find(d => d.day === dayIndex);
  if(!day) return;
  // 1. 生成 [交通動線小地圖] HTML (RouteMap)
+// --- 1. 產生路徑小地圖 (升級版) ---
  let routeHtml = '';
  if (day.routeMap && day.routeMap.length > 0) {
      routeHtml = `
 <div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:15px; margin: 15px 0 20px 0;">
-<div style="font-size:12px; color:#8C7B68; margin-bottom:10px; font-weight:bold;">🕒 今日行程節奏</div>
-<div style="display:flex; align-items:flex-start; overflow-x:auto; padding: 35px 5px 10px 5px;">
+<div style="font-size:12px; color:#8C7B68; margin-bottom:10px; font-weight:bold; display:flex; justify-content:space-between;">
+<span>🕒 今日交通動線</span>
+<span style="font-weight:normal; font-size:10px;">可左右滑動 ⟷</span>
+</div>
+<div style="display:flex; align-items:flex-start; overflow-x:auto; padding: 40px 10px 15px 10px; -webkit-overflow-scrolling: touch;">
      `;
      day.routeMap.forEach((r, idx) => {
+         // 根據交通模式自動選擇 Icon (如果資料沒寫 mode，預設給 🚗)
+         const modeIcon = r.mode || "🚗";
          routeHtml += `
-<div style="flex:1; min-width:110px; position:relative; text-align:center;">
-<div style="width:10px; height:10px; background:#A0522D; border-radius:50%; margin:0 auto 10px; position:relative; z-index:2;"></div>
-<div style="font-size:11px; color:#333; font-weight:600; line-height:1.2; white-space:nowrap;">${r.from}</div>
-<div style="position:absolute; top:4px; left:50%; width:100%; height:2px; background:#EEE; z-index:1;">
-<span style="position:absolute; top:-32px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:3px 8px; border-radius:12px; font-size:10px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 2px 5px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 4px;">
-                       ${r.mode} ${r.time}
+<div style="flex:0 0 auto; min-width:120px; position:relative; text-align:center;">
+<div style="width:12px; height:12px; background:#A0522D; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; position:relative; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
+<div style="font-size:12px; color:#333; font-weight:700; line-height:1.2; white-space:nowrap;">${r.from}</div>
+<div style="position:absolute; top:5px; left:50%; width:100%; height:2px; background:linear-gradient(90deg, #A0522D 0%, #EEE 100%); z-index:1;">
+<span style="position:absolute; top:-35px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:4px 10px; border-radius:15px; font-size:11px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 3px 6px rgba(0,0,0,0.08); display:flex; align-items:center; gap:4px;">
+                       ${modeIcon} <span style="color:#666; font-weight:normal;">${r.time}</span>
 </span>
 </div>
 </div>`;
+         // 最後一個節點的終點站名
          if(idx === day.routeMap.length - 1) {
              routeHtml += `
-<div style="flex:0.5; min-width:55px; text-align:center;">
-<div style="width:10px; height:10px; background:#CCC; border-radius:50%; margin:0 auto 10px;"></div>
-<div style="font-size:11px; color:#666; white-space:nowrap;">${r.to}</div>
+<div style="flex:0 0 auto; min-width:80px; text-align:center;">
+<div style="width:12px; height:12px; background:#CCC; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
+<div style="font-size:12px; color:#666; font-weight:600; white-space:nowrap;">${r.to}</div>
 </div>`;
          }
      });
