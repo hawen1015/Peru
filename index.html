@@ -17,6 +17,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="PeruTrip">
 <link rel="apple-touch-icon" href="icon-192.png">
+   
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
     <style>
         :root {
             --bg-color: #F9F8F3;
@@ -1120,17 +1124,16 @@ itineraryData.forEach(day => {
     window.scrollTo(0,0);
 }
  
-// 2. 核心渲染功能
+let map; // 全域變數，確保地圖不會重複初始化
 function renderDay(dayIndex) {
  const day = itineraryData.find(d => d.day === dayIndex);
  if(!day) return;
- // --- 生成動線小地圖 ---
-// 1. 生成路徑小地圖 (解決頂部遮擋與標籤顯示問題)
+ // 1. 生成 [交通動線小地圖] HTML (RouteMap)
  let routeHtml = '';
  if (day.routeMap && day.routeMap.length > 0) {
      routeHtml = `
 <div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:15px; margin: 15px 0 20px 0;">
-<div style="font-size:12px; color:#8C7B68; margin-bottom:10px; font-weight:bold;">📍 今日動線與預計交通時間</div>
+<div style="font-size:12px; color:#8C7B68; margin-bottom:10px; font-weight:bold;">🕒 今日行程節奏</div>
 <div style="display:flex; align-items:flex-start; overflow-x:auto; padding: 35px 5px 10px 5px;">
      `;
      day.routeMap.forEach((r, idx) => {
@@ -1154,7 +1157,7 @@ function renderDay(dayIndex) {
      });
      routeHtml += `</div></div>`;
  }
- // --- 組合頁面 HTML ---
+ // 2. 組合完整頁面內容
  let html = `
 <div style="text-align:center; margin-bottom:15px;">
 <h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
@@ -1162,13 +1165,11 @@ function renderDay(dayIndex) {
 </h2>
 <div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
 </div>
+<div id="map" style="height: 220px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #E8E2D6; z-index: 1; box-shadow: inset 0 0 10px rgba(0,0,0,0.05);"></div>
 <div class="weather-info" style="margin-bottom: 8px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px;">
 <span>📍 ${day.location}</span>
 <span>🌡️ ${day.weather}</span>
-       ${day.hotel ? `
-<span style="font-weight: 500; color: var(--accent-color);">
-          🏨 <a href="${day.hotelUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">${day.hotel}</a>
-</span>` : ''}
+       ${day.hotel ? `<span style="font-weight: 500; color: var(--accent-color);">🏨 <a href="${day.hotelUrl}" target="_blank" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">${day.hotel}</a></span>` : ''}
 </div>
 <div style="text-align:center; margin-bottom:20px;">
 <div style="display:inline-block; font-size:11px; background:rgba(140, 123, 104, 0.08); padding:5px 12px; border-radius:15px; color:#7A6A53; border: 1px solid rgba(140, 123, 104, 0.15); font-weight:500;">
@@ -1177,7 +1178,7 @@ function renderDay(dayIndex) {
 </div>
    ${routeHtml}
  `;
- // --- 渲染卡片 ---
+ // 3. 渲染行程細節卡片
  day.items.forEach((item, idx) => {
       const itemId = `item-${dayIndex}-${idx}`;
       let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
@@ -1201,14 +1202,26 @@ function renderDay(dayIndex) {
 </div>
       `;
   });
-  // 寫入畫面
   document.getElementById('dayContent').innerHTML = html;
-  // 更新按鈕 active 狀態
+  // --- 4. 初始化 Leaflet 互動地圖 ---
+  if (map) { map.remove(); } // 清除舊地圖
+  // 取得座標 (如果資料沒寫，預設利馬市中心)
+  const lat = (day.coords && day.coords.lat) ? day.coords.lat : -12.0464;
+  const lng = (day.coords && day.coords.lng) ? day.coords.lng : -77.0428;
+  map = L.map('map', {
+      zoomControl: false // 手機版建議關閉縮放按鈕，畫面比較乾淨
+  }).setView([lat, lng], 13);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '©OpenStreetMap'
+  }).addTo(map);
+  // 加入標記
+  L.marker([lat, lng]).addTo(map)
+      .bindPopup(`<b>${day.location}</b>`)
+      .openPopup();
+  // --- 5. 更新按鈕狀態與捲動 ---
   document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
   const allBtns = document.querySelectorAll('.day-btn');
-  if(allBtns[dayIndex - 1]) {
-      allBtns[dayIndex - 1].classList.add('active');
-  }
+  if(allBtns[dayIndex - 1]) { allBtns[dayIndex - 1].classList.add('active'); }
   window.scrollTo(0,0);
 }
 // 3. 輔助功能：切換百科內容
