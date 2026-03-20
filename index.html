@@ -1356,18 +1356,35 @@ function toggleExtra(id) {
   card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
   el.style.display = isVisible ? 'none' : 'block';
 }
-// 4. 初始化代碼 
+// 4. 最終修正版初始化
 window.onload = function() {
+   console.log("網頁載入完成，開始初始化...");
    const btnContainer = document.getElementById('dayButtons');
-   // 生成按鈕
-   if(btnContainer && btnContainer.innerHTML.trim() === "") {
-       itineraryData.forEach(d => {
-           btnContainer.innerHTML += `<button class="day-btn" id="btn-${d.day}" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
-       });
+   // 檢查資料是否存在
+   if (typeof itineraryData === 'undefined' || itineraryData.length === 0) {
+       console.error("錯誤：找不到 itineraryData 資料！請檢查資料陣列是否定義在腳本上方。");
+       return;
    }
-   // 預設顯示第一天 (或行程資料中的第一天)
-   if (typeof itineraryData !== 'undefined' && itineraryData.length > 0) {
-       renderDay(itineraryData[0].day);
+   // 強制生成按鈕
+   if(btnContainer) {
+       btnContainer.innerHTML = ""; // 先清空，避免重複
+       itineraryData.forEach(d => {
+           const btn = document.createElement('button');
+           btn.className = 'day-btn';
+btn.id = `btn-${d.day}`;
+           btn.onclick = () => renderDay(d.day);
+           btn.innerHTML = `<span>D</span><span>${d.day}</span>`;
+           btnContainer.appendChild(btn);
+       });
+       console.log(`成功生成 ${itineraryData.length} 個天數按鈕`);
+   }
+   // 預設顯示第一天
+   try {
+       const firstDay = itineraryData[0].day;
+       renderDay(firstDay);
+       console.log("已成功渲染第一天內容");
+   } catch (e) {
+       console.error("渲染第一天失敗:", e);
    }
 };
 </script>
