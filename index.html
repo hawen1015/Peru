@@ -1203,133 +1203,106 @@ itineraryData.forEach(day => {
     el.classList.add('active');
     window.scrollTo(0,0);
 }
- 
-let map; // 全域變數，確保地圖不重複初始化
+// --- 核心渲染引擎 (已對齊 Day 1-18 資料結構) ---
+let map;
 function renderDay(dayIndex) {
-   console.log("正在切換至 Day:", dayIndex);
-   const day = itineraryData.find(d => d.day === dayIndex);
-   if (!day) return;
-   // --- 1. 生成路徑小地圖 (RouteMap) ---
-   let routeHtml = '';
-   if (day.routeMap && day.routeMap.length > 0) {
-       routeHtml = `
-<div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:15px; margin: 15px 0 20px 0;">
-<div style="font-size:12px; color:#8C7B68; margin-bottom:10px; font-weight:bold; display:flex; justify-content:space-between;">
-<span>🕒 今日交通動線</span>
-<span style="font-weight:normal; font-size:10px;">可左右滑動 ⟷</span>
-</div>
-<div style="display:flex; align-items:flex-start; overflow-x:auto; padding: 40px 10px 15px 10px; -webkit-overflow-scrolling: touch;">
-       `;
-       day.routeMap.forEach((r, idx) => {
-           const modeIcon = r.mode || "🚗";
-           routeHtml += `
-<div style="flex:0 0 auto; min-width:120px; position:relative; text-align:center;">
-<div style="width:12px; height:12px; background:#A0522D; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; position:relative; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
-<div style="font-size:12px; color:#333; font-weight:700; line-height:1.2; white-space:nowrap;">${r.from}</div>
-<div style="position:absolute; top:5px; left:50%; width:100%; height:2px; background:linear-gradient(90deg, #A0522D 0%, #EEE 100%); z-index:1;">
-<span style="position:absolute; top:-35px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:4px 10px; border-radius:15px; font-size:11px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 3px 6px rgba(0,0,0,0.08); display:flex; align-items:center; gap:4px;">
-                           ${modeIcon} <span style="color:#666; font-weight:normal;">${r.time}</span>
-</span>
-</div>
-</div>`;
-           if (idx === day.routeMap.length - 1) {
-               routeHtml += `
-<div style="flex:0 0 auto; min-width:80px; text-align:center;">
-<div style="width:12px; height:12px; background:#CCC; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
-<div style="font-size:12px; color:#666; font-weight:600; white-space:nowrap;">${r.to}</div>
-</div>`;
-           }
-       });
-       routeHtml += `</div></div>`;
-   }
-   // --- 2. 組合主內容 HTML ---
-   let html = `
+  // 1. 尋找資料
+  const day = itineraryData.find(d => d.day === dayIndex);
+  if (!day) return;
+  // 2. 組合基礎資訊 (地點、天氣、飯店、穿著)
+  let html = `
 <div style="text-align:center; margin-bottom:15px;">
-<h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
-               Day ${day.day} <span style="color:#CCC; font-weight:300; margin:0 8px;">|</span> ${day.date}
-</h2>
+<h2 style="margin:0; font-size:18px; color:var(--accent-color);">Day ${day.day} | ${day.date}</h2>
 <div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
 </div>
-<div id="map" style="height: 220px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #E8E2D6; z-index: 1;"></div>
-<div class="weather-info" style="margin-bottom: 8px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px;">
+<div id="map" style="height: 200px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #E8E2D6; z-index: 1;"></div>
+<div class="weather-info">
 <span>📍 ${day.location}</span>
 <span>🌡️ ${day.weather}</span>
-           ${day.hotel ? `<span style="font-weight: 500; color: var(--accent-color);">🏨 <a href="${day.hotelUrl}" target="_blank" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">${day.hotel}</a></span>` : ''}
+          ${day.hotel ? `<span style="color: var(--accent-color);">🏨 <a href="${day.hotelUrl}" target="_blank" style="text-decoration:none; color:inherit; border-bottom:1px dashed;">${day.hotel}</a></span>` : ''}
 </div>
 <div style="text-align:center; margin-bottom:20px;">
-<div style="display:inline-block; font-size:11px; background:rgba(140, 123, 104, 0.08); padding:5px 12px; border-radius:15px; color:#7A6A53; border: 1px solid rgba(140, 123, 104, 0.15); font-weight:500;">
-               👕 穿著建議：${day.outfit}
+<div style="display:inline-block; font-size:11px; background:rgba(140, 123, 104, 0.08); padding:5px 12px; border-radius:15px;">👕 穿著：${day.outfit}</div>
 </div>
-</div>
-       ${routeHtml}
-   `;
-   day.items.forEach((item, idx) => {
-       const itemId = `item-${dayIndex}-${idx}`;
-       let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
-       html += `
+  `;
+  // 3. 組合項目卡片 (對齊 items 結構)
+  day.items.forEach((item, idx) => {
+      const itemId = `item-${dayIndex}-${idx}`;
+      html += `
 <div class="card">
 <div class="card-type">${item.type}</div>
 <div class="card-title">${item.title}</div>
 <div class="card-desc">${item.desc}</div>
-<div class="card-long-desc" style="white-space: pre-wrap; display:block; margin-top:10px; color:#666; font-size:13px; border-left:2px solid #EEE; padding-left:10px;">${item.longDesc || ''}</div>
-               ${tagsHtml}
-               ${item.extras ? `
+              ${item.longDesc ? `
+<button class="expand-btn" onclick="document.getElementById('desc-${itemId}').classList.toggle('show')">💡 導遊碎碎念</button>
+<div id="desc-${itemId}" class="details-content">${item.longDesc}</div>
+              ` : ''}
 <div class="extra-info-container">
-                       ${item.extras.wiki ? `<span class="info-badge badge-wiki" onclick="toggleExtra('${itemId}-wiki')">🏛️ 深度百科</span>` : ''}
-                       ${item.extras.food ? `<span class="info-badge badge-food" onclick="toggleExtra('${itemId}-food')">🍽️ 舌尖南美</span>` : ''}
-                       ${item.extras.photo ? `<span class="info-badge badge-photo" onclick="toggleExtra('${itemId}-photo')">📸 攝影特搜</span>` : ''}
+                  ${(item.extras && item.extras.wiki) ? `<span class="info-badge badge-wiki" onclick="toggleExtra('${itemId}-wiki')">🏛️ 深度百科</span>` : ''}
+                  ${(item.extras && item.extras.food) ? `<span class="info-badge badge-food" onclick="toggleExtra('${itemId}-food')">🍽️ 舌尖南美</span>` : ''}
 </div>
-<div id="${itemId}-wiki" class="info-content" style="display:none;">${item.extras.wiki}</div>
-<div id="${itemId}-food" class="info-content" style="display:none;">${item.extras.food}</div>
-<div id="${itemId}-photo" class="info-content" style="display:none;">${item.extras.photo}</div>
-               ` : ''}
+<div id="${itemId}-wiki" class="info-content">${item.extras?.wiki || ''}</div>
+<div id="${itemId}-food" class="info-content">${item.extras?.food || ''}</div>
 </div>
-       `;
-   });
-   document.getElementById('dayContent').innerHTML = html;
-   // --- 3. 初始化地圖 (容錯機制) ---
-   try {
-       if (typeof L !== 'undefined') {
-           if (map) { map.remove(); map = null; }
-           const locs = day.locations || [];
-           if (locs.length > 0) {
-               map = L.map('map', { zoomControl: false });
-               L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
-               const markers = locs.map(loc => L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(`<b>${loc.name}</b>`));
-               const group = new L.featureGroup(markers);
-               map.fitBounds(group.getBounds().pad(0.2));
-           }
-       }
-   } catch (e) { console.error("Map error:", e); }
-   // --- 4. 更新按鈕狀態 (這行最重要，修正了找不到對象會當機的問題) ---
-   document.querySelectorAll('.day-btn').forEach(btn => {
-       btn.classList.remove('active');
-       if (btn.innerText.includes(dayIndex.toString())) {
-           btn.classList.add('active');
-       }
-   });
-   window.scrollTo(0, 0);
+      `;
+  });
+  // 4. 寫入 DOM (確保 loop 結束後才執行)
+  document.getElementById('dayContent').innerHTML = html;
+  // 5. 初始化地圖 (對齊 locations 結構)
+  try {
+      if (map) { map.remove(); map = null; }
+      if (day.locations && day.locations.length > 0) {
+          map = L.map('map', { zoomControl: false });
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+          day.locations.forEach(loc => {
+              L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(`<b>${loc.name}</b>`);
+          });
+          const group = new L.featureGroup(day.locations.map(l => L.marker([l.lat, l.lng])));
+          map.fitBounds(group.getBounds().pad(0.2));
+      }
+  } catch (e) {
+      console.error("Map error:", e);
+  }
+  // 6. 更新天數按鈕狀態
+  document.querySelectorAll('.day-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.innerText.includes(dayIndex.toString())) {
+          btn.classList.add('active');
+      }
+  });
+  window.scrollTo(0, 0);
 }
-// 輔助功能：切換百科
+// --- 補充：標籤切換與輔助功能 ---
+function showTab(tabId, el) {
+   document.querySelectorAll('.tab-content').forEach(tab => {
+       tab.classList.remove('active');
+       tab.style.display = 'none';
+   });
+   const targetTab = document.getElementById(tabId);
+   if (targetTab) {
+       targetTab.classList.add('active');
+       targetTab.style.display = (tabId === 'translate') ? 'flex' : 'block';
+   }
+   document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+   if (el) el.classList.add('active');
+}
 function toggleExtra(id) {
-   const el = document.getElementById(id);
-   const isVisible = el.style.display === 'block';
-   const card = el.closest('.card');
-   card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
-   el.style.display = isVisible ? 'none' : 'block';
+  const el = document.getElementById(id);
+  const isVisible = el.style.display === 'block';
+  // 隱藏同一卡片內其他開啟的 info
+  const card = el.closest('.card');
+  card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
+  el.style.display = isVisible ? 'none' : 'block';
 }
-// 5. 初始化
+// --- 7. 啟動邏輯 ---
 window.onload = function() {
-   const btnContainer = document.getElementById('dayButtons');
-   if(btnContainer && btnContainer.innerHTML.trim() === "") {
-       itineraryData.forEach(d => {
-           btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
-       });
-   }
-   // 預設跑第一天
-   if (typeof itineraryData !== 'undefined' && itineraryData.length > 0) {
-       renderDay(itineraryData[0].day);
-   }
+  const btnContainer = document.getElementById('dayButtons');
+  if(btnContainer && btnContainer.innerHTML.trim() === "") {
+      itineraryData.forEach(d => {
+          btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
+      });
+  }
+  renderDay(1); // 預設載入第一天
 };
 </script>
 </body>
