@@ -1290,30 +1290,56 @@ function renderDay(dayIndex) {
       `;
   });
   document.getElementById('dayContent').innerHTML = html;
-// --- 4. 初始化 Leaflet 互動地圖 (支援多點顯示) ---
-if (map) { map.remove(); } // 清除舊地圖
-// 建立標記群組
-const markers = [];
-const locs = day.locations || []; // 讀取新的 locations 陣列
-if (locs.length > 0) {
-   // 建立地圖實例
-   map = L.map('map', { zoomControl: false });
-   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-       attribution: '©OpenStreetMap'
-   }).addTo(map);
-   // 用迴圈把每個地點都畫上去
-   locs.forEach(loc => {
-       const marker = L.marker([loc.lat, loc.lng]).addTo(map)
-           .bindPopup(`<b>${loc.name}</b>`);
-       markers.push(marker);
-   });
-   // 💡 自動調整縮放比例：讓所有點都剛好出現在畫面中
-   const group = new L.featureGroup(markers);
-   map.fitBounds(group.getBounds().pad(0.2)); // pad(0.2) 是讓邊緣留一點空隙，比較美觀
-} else {
-   // 如果這天沒資料，顯示預設位置
-   map = L.map('map', { zoomControl: false }).setView([-12.0464, -77.0428], 12);
-   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+// --- 4. 初始化 Leaflet 互動地圖 (含容錯保護機制) ---
+try {
+   // 檢查 Leaflet (L) 是否已載入，避免 L is not defined 錯誤
+   if (typeof L !== 'undefined') {
+       if (map) {
+           map.remove();
+           map = null;
+       }
+       const locs = day.locations || [];
+       const mapContainer = document.getElementById('map');
+       if (mapContainer) {
+           if (locs.length > 0) {
+               // 建立地圖實例
+               map = L.map('map', { zoomControl: false });
+               L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                   attribution: '©OpenStreetMap'
+               }).addTo(map);
+               const markers = [];
+               // 用迴圈把每個地點都畫上去
+               locs.forEach(loc => {
+                   const marker = L.marker([loc.lat, loc.lng]).addTo(map)
+                       .bindPopup(`<b>${loc.name}</b>`);
+                   markers.push(marker);
+               });
+               // 💡 自動調整縮放比例：讓所有點都剛好出現在畫面中
+               if (markers.length > 0) {
+                   const group = new L.featureGroup(markers);
+                   map.fitBounds(group.getBounds().pad(0.2));
+               }
+           } else {
+               // 如果這天沒資料，顯示預設位置
+               map = L.map('map', { zoomControl: false }).setView([-12.0464, -77.0428], 12);
+               L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+           }
+       }
+   } else {
+       throw new Error("Leaflet library not loaded");
+   }
+} catch (error) {
+   console.error("地圖初始化失敗，跳過地圖渲染以維持頁面運作:", error);
+   // 失敗時在畫面上給予提示，不影響下方行程顯示
+   const mapEl = document.getElementById('map');
+   if (mapEl) {
+       mapEl.innerHTML = `
+<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; background:#F8F5F0; color:#8C7B68; font-size:12px; border: 1px dashed #CCC; border-radius:15px;">
+<span style="font-size:20px; margin-bottom:8px;">📍</span>
+<span>地圖載入中或環境受限</span>
+<span style="font-size:10px; color:#AAA; margin-top:4px;">(行程內容不受影響)</span>
+</div>`;
+   }
 }
   // --- 5. 更新按鈕狀態與捲動 ---
   document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
