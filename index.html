@@ -1125,27 +1125,28 @@ function renderDay(dayIndex) {
  const day = itineraryData.find(d => d.day === dayIndex);
  if(!day) return;
  // --- 生成動線小地圖 ---
+// 1. 生成路徑小地圖 (解決頂部遮擋與標籤顯示問題)
  let routeHtml = '';
  if (day.routeMap && day.routeMap.length > 0) {
      routeHtml = `
-<div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:30px 15px 15px 15px; margin: 15px 0 20px 0;">
-<div style="font-size:12px; color:#8C7B68; margin-bottom:20px; font-weight:bold;">📍 今日動線與預計交通時間</div>
-<div style="display:flex; align-items:flex-start; overflow-x:auto; padding-top:10px;">
+<div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:15px; margin: 15px 0 20px 0;">
+<div style="font-size:12px; color:#8C7B68; margin-bottom:10px; font-weight:bold;">📍 今日動線與預計交通時間</div>
+<div style="display:flex; align-items:flex-start; overflow-x:auto; padding: 35px 5px 10px 5px;">
      `;
      day.routeMap.forEach((r, idx) => {
          routeHtml += `
-<div style="flex:1; min-width:100px; position:relative; text-align:center;">
+<div style="flex:1; min-width:110px; position:relative; text-align:center;">
 <div style="width:10px; height:10px; background:#A0522D; border-radius:50%; margin:0 auto 10px; position:relative; z-index:2;"></div>
 <div style="font-size:11px; color:#333; font-weight:600; line-height:1.2; white-space:nowrap;">${r.from}</div>
 <div style="position:absolute; top:4px; left:50%; width:100%; height:2px; background:#EEE; z-index:1;">
-<span style="position:absolute; top:-22px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:2px 6px; border-radius:10px; font-size:10px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+<span style="position:absolute; top:-32px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:3px 8px; border-radius:12px; font-size:10px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 2px 5px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 4px;">
                        ${r.mode} ${r.time}
 </span>
 </div>
 </div>`;
          if(idx === day.routeMap.length - 1) {
              routeHtml += `
-<div style="flex:0.5; min-width:50px; text-align:center;">
+<div style="flex:0.5; min-width:55px; text-align:center;">
 <div style="width:10px; height:10px; background:#CCC; border-radius:50%; margin:0 auto 10px;"></div>
 <div style="font-size:11px; color:#666; white-space:nowrap;">${r.to}</div>
 </div>`;
