@@ -1204,11 +1204,15 @@ itineraryData.forEach(day => {
     window.scrollTo(0,0);
 }
  
-let map; // 全域變數，確保地圖不會重複初始化
+let map; // 全域變數
 function renderDay(dayIndex) {
+   // 1. 尋找資料 (確保不論 dayIndex 是多少都能抓到)
    const day = itineraryData.find(d => d.day === dayIndex);
-   if (!day) return;
-   // --- 1. 產生路徑小地圖 (RouteMap) ---
+   if(!day) {
+       console.error("找不到 Day " + dayIndex + " 的資料");
+       return;
+   }
+   // 2. 生成 [交通動線小地圖] (保留你原本最精美的 RouteMap 設計)
    let routeHtml = '';
    if (day.routeMap && day.routeMap.length > 0) {
        routeHtml = `
@@ -1231,7 +1235,7 @@ function renderDay(dayIndex) {
 </span>
 </div>
 </div>`;
-           if (idx === day.routeMap.length - 1) {
+           if(idx === day.routeMap.length - 1) {
                routeHtml += `
 <div style="flex:0 0 auto; min-width:80px; text-align:center;">
 <div style="width:12px; height:12px; background:#CCC; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
@@ -1241,7 +1245,7 @@ function renderDay(dayIndex) {
        });
        routeHtml += `</div></div>`;
    }
-   // --- 2. 組合主內容 HTML ---
+   // 3. 組合主內容 HTML
    let html = `
 <div style="text-align:center; margin-bottom:15px;">
 <h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
@@ -1249,7 +1253,7 @@ function renderDay(dayIndex) {
 </h2>
 <div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
 </div>
-<div id="map" style="height: 220px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #E8E2D6; z-index: 1; box-shadow: inset 0 0 10px rgba(0,0,0,0.05);"></div>
+<div id="map" style="height: 220px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #E8E2D6; z-index: 1;"></div>
 <div class="weather-info" style="margin-bottom: 8px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px;">
 <span>📍 ${day.location}</span>
 <span>🌡️ ${day.weather}</span>
@@ -1285,9 +1289,8 @@ function renderDay(dayIndex) {
 </div>
        `;
    });
-   // 渲染到頁面
    document.getElementById('dayContent').innerHTML = html;
-   // --- 3. 初始化 Leaflet 地圖 ---
+   // 4. 地圖渲染 (含容錯)
    try {
        if (typeof L !== 'undefined') {
            if (map) { map.remove(); map = null; }
@@ -1300,19 +1303,17 @@ function renderDay(dayIndex) {
                map.fitBounds(group.getBounds().pad(0.2));
            }
        }
-   } catch (error) {
-       console.error("地圖出錯:", error);
-   }
-   // --- 4. 更新按鈕狀態 (修正後的匹配邏輯) ---
+   } catch (e) { console.warn("Map error", e); }
+   // 5. 更新按鈕狀態 (修正後的通用邏輯)
    document.querySelectorAll('.day-btn').forEach(btn => {
        btn.classList.remove('active');
-       // 抓取 onclick 內容，檢查是否包含 renderDay(數字)
+       // 抓取按鈕上的 onclick 屬性，檢查裡面是不是寫著 renderDay(當前天數)
        const clickAttr = btn.getAttribute('onclick') || "";
-       if (clickAttr.includes(`renderDay(${dayIndex})`)) {
+       if (clickAttr.includes("renderDay(" + dayIndex + ")")) {
            btn.classList.add('active');
        }
    });
-   window.scrollTo(0, 0);
+   window.scrollTo(0,0);
 }
 // 3. 輔助功能：切換百科內容
 function toggleExtra(id) {
