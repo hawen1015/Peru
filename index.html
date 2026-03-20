@@ -1204,15 +1204,12 @@ itineraryData.forEach(day => {
     window.scrollTo(0,0);
 }
  
-let map; // 全域變數
+let map; // 全域變數，確保地圖不重複初始化
 function renderDay(dayIndex) {
-   // 1. 尋找資料 (確保不論 dayIndex 是多少都能抓到)
+   console.log("正在切換至 Day:", dayIndex);
    const day = itineraryData.find(d => d.day === dayIndex);
-   if(!day) {
-       console.error("找不到 Day " + dayIndex + " 的資料");
-       return;
-   }
-   // 2. 生成 [交通動線小地圖] (保留你原本最精美的 RouteMap 設計)
+   if (!day) return;
+   // --- 1. 生成路徑小地圖 (RouteMap) ---
    let routeHtml = '';
    if (day.routeMap && day.routeMap.length > 0) {
        routeHtml = `
@@ -1235,7 +1232,7 @@ function renderDay(dayIndex) {
 </span>
 </div>
 </div>`;
-           if(idx === day.routeMap.length - 1) {
+           if (idx === day.routeMap.length - 1) {
                routeHtml += `
 <div style="flex:0 0 auto; min-width:80px; text-align:center;">
 <div style="width:12px; height:12px; background:#CCC; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
@@ -1245,7 +1242,7 @@ function renderDay(dayIndex) {
        });
        routeHtml += `</div></div>`;
    }
-   // 3. 組合主內容 HTML
+   // --- 2. 組合主內容 HTML ---
    let html = `
 <div style="text-align:center; margin-bottom:15px;">
 <h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
@@ -1290,7 +1287,7 @@ function renderDay(dayIndex) {
        `;
    });
    document.getElementById('dayContent').innerHTML = html;
-   // 4. 地圖渲染 (含容錯)
+   // --- 3. 初始化地圖 (容錯機制) ---
    try {
        if (typeof L !== 'undefined') {
            if (map) { map.remove(); map = null; }
@@ -1303,59 +1300,37 @@ function renderDay(dayIndex) {
                map.fitBounds(group.getBounds().pad(0.2));
            }
        }
-   } catch (e) { console.warn("Map error", e); }
-   // 5. 更新按鈕狀態 (修正後的通用邏輯)
+   } catch (e) { console.error("Map error:", e); }
+   // --- 4. 更新按鈕狀態 (這行最重要，修正了找不到對象會當機的問題) ---
    document.querySelectorAll('.day-btn').forEach(btn => {
        btn.classList.remove('active');
-       // 抓取按鈕上的 onclick 屬性，檢查裡面是不是寫著 renderDay(當前天數)
-       const clickAttr = btn.getAttribute('onclick') || "";
-       if (clickAttr.includes("renderDay(" + dayIndex + ")")) {
+       if (btn.innerText.includes(dayIndex.toString())) {
            btn.classList.add('active');
        }
    });
-   window.scrollTo(0,0);
+   window.scrollTo(0, 0);
 }
-// 3. 輔助功能：切換百科內容
+// 輔助功能：切換百科
 function toggleExtra(id) {
-  const el = document.getElementById(id);
-  const isVisible = el.style.display === 'block';
-  // 隱藏同一張卡片內的其他展開項
-  const card = el.closest('.card');
-  card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
-  el.style.display = isVisible ? 'none' : 'block';
+   const el = document.getElementById(id);
+   const isVisible = el.style.display === 'block';
+   const card = el.closest('.card');
+   card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
+   el.style.display = isVisible ? 'none' : 'block';
 }
-// 4. 最終修正版初始化
+// 5. 初始化
 window.onload = function() {
-   console.log("網頁載入完成，開始初始化...");
    const btnContainer = document.getElementById('dayButtons');
-   // 檢查資料是否存在
-   if (typeof itineraryData === 'undefined' || itineraryData.length === 0) {
-       console.error("錯誤：找不到 itineraryData 資料！請檢查資料陣列是否定義在腳本上方。");
-       return;
-   }
-   // 強制生成按鈕
-   if(btnContainer) {
-       btnContainer.innerHTML = ""; // 先清空，避免重複
+   if(btnContainer && btnContainer.innerHTML.trim() === "") {
        itineraryData.forEach(d => {
-           const btn = document.createElement('button');
-           btn.className = 'day-btn';
-btn.id = `btn-${d.day}`;
-           btn.onclick = () => renderDay(d.day);
-           btn.innerHTML = `<span>D</span><span>${d.day}</span>`;
-           btnContainer.appendChild(btn);
+           btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
        });
-       console.log(`成功生成 ${itineraryData.length} 個天數按鈕`);
    }
-   // 預設顯示第一天
-   try {
-       const firstDay = itineraryData[0].day;
-       renderDay(firstDay);
-       console.log("已成功渲染第一天內容");
-   } catch (e) {
-       console.error("渲染第一天失敗:", e);
+   // 預設跑第一天
+   if (typeof itineraryData !== 'undefined' && itineraryData.length > 0) {
+       renderDay(itineraryData[0].day);
    }
 };
 </script>
-
 </body>
 </html>
