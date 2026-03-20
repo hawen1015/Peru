@@ -1007,30 +1007,30 @@ routeMap: [
        }
    ]
 },
-{
-   day: 14,
-   date: "10/21",
-   title: "拉巴斯中轉 | 飛越天空之城",
-   location: "Uyuni / La Paz / Lima",
-    locations: [
- { name: "拉巴斯市中心 (轉機快閃)", lat: -16.4950, lng: -68.1330 },
- { name: "Costa del Sol Wyndham (機場飯店)", lat: -12.0220, lng: -77.1110 }
-],
-   weather: "6 - 15°C 多雲",
-   hotel: "Costa del Sol Wyndham Lima Airport",
-    hotelUrl: "https://www.google.com/maps/search/?api=1&query=Costa+del+Sol+Wyndham+Lima+Airport", 
-   outfit: "舒適飛行服 + 保暖外套",
-  routeMap: [
-      { from: "烏尤尼", to: "拉巴斯", time: "1 hr", mode: "✈️" },
-      { from: "拉巴斯市區", to: "景點", time: "30 min", mode: "🚠" },
-      { from: "拉巴斯", to: "利馬機場", time: "2 hr", mode: "✈️" },
-      { from: "利馬機場", to: "機場飯店", time: "5 min", mode: "🚶" }
-    ],
-    items: [
-       {
-           type: "交通",
-           title: "雙城大中轉 (UYU - LPB - LIM)",
-           desc: "09:15 飛拉巴斯，19:45 飛利馬。中間有 9 小時的城市空檔。",
+   {
+       day: 14,
+       date: "10/21",
+       title: "拉巴斯中轉 | 飛越天空之城",
+       location: "Uyuni / La Paz / Lima",
+       locations: [
+           { name: "拉巴斯市中心", lat: -16.4950, lng: -68.1330 },
+           { name: "Costa del Sol Wyndham", lat: -12.0220, lng: -77.1110 }
+       ],
+       weather: "6 - 15°C 多雲",
+       hotel: "Costa del Sol Wyndham Lima Airport",
+       hotelUrl: "https://www.google.com/maps/search/?api=1&query=Costa+del+Sol+Wyndham+Lima+Airport",
+       outfit: "洋蔥式。好走的鞋 + 多層穿法",
+       routeMap: [
+           { from: "烏尤尼", to: "拉巴斯", time: "1 hr", mode: "✈️" },
+           { from: "拉巴斯市區", to: "景點", time: "30 min", mode: "纜車" },
+           { from: "拉巴斯", to: "利馬", time: "2 hr", mode: "✈️" }, // <-- 這裡補上逗號了
+           { from: "利馬機場", to: "飯店", time: "5 min", mode: "🚶" }
+       ],
+       items: [
+           {
+               type: "交通",
+               title: "雙城大中轉 (UYU - LPB - LIM)",
+               desc: "09:15 飛拉巴斯，中間有 9 小時空檔。",
          longDesc: "導遊碎碎念：今天雖然是飛行日，但拉巴斯的 9 小時中轉我們不會浪費。我們會進入這座全世界海拔最高的行政首都，體驗『空中巴士』纜車系統，並在利馬落地後直接步行至對面的機場飯店休息。",
            extras: {
                wiki: "<b>🏛️ 深度人文：女巫市場與最高交通系統</b><br><br><b>【信仰中心：女巫市場與 Pachamama】</b><br>在拉巴斯著名的女巫市場（Mercado de las Brujas），你會看到最震撼的文化景觀：掛在牆上的乾扁羊駝胎兒。對當地人來說，這絕非邪術，而是最誠摯的獻祭。玻利維亞人敬畏大地之母（Pachamama），在蓋新房子、甚至買新車時，都會請巫師（Yatiris）準備一個包含羊駝胎兒、各種糖果與香料的祭品包進行焚燒，以祈求土地神靈的庇護。這反映了拉巴斯即便進入現代化，骨子裡依然流動著前印加時期的宇宙觀。<br><br><b>【都市工程：世界最高的纜車網路】</b><br>由於拉巴斯盆地地形破碎、交通極度擁擠，玻利維亞政府打造了全球最大的都市纜車系統『Mi Teleférico』。這不只是觀光設施，更是城市正義的體現——它讓住在山頂貧民區的居民，只需幾分鐘就能安全、廉價地抵達市中心工作。當你坐在纜車上俯瞰整座山城，你會看到這座城市如何利用『天空巴士』縫合社會階級的裂痕。<b>人文觀測：</b>纜車車廂在夕陽下穿梭於紅磚房與雪山之間，是拉巴斯最當代的視覺符號。",
@@ -1356,18 +1356,20 @@ function toggleExtra(id) {
   card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
   el.style.display = isVisible ? 'none' : 'block';
 }
-// 4. 初始化
-const btnContainer = document.getElementById('dayButtons');
-if(btnContainer && btnContainer.innerHTML.trim() === "") {
-  itineraryData.forEach(d => {
-      btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
-  });
-}
-// 預設顯示第一天
-document.addEventListener('DOMContentLoaded', () => {
-   renderDay(1);
-});
-
+// 4. 初始化代碼 
+window.onload = function() {
+   const btnContainer = document.getElementById('dayButtons');
+   // 生成按鈕
+   if(btnContainer && btnContainer.innerHTML.trim() === "") {
+       itineraryData.forEach(d => {
+           btnContainer.innerHTML += `<button class="day-btn" id="btn-${d.day}" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
+       });
+   }
+   // 預設顯示第一天 (或行程資料中的第一天)
+   if (typeof itineraryData !== 'undefined' && itineraryData.length > 0) {
+       renderDay(itineraryData[0].day);
+   }
+};
 </script>
 
 </body>
