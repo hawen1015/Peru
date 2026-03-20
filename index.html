@@ -1160,95 +1160,93 @@ routeMap: [
 ];
 // 1. 衣服建議資料
 const outfitList = {
-   1: "輕便長袖 + 薄外套 (晚間微涼)",
-   2: "春裝。步行鞋 + 長袖襯衫 + 針織衫",
-   3: "夏裝 + 防風外套 (沙漠衝沙風大)",
-   4: "輕便夏裝 + 帽子 (海島風大需外套)",
-   5: "洋蔥式。薄發熱衣 + 休閒長袖 + 輕羽絨",
-   6: "多層次。清晨冷、爬山熱，隨身帶外套",
-   7: "棉質長袖 + 抓絨外套。墨鏡帽子必備",
-   8: "極地裝備！發熱衣+毛衣+防風外套+毛帽",
-   9: "休閒保暖。觀景台風大需外套",
-   10: "防風保暖。湖面紫外線強，穿長袖防曬",
-   11: "舒適休閒。跨國拉車穿著寬鬆保暖為主",
-   12: "冬裝。鹽湖中午反光強，夕陽後極冷",
-   13: "保暖休閒。帶泳衣(SPA)，早晚穿厚外套",
-   14: "洋蔥式。好走的鞋 + 多層穿法",
-   15: "熱帶雨林。透氣長袖長褲(防蚊)",
-   16: "排汗長袖長褲。建議穿防滑運動鞋",
-   17: "輕便透氣。建議隨身攜帶輕便雨衣",
-   18: "春裝。利馬海邊較陰涼，薄外套搭配長袖"
+  1: "輕便長袖 + 薄外套 (晚間微涼)",
+  2: "春裝。步行鞋 + 長袖襯衫 + 針織衫",
+  3: "夏裝 + 防風外套 (沙漠衝沙風大)",
+  4: "輕便夏裝 + 帽子 (海島風大需外套)",
+  5: "洋蔥式。薄發熱衣 + 休閒長袖 + 輕羽絨",
+  6: "多層次。清晨冷、爬山熱，隨身帶外套",
+  7: "棉質長袖 + 抓絨外套。墨鏡帽子必備",
+  8: "極地裝備！發熱衣+毛衣+防風外套+毛帽",
+  9: "休閒保暖。觀景台風大需外套",
+  10: "防風保暖。湖面紫外線強，穿長袖防曬",
+  11: "舒適休閒。跨國拉車穿著寬鬆保暖為主",
+  12: "冬裝。鹽湖中午反光強，夕陽後極冷",
+  13: "保暖休閒。帶泳衣(SPA)，早晚穿厚外套",
+  14: "洋蔥式。好走的鞋 + 多層穿法",
+  15: "熱帶雨林。透氣長袖長褲(防蚊)",
+  16: "排汗長袖長褲。建議穿防滑運動鞋",
+  17: "輕便透氣。建議隨身攜帶輕便雨衣",
+  18: "春裝。利馬海邊較陰涼，薄外套搭配長袖"
 };
-// 2. 核心功能函數
+// 2. 核心全域變數
+let map;
+// 3. 核心功能函數
 function showTab(tabId, el) {
-   document.querySelectorAll('.tab-content').forEach(tab => {
-       tab.classList.remove('active');
-       tab.style.display = 'none';
-   });
-   const targetTab = document.getElementById(tabId);
-   if (targetTab) {
-       targetTab.classList.add('active');
-       targetTab.style.display = (tabId === 'translate') ? 'flex' : 'block';
-   }
-   document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-   if (el) el.classList.add('active');
-   window.scrollTo(0, 0);
+  document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.remove('active');
+      tab.style.display = 'none';
+  });
+  const targetTab = document.getElementById(tabId);
+  if (targetTab) {
+      targetTab.classList.add('active');
+      targetTab.style.display = (tabId === 'translate') ? 'flex' : 'block';
+  }
+  document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+  if (el) el.classList.add('active');
+  window.scrollTo(0, 0);
 }
 function toggleExtra(id) {
-   const el = document.getElementById(id);
-   if (!el) return;
-   const isVisible = el.style.display === 'block';
-   const card = el.closest('.card');
-   if (card) {
-       card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
-   }
-   el.style.display = isVisible ? 'none' : 'block';
+  const el = document.getElementById(id);
+  if (!el) return;
+  const isVisible = el.style.display === 'block';
+  const card = el.closest('.card');
+  if (card) {
+      card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
+  }
+  el.style.display = isVisible ? 'none' : 'block';
 }
-let map; // 全域變數，確保地圖不會重複初始化
 function renderDay(dayIndex) {
-const day = itineraryData.find(d => d.day === dayIndex);
-if(!day) return;
-// 1. 生成 [交通動線小地圖] HTML (RouteMap)
-// --- 1. 產生路徑小地圖 (升級版) ---
-let routeHtml = '';
-if (day.routeMap && day.routeMap.length > 0) {
-     routeHtml = `
+   const day = itineraryData.find(d => d.day === dayIndex);
+   if(!day) return;
+   // --- A. 產生路徑小地圖 (RouteMap) ---
+   let routeHtml = '';
+   if (day.routeMap && day.routeMap.length > 0) {
+       routeHtml = `
 <div class="mini-route-map" style="background:#FDFCF9; border:1px solid #E8E2D6; border-radius:12px; padding:15px; margin: 15px 0 20px 0;">
 <div style="font-size:12px; color:#8C7B68; margin-bottom:10px; font-weight:bold; display:flex; justify-content:space-between;">
 <span>🕒 今日交通動線</span>
 <span style="font-weight:normal; font-size:10px;">可左右滑動 ⟷</span>
 </div>
 <div style="display:flex; align-items:flex-start; overflow-x:auto; padding: 40px 10px 15px 10px; -webkit-overflow-scrolling: touch;">
-     `;
-     day.routeMap.forEach((r, idx) => {
-         // 根據交通模式自動選擇 Icon (如果資料沒寫 mode，預設給 🚗)
-         const modeIcon = r.mode || "🚗";
-         routeHtml += `
+       `;
+       day.routeMap.forEach((r, idx) => {
+           const modeIcon = r.mode || "🚗";
+           routeHtml += `
 <div style="flex:0 0 auto; min-width:120px; position:relative; text-align:center;">
 <div style="width:12px; height:12px; background:#A0522D; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; position:relative; z-index:2; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
 <div style="font-size:12px; color:#333; font-weight:700; line-height:1.2; white-space:nowrap;">${r.from}</div>
 <div style="position:absolute; top:5px; left:50%; width:100%; height:2px; background:linear-gradient(90deg, #A0522D 0%, #EEE 100%); z-index:1;">
 <span style="position:absolute; top:-35px; left:50%; transform:translateX(-50%); background:#FFF; border:1px solid #E8E2D6; padding:4px 10px; border-radius:15px; font-size:11px; color:#A0522D; white-space:nowrap; font-weight:bold; box-shadow: 0 3px 6px rgba(0,0,0,0.08); display:flex; align-items:center; gap:4px;">
-                       ${modeIcon} <span style="color:#666; font-weight:normal;">${r.time}</span>
+                           ${modeIcon} <span style="color:#666; font-weight:normal;">${r.time}</span>
 </span>
 </div>
 </div>`;
-         // 最後一個節點的終點站名
-         if(idx === day.routeMap.length - 1) {
-             routeHtml += `
+           if(idx === day.routeMap.length - 1) {
+               routeHtml += `
 <div style="flex:0 0 auto; min-width:80px; text-align:center;">
 <div style="width:12px; height:12px; background:#CCC; border:2px solid #FFF; border-radius:50%; margin:0 auto 12px; box-shadow:0 2px 4px rgba(0,0,0,0.1);"></div>
 <div style="font-size:12px; color:#666; font-weight:600; white-space:nowrap;">${r.to}</div>
 </div>`;
-         }
-     });
-     routeHtml += `</div></div>`;
-}
-// 2. 組合完整頁面內容
-let html = `
+           }
+       });
+       routeHtml += `</div></div>`;
+   }
+   // --- B. 組合基礎資訊 ---
+   let html = `
 <div style="text-align:center; margin-bottom:15px;">
 <h2 style="margin:0; font-size:18px; color:var(--accent-color); letter-spacing:1px;">
-              Day ${day.day} <span style="color:#CCC; font-weight:300; margin:0 8px;">|</span> ${day.date}
+               Day ${day.day} <span style="color:#CCC; font-weight:300; margin:0 8px;">|</span> ${day.date}
 </h2>
 <div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
 </div>
@@ -1256,89 +1254,68 @@ let html = `
 <div class="weather-info" style="margin-bottom: 8px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px;">
 <span>📍 ${day.location}</span>
 <span>🌡️ ${day.weather}</span>
-       ${day.hotel ? `<span style="font-weight: 500; color: var(--accent-color);">🏨 <a href="${day.hotelUrl}" target="_blank" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">${day.hotel}</a></span>` : ''}
+           ${day.hotel ? `<span style="font-weight: 500; color: var(--accent-color);">🏨 <a href="${day.hotelUrl}" target="_blank" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">${day.hotel}</a></span>` : ''}
 </div>
 <div style="text-align:center; margin-bottom:20px;">
 <div style="display:inline-block; font-size:11px; background:rgba(140, 123, 104, 0.08); padding:5px 12px; border-radius:15px; color:#7A6A53; border: 1px solid rgba(140, 123, 104, 0.15); font-weight:500;">
-              👕 穿著建議：${day.outfit}
+               👕 穿著建議：${outfitList[dayIndex] || "請參考天氣"}
 </div>
 </div>
-   ${routeHtml}
-`;
-// 3. 渲染行程細節卡片
-day.items.forEach((item, idx) => {
-      const itemId = `item-${dayIndex}-${idx}`;
-      let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
-      html += `
+       ${routeHtml}
+   `;
+   // --- C. 渲染行程細節卡片 ---
+   day.items.forEach((item, idx) => {
+       const itemId = `item-${dayIndex}-${idx}`;
+       let tagsHtml = item.tags ? item.tags.map(t => `<span class="tag" style="background:${t.color}">${t.text}</span>`).join('') : '';
+       html += `
 <div class="card">
 <div class="card-type">${item.type}</div>
 <div class="card-title">${item.title}</div>
 <div class="card-desc">${item.desc}</div>
-<div class="card-long-desc" style="white-space: pre-wrap; display:block; margin-top:10px; color:#666; font-size:13px; border-left:2px solid #EEE; padding-left:10px;">${item.longDesc || ''}</div>
-           ${tagsHtml}
-           ${item.extras ? `
+               ${item.longDesc ? `<div class="card-long-desc" style="white-space: pre-wrap; display:block; margin-top:10px; color:#666; font-size:13px; border-left:2px solid #EEE; padding-left:10px;">${item.longDesc}</div>` : ''}
+               ${tagsHtml}
+               ${item.extras ? `
 <div class="extra-info-container">
-                   ${item.extras.wiki ? `<span class="info-badge badge-wiki" onclick="toggleExtra('${itemId}-wiki')">🏛️ 深度百科</span>` : ''}
-                   ${item.extras.food ? `<span class="info-badge badge-food" onclick="toggleExtra('${itemId}-food')">🍽️ 舌尖南美</span>` : ''}
-                   ${item.extras.photo ? `<span class="info-badge badge-photo" onclick="toggleExtra('${itemId}-photo')">📸 攝影特搜</span>` : ''}
+                       ${item.extras.wiki ? `<span class="info-badge badge-wiki" onclick="toggleExtra('${itemId}-wiki')">🏛️ 深度百科</span>` : ''}
+                       ${item.extras.food ? `<span class="info-badge badge-food" onclick="toggleExtra('${itemId}-food')">🍽️ 舌尖南美</span>` : ''}
+                       ${item.extras.photo ? `<span class="info-badge badge-photo" onclick="toggleExtra('${itemId}-photo')">📸 攝影特搜</span>` : ''}
 </div>
 <div id="${itemId}-wiki" class="info-content" style="display:none;">${item.extras.wiki}</div>
 <div id="${itemId}-food" class="info-content" style="display:none;">${item.extras.food}</div>
 <div id="${itemId}-photo" class="info-content" style="display:none;">${item.extras.photo}</div>
-           ` : ''}
+               ` : ''}
 </div>
-      `;
-  });
-  document.getElementById('dayContent').innerHTML = html;
-// --- 4. 初始化 Leaflet 互動地圖 (支援多點顯示) ---
-if (map) { map.remove(); } // 清除舊地圖
-// 建立標記群組
-const markers = [];
-const locs = day.locations || []; // 讀取新的 locations 陣列
-if (locs.length > 0) {
-   // 建立地圖實例
-   map = L.map('map', { zoomControl: false });
-   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-       attribution: '©OpenStreetMap'
-   }).addTo(map);
-   // 用迴圈把每個地點都畫上去
-   locs.forEach(loc => {
-       const marker = L.marker([loc.lat, loc.lng]).addTo(map)
-           .bindPopup(`<b>${loc.name}</b>`);
-       markers.push(marker);
+       `;
    });
-   // 💡 自動調整縮放比例：讓所有點都剛好出現在畫面中
-   const group = new L.featureGroup(markers);
-   map.fitBounds(group.getBounds().pad(0.2)); // pad(0.2) 是讓邊緣留一點空隙，比較美觀
-} else {
-   // 如果這天沒資料，顯示預設位置
-   map = L.map('map', { zoomControl: false }).setView([-12.0464, -77.0428], 12);
-   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+   document.getElementById('dayContent').innerHTML = html;
+   // --- D. 初始化 Leaflet 地圖 ---
+   try {
+       if (map) { map.remove(); }
+       const locs = day.locations || [];
+       if (locs.length > 0) {
+           map = L.map('map', { zoomControl: false });
+           L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+           const markerGroup = locs.map(loc => L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(`<b>${loc.name}</b>`));
+           const group = new L.featureGroup(markerGroup);
+           map.fitBounds(group.getBounds().pad(0.2));
+       }
+   } catch (e) { console.error("Map error:", e); }
+   // --- E. 更新按鈕狀態 ---
+   document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+   const allBtns = document.querySelectorAll('.day-btn');
+   if(allBtns[dayIndex - 1]) { allBtns[dayIndex - 1].classList.add('active'); }
+   window.scrollTo(0,0);
 }
-  // --- 5. 更新按鈕狀態與捲動 ---
-  document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
-  const allBtns = document.querySelectorAll('.day-btn');
-  if(allBtns[dayIndex - 1]) { allBtns[dayIndex - 1].classList.add('active'); }
-  window.scrollTo(0,0);
-}
-// 3. 輔助功能：切換百科內容
-function toggleExtra(id) {
-  const el = document.getElementById(id);
-  const isVisible = el.style.display === 'block';
-  // 隱藏同一張卡片內的其他展開項
-  const card = el.closest('.card');
-  card.querySelectorAll('.info-content').forEach(c => c.style.display = 'none');
-  el.style.display = isVisible ? 'none' : 'block';
-}
-// 4. 初始化
-const btnContainer = document.getElementById('dayButtons');
-if(btnContainer && btnContainer.innerHTML.trim() === "") {
-  itineraryData.forEach(d => {
-      btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
-  });
-}
-       renderDay(1);
-   }
+// 4. 初始化執行
+window.onload = function() {
+  const btnContainer = document.getElementById('dayButtons');
+  if(btnContainer) {
+      btnContainer.innerHTML = ""; // 清空舊按鈕
+      itineraryData.forEach(d => {
+          btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
+      });
+  }
+  renderDay(1); // 預設載入第一天
 };
 </script>
 </body>
