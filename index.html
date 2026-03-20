@@ -596,7 +596,11 @@
    day: 2,
    date: "10/09",
    title: "利馬城市遊 | 殖民遺產與千年古蹟",
-   location: "Lima City Tour",
+   locations: [
+ { name: "舊城區聖馬丁廣場", lat: -12.0511, lng: -77.0348 },
+ { name: "武器廣場/大教堂", lat: -12.0469, lng: -77.0297 },
+ { name: "Huaca Pucllana 遺址", lat: -12.1107, lng: -77.0337 }
+],
    weather: "18-24°C 多雲轉晴",
    hotel: "Pullman Lima Miraflores",
     hotelUrl: "https://www.google.com/maps/search/?api=1&query=Pullman+Lima+Miraflores",
@@ -1203,21 +1207,31 @@ function renderDay(dayIndex) {
       `;
   });
   document.getElementById('dayContent').innerHTML = html;
-  // --- 4. 初始化 Leaflet 互動地圖 ---
-  if (map) { map.remove(); } // 清除舊地圖
-  // 取得座標 (如果資料沒寫，預設利馬市中心)
-  const lat = (day.coords && day.coords.lat) ? day.coords.lat : -12.0464;
-  const lng = (day.coords && day.coords.lng) ? day.coords.lng : -77.0428;
-  map = L.map('map', {
-      zoomControl: false // 手機版建議關閉縮放按鈕，畫面比較乾淨
-  }).setView([lat, lng], 13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '©OpenStreetMap'
-  }).addTo(map);
-  // 加入標記
-  L.marker([lat, lng]).addTo(map)
-      .bindPopup(`<b>${day.location}</b>`)
-      .openPopup();
+// --- 4. 初始化 Leaflet 互動地圖 (支援多點顯示) ---
+if (map) { map.remove(); } // 清除舊地圖
+// 建立標記群組
+const markers = [];
+const locs = day.locations || []; // 讀取新的 locations 陣列
+if (locs.length > 0) {
+   // 建立地圖實例
+   map = L.map('map', { zoomControl: false });
+   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+       attribution: '©OpenStreetMap'
+   }).addTo(map);
+   // 用迴圈把每個地點都畫上去
+   locs.forEach(loc => {
+       const marker = L.marker([loc.lat, loc.lng]).addTo(map)
+           .bindPopup(`<b>${loc.name}</b>`);
+       markers.push(marker);
+   });
+   // 💡 自動調整縮放比例：讓所有點都剛好出現在畫面中
+   const group = new L.featureGroup(markers);
+   map.fitBounds(group.getBounds().pad(0.2)); // pad(0.2) 是讓邊緣留一點空隙，比較美觀
+} else {
+   // 如果這天沒資料，顯示預設位置
+   map = L.map('map', { zoomControl: false }).setView([-12.0464, -77.0428], 12);
+   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+}
   // --- 5. 更新按鈕狀態與捲動 ---
   document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
   const allBtns = document.querySelectorAll('.day-btn');
