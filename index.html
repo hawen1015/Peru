@@ -397,41 +397,42 @@
 <div style="padding-top: 10px;">
   <h2 style="margin-bottom: 15px;">Route & Transport / 路線與交通</h2>
 <div class="map-card" style="background: var(--card-bg); border-radius: 18px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.03);">
-<div style="text-align: center; margin-bottom: 20px;">
+<div style="text-align: center; margin-bottom: 15px;">
   <div class="card-type" style="margin-bottom: 10px;">Travel Route Map</div>
-<svg class="map-svg" viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
-<g fill="var(--accent-color)" font-family="Noto Sans TC">
-  <circle cx="80" cy="150" r="6" /> <text x="35" y="145" font-size="12" font-weight="bold">利馬 Lima</text>
-  <circle cx="100" cy="220" r="4" /> <text x="50" y="240" font-size="10">帕拉卡斯 Paracas</text>
-  <circle cx="185" cy="210" r="6" /> <text x="175" y="195" font-size="12" font-weight="bold">聖谷/馬丘</text>
-  <circle cx="230" cy="290" r="5" /> <text x="240" y="295" font-size="12">普諾 Puno</text>
-  <circle cx="290" cy="330" r="5" /> <text x="300" y="335" font-size="12">拉巴斯 La Paz</text>
-  <circle cx="270" cy="430" r="6" /> <text x="280" y="445" font-size="12" font-weight="bold">烏尤尼 Uyuni</text>
-  <circle cx="260" cy="100" r="5" /> <text x="270" y="105" font-size="12">亞馬遜 Amazon</text>
-</g>
-<g fill="none" stroke-width="1.8">
-  <path d="M80 150 L100 220" stroke="#8C7B68" stroke-dasharray="5,3" />
-  <path d="M85 155 Q135 160 185 210" stroke="#7A6A53" />
-  <path d="M190 215 L230 290" stroke="#8C7B68" stroke-dasharray="2,2" />
-  <path d="M235 295 L290 330" stroke="#8C7B68" stroke-dasharray="5,3" />
-  <path d="M290 335 L275 430" stroke="#7A6A53" />
-  <path d="M85 145 Q160 80 260 100" stroke="#7A6A53" />
-</g>
-</svg>
-
+</div>
+<div id="overviewMap" style="height: 320px; width: 100%; border-radius: 15px; border: 1px solid #E8E2D6; z-index: 1;"></div>
 <div class="map-legend" style="display: flex; justify-content: center; gap: 15px; font-size: 11px; color: #999; margin-top: 10px;">
-<span>✈️ 班機</span><span>🚗 車程</span><span>🚂 火車</span>
+<span>📍 點擊圖釘可跳到當天行程</span>
 </div>
 </div>
 <div class="transport-details" style="border-top: 1px solid #EEE; padding-top: 20px;">
-<h4 style="font-size: 14px; color: var(--accent-color); margin-bottom: 12px;">核心航段與長程交通</h4>
+<h4 style="font-size: 14px; color: var(--accent-color); margin-bottom: 12px;">核心航段與長程交通 (共同行程)</h4>
 <div style="display: flex; flex-direction: column; gap: 12px;">
-<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/12 國內線</span><span style="font-weight: 500;">LA2609</span></div>
-<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/16 觀景火車</span><span style="font-weight: 500;">Titicaca Train</span></div>
-<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/18 跨國段</span><span style="font-weight: 500; color: #D2691E;">🚌 普諾➔拉巴斯</span></div>
-<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/19 玻國航空</span><span style="font-weight: 500;">OB304</span></div>
-<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/22 亞馬遜去程</span><span style="font-weight: 500;">LA2260</span></div>
-<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/25 亞馬遜回程</span><span style="font-weight: 500;">LA2261</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/12 利馬➔庫斯科</span><span style="font-weight: 500;">11:40-13:05 · QEPKAU</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/13 馬丘比丘去程</span><span style="font-weight: 500;">07:30-09:00 · WEB2870328</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/13 馬丘比丘回程</span><span style="font-weight: 500;">17:20-19:05 · PR2874305</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/16 觀景火車</span><span style="font-weight: 500;">07:20-約18:00 · WEB2875834</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/18 跨國段</span><span style="font-weight: 500; color: #D2691E;">🚗 普諾➔拉巴斯 (陸路)</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/19 拉巴斯➔烏尤尼</span><span style="font-weight: 500;">08:35-09:35 · JUYPOP</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/21 烏尤尼➔拉巴斯➔利馬</span><span style="font-weight: 500;">10:15-11:15 / 19:45-20:25 · JUYPOP</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/22 亞馬遜去程</span><span style="font-weight: 500;">10:20-12:05 · QGSJJY</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 13px;"><span>10/25 亞馬遜回程</span><span style="font-weight: 500;">12:45-14:20 · QGSJJY</span></div>
+</div>
+</div>
+</div>
+<div id="myFlightsSection" style="margin-top: 20px;">
+<div class="card" style="background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 15px;">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px;">
+<div style="font-weight: bold; color: var(--accent-color); font-size: 14px;">✈️ 我的班機 (個人自訂)</div>
+</div>
+<div style="font-size:11px; color:#999; margin: 8px 0 12px;">此區資料只存在你自己的手機裡，不會跟同行旅伴共用，適合填國際段班機或個人專屬提醒。</div>
+<div id="myFlightsList"></div>
+<div style="display:flex; flex-direction:column; gap:8px; margin-top:12px; background:#FBFAF7; padding:12px; border-radius:10px; border:1px dashed #E8E2D6;">
+<input id="mf-date" type="text" placeholder="日期 (例如 10/07)" style="padding:8px 10px; border-radius:8px; border:1px solid #E8E2D6; font-size:13px;">
+<input id="mf-route" type="text" placeholder="航班/路段 (例如 CI 68 台北➔首爾)" style="padding:8px 10px; border-radius:8px; border:1px solid #E8E2D6; font-size:13px;">
+<input id="mf-time" type="text" placeholder="時間 (例如 19:25-22:55)" style="padding:8px 10px; border-radius:8px; border:1px solid #E8E2D6; font-size:13px;">
+<input id="mf-note" type="text" placeholder="備註 (例如 行李直掛/轉機時間緊迫)" style="padding:8px 10px; border-radius:8px; border:1px solid #E8E2D6; font-size:13px;">
+<button onclick="addMyFlight()" style="background: var(--accent-color); color:#fff; border:none; padding:10px; border-radius:8px; font-size:13px; cursor:pointer;">＋ 新增我的班機</button>
 </div>
 </div>
 </div>
@@ -467,6 +468,28 @@
 </div>
 </div> 
 </div> 
+<div id="overview" class="tab-content">
+<div style="padding-top: 10px;">
+<h2 style="margin-bottom: 15px;">Overview / 18 天總覽</h2>
+<div class="card" style="background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 15px;">
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+<table style="border-collapse: collapse; width: 100%; min-width: 480px; font-size: 12px;">
+<thead>
+<tr style="background: #EFECE6; color: #7A6A53;">
+<th style="padding: 8px 10px; text-align: left;">Day</th>
+<th style="padding: 8px 10px; text-align: left;">日期</th>
+<th style="padding: 8px 10px; text-align: left;">地點</th>
+<th style="padding: 8px 10px; text-align: left;">住宿</th>
+<th style="padding: 8px 10px; text-align: right;">海拔</th>
+</tr>
+</thead>
+<tbody id="overviewTableBody"></tbody>
+</table>
+</div>
+</div>
+<div style="font-size: 11px; color: #bbb; margin-top: 10px; text-align: center;">點擊任一列可跳到該天完整行程</div>
+</div>
+</div>
 <div id="packing" class="tab-content">
 <div style="padding-top: 10px;">
 <h2 style="margin-bottom: 15px;">Preparation / 行前準備</h2>
@@ -479,50 +502,11 @@
 </ul>
 </div>
 <div class="card" style="background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 15px;">
-<div style="font-weight: bold; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; font-size: 14px;">✅ 互動打包清單 (可勾選)</div>
-<div id="packingList">
-<div style="margin-bottom: 20px;">
-<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 3px;">📄 重要文件 (隨身攜帶)</div>
-<div class="check-item"><input type="checkbox"> 護照正本 & 全彩影本 (分開存放)</div>
-<div class="check-item"><input type="checkbox"> 玻利維亞簽證紙 (Day 11 關鍵)</div>
-<div class="check-item"><input type="checkbox"> 黃熱病疫苗證明 (黃皮書)</div>
-<div class="check-item"><input type="checkbox"> 美金新鈔 (無折痕汙損，南美很挑)</div>
-<div class="check-item"><input type="checkbox"> 海外旅遊保險單 & 航班行程表</div>
+<div style="font-weight: bold; color: var(--accent-color); margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; font-size: 14px;">✅ 互動打包清單 (可勾選，自動儲存)</div>
+<div id="packingList"></div>
 </div>
-<div style="margin-bottom: 20px;">
-<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 3px;">❄️ 高原防寒 (洋蔥式穿法)</div>
-<div class="check-item"><input type="checkbox"> Gore-Tex 防水防風外套 (最強外層)</div>
-<div class="check-item"><input type="checkbox"> 輕羽絨衣 或 刷毛中層衣</div>
-<div class="check-item"><input type="checkbox"> 吸濕排汗發熱衣褲 (保暖基底)</div>
-<div class="check-item"><input type="checkbox"> 遮陽帽 (抗 UV) & 毛帽 (護耳)</div>
-<div class="check-item"><input type="checkbox"> 防滑登山鞋 (需已穿過磨合)</div>
-<div class="check-item"><input type="checkbox"> 保暖手套 & 厚圍巾</div>
-<div class="check-item"><input type="checkbox"> 羊毛厚襪 (預防腳趾凍傷)</div>
 </div>
-<div style="margin-bottom: 20px;">
-<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 3px;">🌿 亞馬遜專用 (淺色為主)</div>
-<div class="check-item"><input type="checkbox"> 淺色長袖襯衫 & 長褲 (物理防蚊)</div>
-<div class="check-item"><input type="checkbox"> 高濃度 DEET 防蚊液 (必備)</div>
-<div class="check-item"><input type="checkbox"> 望遠鏡 (觀察樹冠層動物)</div>
-<div class="check-item"><input type="checkbox"> 電子設備防水袋 (防午後雷雨)</div>
-<div class="check-item"><input type="checkbox"> 泳衣 (Inkaterra SPA 與溫泉用)</div>
-</div>
-<div style="margin-bottom: 20px;">
-<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 3px;">💊 醫療與強效護理</div>
-<div class="check-item"><input type="checkbox"> 高山症藥 (丹木斯) & 止痛藥 (頭痛用)</div>
-<div class="check-item"><input type="checkbox"> 腸胃藥 (止瀉/胃散) & 暈車藥</div>
-<div class="check-item"><input type="checkbox"> 強效防曬乳 (SPF50+) & 護唇膏</div>
-<div class="check-item"><input type="checkbox"> 高度保濕乳液 (鹽原極度乾燥)</div>
-<div class="check-item"><input type="checkbox"> 人工皮 & OK繃 (腳部防磨)</div>
-</div>
-<div style="margin-bottom: 15px;">
-<div style="font-size: 13px; font-weight: bold; color: #8C7B68; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 3px;">🔌 電子設備與配件</div>
-<div class="check-item"><input type="checkbox"> 行動電源 (高海拔低溫耗電快)</div>
-<div class="check-item"><input type="checkbox"> 萬用轉換插頭 (秘魯/玻國適用)</div>
-<div class="check-item"><input type="checkbox"> 暖暖包 (彩虹山凌晨與鹽湖夕陽)</div>
-<div class="check-item"><input type="checkbox"> 偏光墨鏡 (鹽湖反射強光救星)</div>
-<div class="check-item"><input type="checkbox"> U 型頸枕 (Day 9 長途火車救星)</div>
-</div> </div> </div> </div> </div> </div> 
+</div> 
 <div id="translate" class="tab-content" style="display: none; padding: 20px; height: 80vh; flex-direction: column; justify-content: center;">
 <div style="text-align: center; margin-bottom: 40px;">
 <h2 style="font-size: 24px; color: #333; margin-bottom: 10px;">即時翻譯工具</h2>
@@ -556,6 +540,9 @@
 <button class="nav-item" onclick="showTab('flights', this)">
 <span class="nav-icon">✈️</span>交通
 </button>
+<button class="nav-item" onclick="showTab('overview', this)">
+<span class="nav-icon">📋</span>總覽
+</button>
 <button class="nav-item" onclick="showTab('packing', this)">
 <span class="nav-icon">🎒</span>準備
 </button>
@@ -569,6 +556,7 @@
     {
    day: 1,
    date: "10/08",
+   altitude: 150,
    title: "抵達利馬 | 展開南美夢幻之旅",
    location: "Lima",
         locations: [
@@ -597,6 +585,7 @@
 {
    day: 2,
    date: "10/09",
+   altitude: 150,
    title: "利馬城市遊 | 殖民遺產與千年古蹟",
    location: "Lima city",
    locations: [
@@ -633,6 +622,7 @@
 {
    day: 3,
    date: "10/10",
+   altitude: 10,
    title: "穿越沙漠 | Paracas 與瓦卡奇納綠洲",
    location: "Paracas / Ica",
    locations: [
@@ -666,6 +656,7 @@ routeMap: [
 {
    day: 4,
    date: "10/11",
+   altitude: 150,
    title: "海上生物與納茲卡之謎 | 回歸利馬",
    location: "Paracas / Nazca",
   locations: [
@@ -701,6 +692,7 @@ routeMap: [
 {
    day: 5,
    date: "10/12",
+   altitude: 2800,
    title: "飛向安地斯之魂 | 聖谷高度適應",
    location: "Lima / Cusco / Sacred Valley",
    locations: [
@@ -718,8 +710,8 @@ routeMap: [
     items: [
        {
            type: "交通",
-           title: "利馬飛往庫斯科 (LA2609)",
-           desc: "11:30 起飛，12:50 抵達庫斯科機場。",
+           title: "利馬飛往庫斯科 (LATAM，PNR: QEPKAU)",
+           desc: "11:40 起飛，13:05 抵達庫斯科機場 (CUZ)。",
            longDesc: "導遊碎碎念：從空中俯瞰安地斯山脈，你會發現地形從乾旱轉為破碎。抵達後直接前往聖谷是為了利用其平均海拔（2,800m）緩解高原反應。記住：在高山，走路要像百歲老人，呼吸要像新生兒。",
            extras: {
                wiki: "<b>🏛️ 深度人文：高山農業與印加的『高速網路』</b><br><br><b>【超級食物的故鄉】</b><br>進入安地斯山區後，你正式踏入了人類文明的糧倉。這裡不僅是馬鈴薯的發源地（祕魯有超過 4,000 種馬鈴薯），更是超級食物『藜麥』（Quinoa）的故鄉。印加人認為馬鈴薯是有靈性的，他們會對著土地祈禱，感謝 Pachamama（大地之母）的饋贈。你甚至可以在市場看到黑色的脫水馬鈴薯（Chuño），這是古人利用高原晝夜溫差發明的『天然凍乾技術』，可以保存十年不壞。<br><br><b>【印加跑者：Chasquis】</b><br>在沒有馬匹與輪子的年代，印加帝國靠著一套驚人的通訊系統運作。這些被稱為『Chasquis』的職業跑者，在海拔 3000 公尺以上的石路上接力奔跑。據說他們每天能傳遞訊息超過 200 公里。有趣的人文故事是：印加王在庫斯科皇宮內吃到的海鮮，竟然是這些跑者從利馬海邊當天新鮮送達的！他們維持體力的秘訣，就是口袋裡那包充滿爭議卻神聖的古柯葉。<br><br><b>【氣候與地形】</b><br>聖谷的海拔約 2,800m，比庫斯科低，且群山環繞形成了溫暖的微氣候。這就是為什麼印加人選擇這裡作為皇室私人領地與農業實驗場的原因。",
@@ -732,6 +724,7 @@ routeMap: [
 {
    day: 6,
    date: "10/13",
+   altitude: 2800,
    title: "馬丘比丘巔峰日 | 雙線探秘與奢華之最",
    location: "Machu Picchu",
   locations: [
@@ -751,6 +744,12 @@ routeMap: [
    { from: "馬丘比丘", to: "奧蘭泰坦博", time: "1.5 hr", mode: "🚆" }
 ],
     items: [
+       {
+           type: "交通",
+           title: "去程觀景火車 (Vistadome，PNR: WEB2870328)",
+           desc: "07:30 Ollantaytambo 出發，約 09:00 抵達馬丘比丘鎮。",
+           longDesc: "導遊碎碎念：Vistadome 車廂有大片景觀窗，沿烏魯班巴河谷一路欣賞雪山與梯田，是進入聖城前最好的暖身。"
+       },
        {
            type: "景點",
            title: "馬丘比丘 2 號線 (Circuit 2)：宇宙與城市的鳥瞰",
@@ -774,8 +773,8 @@ routeMap: [
        },
        {
            type: "交通",
-           title: "Belmond Hiram Bingham 奢華晚宴",
-           desc: "17:50 回程。復古車廂與高山奢華晚宴。",
+           title: "Belmond Hiram Bingham 奢華晚宴 (PNR: PR2874305)",
+           desc: "17:20 馬丘比丘鎮出發，約 19:05 抵達 Ollantaytambo。復古車廂與高山奢華晚宴。",
            longDesc: "導遊碎碎念：結束了高強度的步行，Belmond 的晚宴是犒賞自己的最佳方式。車上的餐飲水平代表了現代祕魯美食 (Gastronomy) 的縮影。",
            extras: {
                wiki: "<b>🏛️ 探險家百科：</b>這列火車以 Hiram Bingham 命名，雖然他自認是馬丘比丘的『發現者』，但實際上當地農夫早已在此耕種。車廂內的裝飾完美還原了 1911 年那種冒險家黃金時代的優雅與傲慢。<br><br><b>液體百科：</b>隨車無限量供應的 Pisco Sour，使用的是優質 Quebranta 葡萄品種。記得觀察調酒師如何搖晃蛋白，產生那層如雲朵般厚實的泡沫。",
@@ -788,6 +787,7 @@ routeMap: [
  {
    day: 7,
    date: "10/14",
+   altitude: 3400,
    title: "軍事堡壘與大地之胃 | 回歸庫斯科",
    location: "Ollantaytambo / Cusco",
      locations: [
@@ -826,6 +826,7 @@ routeMap: [
 {
    day: 8,
    date: "10/15",
+   altitude: 3400,
    title: "彩虹山挑戰 | 地球的礦物調色盤",
    location: "Vinicunca (Rainbow Mountain)",
     locations: [
@@ -857,6 +858,7 @@ routeMap: [
 {
    day: 9,
    date: "10/16",
+   altitude: 3800,
    title: "安地斯高原快鐵 | 橫跨阿爾蒂普拉諾",
    location: "Cusco to Puno",
     locations: [
@@ -873,8 +875,8 @@ routeMap: [
     items: [
        {
            type: "交通",
-           title: "PeruRail Titicaca Train",
-           desc: "07:50 - 18:20 世界上最迷人的景觀鐵道之一。",
+           title: "PeruRail Titicaca Train (PNR: WEB2875834)",
+           desc: "07:20 Wanchaq(Cusco) 出發，約 17:20-18:00 抵達普諾。世界上最迷人的景觀鐵道之一。",
           longDesc: "導遊碎碎念：這不是單純的移動，而是一場流動的饗宴。火車會經過海拔 4,313m 的 La Raya 最高點，那裡風景最壯闊。車上包含全套午餐與下午茶。",
            extras: {
                wiki: "<b>🏛️ 深度解析：火車軌道上的分水嶺</b><br><br><b>【地理奇蹟：阿爾蒂普拉諾高原】</b><br>這趟旅程將橫跨著名的阿爾蒂普拉諾（Altiplano）高原，這是僅次於青藏高原的世界第二大高平原。火車會經過海拔 4,313 公尺的 <b>La Raya</b>，這裡不僅是旅程最高點，更是地理上的分水嶺：往北流的水最終匯入亞馬遜河奔向大西洋，往南流的水則注入的的喀喀湖。這裡的景觀會從陡峭的山谷轉變為無邊無際的荒原，偶爾可見野生的小羊駝（Vicuña）在金色的草叢中奔跑。<br><br><b>【人文符號：普卡拉小牛 Toritos de Pucará】</b><br>當火車經過普卡拉（Pucará）小鎮時，你會在每一戶人家的屋頂看見一對陶製小牛。這是高原居民最重要的守護符號。在西班牙人帶來耕牛之前，當地是用陶製的美洲駝作為祭品。後來這種工藝融合了西方公牛的形象，演變成今日的普卡拉小牛。它們象徵著家族的興旺、保護與平衡，通常是一對出現，中間夾著一個十字架，展現了天主教與印加信仰的神奇融合。",
@@ -887,6 +889,7 @@ routeMap: [
 {
    day: 10,
    date: "10/17",
+   altitude: 3800,
    title: "的的喀喀湖 | 消失的水上文明",
    location: "Lake Titicaca",
     locations: [
@@ -917,6 +920,7 @@ routeMap: [
 {
    day: 11,
    date: "10/18",
+   altitude: 3600,
    title: "跨越國境 | 前往玻利維亞門戶",
    location: "Puno / La Paz",
     locations: [
@@ -948,6 +952,7 @@ routeMap: [
    {
    day: 12,
    date: "10/19",
+   altitude: 3656,
    title: "天空之鏡 | 地表的純白幻境",
    location: "Uyuni",
        locations: [
@@ -966,8 +971,8 @@ routeMap: [
        items: [
        {
            type: "景點",
-           title: "烏尤尼鹽原經典巡禮",
-           desc: "07:40 飛抵烏尤尼，展開火車墳場與純白鹽湖之旅。",
+           title: "烏尤尼鹽原經典巡禮 (航班 PNR: JUYPOP)",
+           desc: "08:35 拉巴斯起飛，09:35 抵達烏尤尼，展開火車墳場與純白鹽湖之旅。",
           longDesc: "導遊碎碎念：抵達後我們直接進入鹽原。今天我們會看到工業遺留的廢墟美學，也會進入無邊際的白色荒漠。鹽湖午餐是人生清單等級的體驗，夕陽配紅酒更是浪漫極致。",
            extras: {
                wiki: "<b>🏛️ 地質百科：白金之地的創世與凋零</b><br><br><b>【地質奇蹟：史前巨湖的遺產】</b><br>烏尤尼（Uyuni）是全球最大的鹽原，面積達 1 萬平方公里。約在 4 萬年前，這裡曾是巨大的明欽湖（Lake Minchin），隨後湖水乾涸，留下了厚達數公尺的鹽殼。這片純白荒野下方蘊藏著全球 50% 以上的『鋰』礦，這種被稱為『白金』的資源，讓這片沉寂千年的鹽湖成為全球科技產業的核心焦慮點。<br><br><b>【神話傳說：巨人的眼淚與乳汁】</b><br>當地艾馬拉人對鹽原的形成有更浪漫的解釋：相傳遠古時期，周圍的三座神山（Tunupa、Kusku 和 Kusina）曾是巨人。Tunupa 女神遭到丈夫背叛，在哺乳時傷心過度，她的淚水混著甘甜的母乳灑滿大地，最終凝結成了這片無邊無際的純白鹽湖。因此，當地人至今仍更傾向稱之為『Tunupa 鹽原』。<br><br><b>【工業美學：火車墳場】</b><br>位於鹽原邊緣的火車墳場，記錄了 19 世紀玻利維亞的銀礦榮光。當時大英帝國工程師在此鋪設鐵路，試圖將礦產運往太平洋。後來隨著礦業凋零與戰爭衝突，這些蒸汽機車被遺棄在強鹼與鹽風中。如今這些鏽跡斑斑的鋼鐵巨人，成了高原上最壯烈的末日地景，述說著工業文明在自然力量面前的渺小。",
@@ -980,6 +985,7 @@ routeMap: [
 {
    day: 13,
    date: "10/20",
+   altitude: 3656,
    title: "鹽之宮殿 | 緩衝與火山側影",
    location: "Uyuni / Colchani",
     locations: [
@@ -1010,6 +1016,7 @@ routeMap: [
    {
        day: 14,
        date: "10/21",
+   altitude: 150,
        title: "拉巴斯中轉 | 飛越天空之城",
        location: "Uyuni / La Paz / Lima",
        locations: [
@@ -1017,20 +1024,20 @@ routeMap: [
            { name: "Costa del Sol Wyndham", lat: -12.0220, lng: -77.1110 }
        ],
        weather: "6 - 15°C 多雲",
-       hotel: "Costa del Sol Wyndham Lima Airport",
-       hotelUrl: "https://www.google.com/maps/search/?api=1&query=Costa+del+Sol+Wyndham+Lima+Airport",
+       hotel: "Costa del Sol Grand Lima Airport",
+       hotelUrl: "https://www.google.com/maps/search/?api=1&query=Costa+del+Sol+Grand+Lima+Airport",
        outfit: "洋蔥式。好走的鞋 + 多層穿法",
        routeMap: [
            { from: "烏尤尼", to: "拉巴斯", time: "1 hr", mode: "✈️" },
            { from: "拉巴斯市區", to: "景點", time: "30 min", mode: "纜車" },
-           { from: "拉巴斯", to: "利馬", time: "2 hr", mode: "✈️" }, // <-- 這裡補上逗號了
+           { from: "拉巴斯", to: "利馬", time: "1h40m", mode: "✈️" },
            { from: "利馬機場", to: "飯店", time: "5 min", mode: "🚶" }
        ],
        items: [
            {
                type: "交通",
-               title: "雙城大中轉 (UYU - LPB - LIM)",
-               desc: "09:15 飛拉巴斯，中間有 9 小時空檔。",
+               title: "雙城大中轉 (UYU - LPB - LIM，PNR: JUYPOP)",
+               desc: "10:15 烏尤尼起飛，11:15 抵達拉巴斯；19:45 拉巴斯起飛，20:25 抵達利馬。中間約 8.5 小時空檔。",
          longDesc: "導遊碎碎念：今天雖然是飛行日，但拉巴斯的 9 小時中轉我們不會浪費。我們會進入這座全世界海拔最高的行政首都，體驗『空中巴士』纜車系統，並在利馬落地後直接步行至對面的機場飯店休息。",
            extras: {
                wiki: "<b>🏛️ 深度人文：女巫市場與最高交通系統</b><br><br><b>【信仰中心：女巫市場與 Pachamama】</b><br>在拉巴斯著名的女巫市場（Mercado de las Brujas），你會看到最震撼的文化景觀：掛在牆上的乾扁羊駝胎兒。對當地人來說，這絕非邪術，而是最誠摯的獻祭。玻利維亞人敬畏大地之母（Pachamama），在蓋新房子、甚至買新車時，都會請巫師（Yatiris）準備一個包含羊駝胎兒、各種糖果與香料的祭品包進行焚燒，以祈求土地神靈的庇護。這反映了拉巴斯即便進入現代化，骨子裡依然流動著前印加時期的宇宙觀。<br><br><b>【都市工程：世界最高的纜車網路】</b><br>由於拉巴斯盆地地形破碎、交通極度擁擠，玻利維亞政府打造了全球最大的都市纜車系統『Mi Teleférico』。這不只是觀光設施，更是城市正義的體現——它讓住在山頂貧民區的居民，只需幾分鐘就能安全、廉價地抵達市中心工作。當你坐在纜車上俯瞰整座山城，你會看到這座城市如何利用『天空巴士』縫合社會階級的裂痕。<b>人文觀測：</b>纜車車廂在夕陽下穿梭於紅磚房與雪山之間，是拉巴斯最當代的視覺符號。",
@@ -1043,6 +1050,7 @@ routeMap: [
    {
    day: 15,
    date: "10/22",
+   altitude: 250,
    title: "進入亞馬遜 | 飛往綠色心臟",
    location: "Puerto Maldonado",
        locations: [
@@ -1060,8 +1068,8 @@ routeMap: [
        items: [
        {
            type: "交通",
-           title: "飛往馬德雷德迪奧斯 (LA2260)",
-           desc: "10:20 起飛，12:50 抵達亞馬遜門戶。",
+           title: "飛往馬德雷德迪奧斯 (PNR: QGSJJY)",
+           desc: "10:20 利馬起飛，12:05 抵達亞馬遜門戶 (PEM)。",
        longDesc: "導遊碎碎念：抵達後我們會改乘獨木舟前往飯店。亞馬遜的熱浪與都市不同，帶著濃郁的泥土與植物香氣。今天傍晚的河流探險，請準備好手電筒，水邊的眼睛正在盯著你！",
            extras: {
                wiki: "<b>🏛️ 深度百科：從安地斯巔峰到地球之肺</b><br><br><b>【地理奇蹟：馬德雷德迪奧斯河】</b><br>歡迎來到馬德雷德迪奧斯（Madre de Dios），意為『上帝之母』。這裡是亞馬遜盆地的核心地帶，也是全球生物多樣性最集中的區域之一。不同於安地斯的乾燥，這裡的濕度長年維持在 80% 以上。當你搭乘獨木舟進入雨林，你正航行在支撐地球氧氣循環的大動脈上。<b>人文軼事：</b>這裡的河流顏色呈現土黃色，並非因為污染，而是攜帶了大量來自安地斯山脈沖刷下來的豐富礦物質與養分，養育了下游無數的生命。<br><br><b>【熱帶智慧：會走路的樹】</b><br>在前往飯店的林間，你可能會遇到神奇的『行走棕櫚樹』（Socratea exorrhiza）。這類樹木擁有特殊的支柱根，當環境光線不足或土壤養分耗盡時，它會朝陽光處生長出新的根，並讓舊根枯萎，每年能移動多達 20 公分！這種植物界的『生存遷徙』，完美展現了亞馬遜生命為了爭奪陽光而演化出的極致智慧。<br><br><b>【人文故事：森林的眼睛】</b><br>當地嚮導多為原住民後裔，他們對森林有一種特殊的感應。在他們眼中，森林不僅是植物，而是一個充滿神靈的整體。他們相信每棵巨樹都有其『母親神』（Madre del Monte），進入森林前必須保持敬畏，這也是為什麼亞馬遜原住民即便在現代化衝擊下，依然能與這片土地和諧共處數千年的原因。",
@@ -1074,6 +1082,7 @@ routeMap: [
 {
    day: 16,
    date: "10/23",
+   altitude: 250,
    title: "雨林生態巔峰 | 尋找巨型水獺",
    location: "Sandoval Lake",
     locations: [
@@ -1102,6 +1111,7 @@ routeMap: [
 {
    day: 17,
    date: "10/24",
+   altitude: 250,
    title: "植物智慧 | 巴西果與鹽舔食區",
    location: "Inland Collpa",
     locations: [
@@ -1130,6 +1140,7 @@ routeMap: [
 {
    day: 18,
    date: "10/25",
+   altitude: 150,
    title: "告別亞馬遜 | 利馬終極採買",
    location: "Lima",
     locations: [
@@ -1146,7 +1157,7 @@ routeMap: [
     items: [
        {
            type: "交通",
-           title: "亞馬遜飛回利馬 (LA2261)",
+           title: "亞馬遜飛回利馬 (PNR: QGSJJY)",
            desc: "12:45 起飛，14:20 抵達利馬，把握最後採買時間。",
          longDesc: "導遊碎碎念：旅程即將畫下句點。回到利馬後，我們有最後幾個小時可以衝刺採買。從精緻的羊駝毛到最純正的祕魯巧克力，把南美的回憶通通裝進行李箱！",
            extras: {
@@ -1194,6 +1205,12 @@ function showTab(tabId, el) {
   }
   document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
   if (el) el.classList.add('active');
+  if (tabId === 'flights') {
+      setTimeout(() => {
+          if (overviewMapInstance) { overviewMapInstance.invalidateSize(); }
+          else { initOverviewMap(); }
+      }, 50);
+  }
   window.scrollTo(0, 0);
 }
 function toggleExtra(id) {
@@ -1251,9 +1268,10 @@ function renderDay(dayIndex) {
 <div style="font-size:14px; color:#999; margin-top:5px;">${day.title}</div>
 </div>
 <div id="map" style="height: 220px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #E8E2D6; z-index: 1; box-shadow: inset 0 0 10px rgba(0,0,0,0.05);"></div>
+${buildAlerts(dayIndex)}
 <div class="weather-info" style="margin-bottom: 8px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; font-size: 13px;">
 <span>📍 ${day.location}</span>
-<span>🌡️ ${day.weather}</span>
+<span id="weatherDisplay">🌡️ ${day.weather}</span>
            ${day.hotel ? `<span style="font-weight: 500; color: var(--accent-color);">🏨 <a href="${day.hotelUrl}" target="_blank" style="text-decoration: none; color: inherit; border-bottom: 1px dashed #A0522D;">${day.hotel}</a></span>` : ''}
 </div>
 <div style="text-align:center; margin-bottom:20px;">
@@ -1288,6 +1306,7 @@ function renderDay(dayIndex) {
        `;
    });
    document.getElementById('dayContent').innerHTML = html;
+   updateWeatherDisplay(day);
    // --- D. 初始化 Leaflet 地圖 ---
    try {
        if (map) { map.remove(); }
@@ -1306,16 +1325,275 @@ function renderDay(dayIndex) {
    if(allBtns[dayIndex - 1]) { allBtns[dayIndex - 1].classList.add('active'); }
    window.scrollTo(0,0);
 }
+// ===== 海拔與瘧疾用藥提醒 =====
+const AMAZON_START_DAY = 15; // 首次進入亞馬遜的那天 (10/22)
+const ALTITUDE_THRESHOLD = 2500;
+function firstHighAltitudeDay() {
+  const found = itineraryData.find(d => d.altitude > ALTITUDE_THRESHOLD);
+  return found ? found.day : null;
+}
+function buildAlerts(dayIndex) {
+  let html = '';
+  if (dayIndex === firstHighAltitudeDay()) {
+      html += `
+<div class="card" style="background:#FFF5F5; border:1px solid #FFDADA; border-radius:12px; padding:14px; margin-bottom:16px;">
+<div style="color:#C62828; font-weight:bold; font-size:13px; margin-bottom:6px;">⛰️ 海拔提醒</div>
+<div style="font-size:12px; color:#8B4513; line-height:1.6;">今天首次超過海拔 ${ALTITUDE_THRESHOLD}m，記得已依醫囑開始服用高山症預防藥，並多補水、放慢腳步。</div>
+</div>`;
+  }
+  if (dayIndex === AMAZON_START_DAY - 2) {
+      html += `
+<div class="card" style="background:#F0FFF4; border:1px solid #C8E6C9; border-radius:12px; padding:14px; margin-bottom:16px;">
+<div style="color:#2E7D32; font-weight:bold; font-size:13px; margin-bottom:6px;">🦟 瘧疾預防用藥提醒</div>
+<div style="font-size:12px; color:#33691E; line-height:1.6;">兩天後 (10/${AMAZON_START_DAY + 7}) 即將進入亞馬遜雨林，依醫囑通常需提前開始服用瘧疾預防藥，請確認今天是否該開始服用。</div>
+</div>`;
+  }
+  return html;
+}
+// ===== 即時天氣 (Open-Meteo，離線時顯示上次快取資料) =====
+async function updateWeatherDisplay(day) {
+  const el = document.getElementById('weatherDisplay');
+  if (!el || !day.locations || day.locations.length === 0) return;
+  const loc = day.locations[0];
+  const cacheKey = `weather_${day.day}_${day.date}`;
+  try {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lng}&daily=temperature_2m_max,temperature_2m_min&timezone=auto`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error('fetch failed');
+      const data = await res.json();
+      const max = Math.round(data.daily.temperature_2m_max[0]);
+      const min = Math.round(data.daily.temperature_2m_min[0]);
+      const text = `🌡️ ${min}-${max}°C`;
+      el.textContent = text;
+      localStorage.setItem(cacheKey, JSON.stringify({ text, ts: Date.now() }));
+  } catch (e) {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+          const parsed = JSON.parse(cached);
+          el.textContent = `${parsed.text} (非即時)`;
+      } else {
+          el.textContent = `🌡️ ${day.weather} (預估)`;
+      }
+  }
+}
+// ===== 打包清單 (可自訂新增，localStorage 儲存) =====
+const packingCategories = [
+  { id: 'docs', name: '📄 重要文件 (隨身攜帶)', items: [
+      '護照正本 & 全彩影本 (分開存放)', '玻利維亞簽證紙 (Day 11 關鍵)', '黃熱病疫苗證明 (黃皮書)',
+      '美金新鈔 (無折痕汙損，南美很挑)', '海外旅遊保險單 & 航班行程表'
+  ]},
+  { id: 'cold', name: '❄️ 高原防寒 (洋蔥式穿法)', items: [
+      'Gore-Tex 防水防風外套 (最強外層)', '輕羽絨衣 或 刷毛中層衣', '吸濕排汗發熱衣褲 (保暖基底)',
+      '遮陽帽 (抗 UV) & 毛帽 (護耳)', '防滑登山鞋 (需已穿過磨合)', '保暖手套 & 厚圍巾', '羊毛厚襪 (預防腳趾凍傷)'
+  ]},
+  { id: 'amazon', name: '🌿 亞馬遜專用 (淺色為主)', items: [
+      '淺色長袖襯衫 & 長褲 (物理防蚊)', '高濃度 DEET 防蚊液 (必備)', '望遠鏡 (觀察樹冠層動物)',
+      '電子設備防水袋 (防午後雷雨)', '泳衣 (Inkaterra SPA 與溫泉用)'
+  ]},
+  { id: 'medical', name: '💊 醫療與強效護理', items: [
+      '高山症藥 (丹木斯) & 止痛藥 (頭痛用)', '腸胃藥 (止瀉/胃散) & 暈車藥', '強效防曬乳 (SPF50+) & 護唇膏',
+      '高度保濕乳液 (鹽原極度乾燥)', '人工皮 & OK繃 (腳部防磨)', '瘧疾預防藥 (亞馬遜段前開始服用)'
+  ]},
+  { id: 'electronics', name: '🔌 電子設備與配件', items: [
+      '行動電源 (高海拔低溫耗電快)', '萬用轉換插頭 (秘魯/玻國適用)', '暖暖包 (彩虹山凌晨與鹽湖夕陽)',
+      '偏光墨鏡 (鹽湖反射強光救星)', 'U 型頸枕 (Day 9 長途火車救星)'
+  ]}
+];
+function getPackingState() {
+  try { return JSON.parse(localStorage.getItem('packingState') || '{}'); } catch(e) { return {}; }
+}
+function savePackingState(state) { localStorage.setItem('packingState', JSON.stringify(state)); }
+function getCustomPackingItems() {
+  try { return JSON.parse(localStorage.getItem('customPackingItems') || '[]'); } catch(e) { return []; }
+}
+function saveCustomPackingItems(items) { localStorage.setItem('customPackingItems', JSON.stringify(items)); }
+function renderPackingList() {
+  const container = document.getElementById('packingList');
+  if (!container) return;
+  const state = getPackingState();
+  let html = '';
+  packingCategories.forEach(cat => {
+      html += `<div style="margin-bottom:20px;"><div style="font-size:13px; font-weight:bold; color:#8C7B68; margin-bottom:8px; border-bottom:1px solid #eee; padding-bottom:3px;">${cat.name}</div>`;
+      cat.items.forEach((text, i) => {
+          const key = `${cat.id}-${i}`;
+          const checked = state[key] ? 'checked' : '';
+          html += `<div class="check-item"><input type="checkbox" ${checked} onchange="togglePackingItem('${key}')"><span>${text}</span></div>`;
+      });
+      html += `</div>`;
+  });
+  const customItems = getCustomPackingItems();
+  html += `<div style="margin-bottom:10px;"><div style="font-size:13px; font-weight:bold; color:#8C7B68; margin-bottom:8px; border-bottom:1px solid #eee; padding-bottom:3px;">✏️ 我的自訂提醒</div>`;
+  customItems.forEach((text, i) => {
+      const key = `custom-${i}`;
+      const checked = state[key] ? 'checked' : '';
+      html += `<div class="check-item" style="justify-content:space-between;"><label style="display:flex; align-items:center; gap:10px; flex:1;"><input type="checkbox" ${checked} onchange="togglePackingItem('${key}')"><span>${text}</span></label><button onclick="deleteCustomPackingItem(${i})" style="background:none; border:none; color:#ccc; font-size:14px; cursor:pointer; padding:0 4px;">✕</button></div>`;
+  });
+  html += `</div>
+<div style="display:flex; gap:8px; margin-top:8px;">
+<input id="customPackingInput" type="text" placeholder="輸入自訂提醒，例如：記得帶降血壓藥" style="flex:1; padding:8px 10px; border-radius:8px; border:1px solid #E8E2D6; font-size:13px;">
+<button onclick="addCustomPackingItem()" style="background:var(--accent-color); color:#fff; border:none; padding:8px 14px; border-radius:8px; font-size:13px; cursor:pointer;">新增</button>
+</div>`;
+  container.innerHTML = html;
+}
+function togglePackingItem(key) {
+  const state = getPackingState();
+  state[key] = !state[key];
+  savePackingState(state);
+  renderPackingList();
+}
+function addCustomPackingItem() {
+  const input = document.getElementById('customPackingInput');
+  if (!input || !input.value.trim()) return;
+  const items = getCustomPackingItems();
+  items.push(input.value.trim());
+  saveCustomPackingItems(items);
+  renderPackingList();
+}
+function deleteCustomPackingItem(i) {
+  const items = getCustomPackingItems();
+  items.splice(i, 1);
+  saveCustomPackingItems(items);
+  const state = getPackingState();
+  delete state[`custom-${i}`];
+  savePackingState(state);
+  renderPackingList();
+}
+// ===== 總覽表格 =====
+function renderOverviewTable() {
+  const body = document.getElementById('overviewTableBody');
+  if (!body) return;
+  let html = '';
+  itineraryData.forEach((d, i) => {
+      const rowBg = d.altitude > ALTITUDE_THRESHOLD ? 'background:#FFF9F2;' : (i % 2 === 1 ? 'background:#FDFCFB;' : '');
+      const altColor = d.altitude > ALTITUDE_THRESHOLD ? 'color:#A0522D; font-weight:500;' : 'color:#999;';
+      html += `<tr style="border-bottom:1px solid #EEE; cursor:pointer; ${rowBg}" onclick="jumpToDay(${d.day})">
+<td style="padding:9px 10px; font-weight:500;">${d.day}</td>
+<td style="padding:9px 10px; color:#666;">${d.date}</td>
+<td style="padding:9px 10px;">${d.location}</td>
+<td style="padding:9px 10px; color:#666;">${d.hotel || '-'}</td>
+<td style="padding:9px 10px; text-align:right; ${altColor}">${d.altitude}m${d.altitude > ALTITUDE_THRESHOLD ? ' ⚠' : ''}</td>
+</tr>`;
+  });
+  body.innerHTML = html;
+}
+function jumpToDay(dayNum) {
+  renderDay(dayNum);
+  document.querySelectorAll('.tab-content').forEach(tab => { tab.classList.remove('active'); tab.style.display = 'none'; });
+  const target = document.getElementById('itinerary');
+  target.classList.add('active');
+  target.style.display = 'block';
+  document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+  const navBtns = document.querySelectorAll('.nav-item');
+  if (navBtns[0]) navBtns[0].classList.add('active');
+  window.scrollTo(0, 0);
+}
+// ===== 交通頁全程互動地圖 =====
+let overviewMapInstance;
+function initOverviewMap() {
+  const el = document.getElementById('overviewMap');
+  if (!el) return;
+  try {
+      overviewMapInstance = L.map('overviewMap');
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(overviewMapInstance);
+      const points = [];
+      const markers = [];
+      itineraryData.forEach(d => {
+          if (d.locations && d.locations.length > 0) {
+              const loc = d.locations[0];
+              points.push([loc.lat, loc.lng]);
+              const m = L.circleMarker([loc.lat, loc.lng], { radius: 6, color: '#7A6A53', fillColor: '#A0522D', fillOpacity: 0.9, weight: 2 }).addTo(overviewMapInstance);
+              m.bindPopup(`<b>Day ${d.day} (${d.date})</b><br>${d.location}`);
+              m.on('click', () => jumpToDay(d.day));
+              markers.push(m);
+          }
+      });
+      if (points.length > 1) {
+          L.polyline(points, { color: '#A0522D', weight: 2, dashArray: '5,5', opacity: 0.7 }).addTo(overviewMapInstance);
+      }
+      if (points.length > 0) {
+          overviewMapInstance.fitBounds(L.latLngBounds(points).pad(0.15));
+      }
+  } catch (e) { console.error('Overview map error:', e); }
+}
+// ===== 我的班機 (個人自訂，僅存本機) =====
+function getMyFlights() {
+  try { return JSON.parse(localStorage.getItem('myFlights') || '[]'); } catch(e) { return []; }
+}
+function saveMyFlights(list) { localStorage.setItem('myFlights', JSON.stringify(list)); }
+function renderMyFlights() {
+  const container = document.getElementById('myFlightsList');
+  if (!container) return;
+  const flights = getMyFlights();
+  if (flights.length === 0) {
+      container.innerHTML = `<div style="font-size:12px; color:#bbb; padding:10px 0;">尚未新增，請在下方輸入你的個人班機資訊。</div>`;
+      return;
+  }
+  container.innerHTML = flights.map((f, i) => `
+<div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; border-bottom:1px dashed #eee; padding:10px 0;">
+<div style="font-size:13px;">
+<div style="font-weight:500; color:#333;">${f.date}　${f.route}</div>
+<div style="color:#666; margin-top:2px;">${f.time}</div>
+${f.note ? `<div style="color:#A0522D; margin-top:2px; font-size:12px;">💡 ${f.note}</div>` : ''}
+</div>
+<button onclick="deleteMyFlight(${i})" style="background:none; border:none; color:#ccc; font-size:14px; cursor:pointer;">✕</button>
+</div>`).join('');
+}
+function addMyFlight() {
+  const date = document.getElementById('mf-date').value.trim();
+  const route = document.getElementById('mf-route').value.trim();
+  const time = document.getElementById('mf-time').value.trim();
+  const note = document.getElementById('mf-note').value.trim();
+  if (!date || !route) { alert('請至少填寫日期與航班/路段'); return; }
+  const flights = getMyFlights();
+  flights.push({ date, route, time, note });
+  flights.sort((a, b) => a.date.localeCompare(b.date));
+  saveMyFlights(flights);
+  ['mf-date', 'mf-route', 'mf-time', 'mf-note'].forEach(id => document.getElementById(id).value = '');
+  renderMyFlights();
+}
+function deleteMyFlight(i) {
+  const flights = getMyFlights();
+  flights.splice(i, 1);
+  saveMyFlights(flights);
+  renderMyFlights();
+}
+// ===== 字體放大功能 (適合長輩閱讀) =====
+function initFontSizeControl() {
+  const saved = parseFloat(localStorage.getItem('fontScale') || '1');
+  applyFontScale(saved);
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const ctrl = document.createElement('div');
+  ctrl.style.cssText = 'position:fixed; top:12px; right:12px; z-index:1001; display:flex; gap:4px; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-radius:12px; padding:4px; box-shadow:0 4px 12px rgba(0,0,0,0.08); border:1px solid rgba(0,0,0,0.05);';
+  ctrl.innerHTML = `
+<button onclick="changeFontScale(-0.1)" style="border:none; background:none; width:32px; height:32px; border-radius:8px; font-size:13px; font-weight:bold; color:#7A6A53; cursor:pointer;">A－</button>
+<button onclick="changeFontScale(0.1)" style="border:none; background:none; width:32px; height:32px; border-radius:8px; font-size:16px; font-weight:bold; color:#7A6A53; cursor:pointer;">A＋</button>`;
+  document.body.appendChild(ctrl);
+}
+function applyFontScale(scale) {
+  scale = Math.min(1.4, Math.max(1, scale));
+  document.body.style.zoom = scale;
+  localStorage.setItem('fontScale', scale);
+}
+function changeFontScale(delta) {
+  const current = parseFloat(localStorage.getItem('fontScale') || '1');
+  applyFontScale(Math.round((current + delta) * 10) / 10);
+}
 // 4. 初始化執行
 window.onload = function() {
   const btnContainer = document.getElementById('dayButtons');
   if(btnContainer) {
       btnContainer.innerHTML = ""; // 清空舊按鈕
       itineraryData.forEach(d => {
-          btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>D</span><span>${d.day}</span></button>`;
+          const parts = d.date.split('/');
+          btnContainer.innerHTML += `<button class="day-btn" onclick="renderDay(${d.day})"><span>${parts[0]}月</span><span>${parts[1]}</span></button>`;
       });
   }
   renderDay(1); // 預設載入第一天
+  renderOverviewTable();
+  renderPackingList();
+  renderMyFlights();
+  initFontSizeControl();
 };
 </script>
 </body>
